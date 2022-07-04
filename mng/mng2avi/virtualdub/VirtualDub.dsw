@@ -1,0 +1,357 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "Ami"=.\Ami\Ami.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "//depot/VirtualDub/1.x/main/Ami"
+    .\ami
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Asuka"=.\Asuka\Asuka.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "//depot/VirtualDub/1.x/main/Asuka"
+    .\asuka
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Dita"=.\Dita\Dita.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "//depot/VirtualDub/1.x/main/Dita"
+    .\dita
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Docs"=.\VirtualDub\docs\Docs.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "//depot/VirtualDub/1.x/main/VirtualDub/docs"
+    .\virtualdub\docs
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Kasumi"=.\Kasumi\Kasumi.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "//depot/VirtualDub/1.x/main/Kasumi"
+    .\kasumi
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Lina"=.\Lina\Lina.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "//depot/VirtualDub/1.x/main/Lina"
+    .\lina
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Meia"=.\Meia\Meia.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "//depot/VirtualDub/1.x/main"
+    .
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Priss"=.\Priss\Priss.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "//depot/VirtualDub/1.x/main/Priss"
+    .\priss
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Riza"=.\Riza\Riza.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "//depot/VirtualDub/1.x/main/Riza"
+    .\riza
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Setup"=.\Setup\Setup.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "//depot/VirtualDub/1.x/main/Setup"
+    .\setup
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Sylia"=.\Sylia\Sylia.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "//depot/VirtualDub/1.x/main/Sylia"
+    .\sylia
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "VirtualDub"=.\VirtualDub\VirtualDub.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "//depot/VirtualDub/1.x/main/VirtualDub"
+    .\virtualdub
+    end source code control
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name Sylia
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name system
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name Dita
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name Priss
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name Meia
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name Kasumi
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name Ami
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name Riza
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name Asuka
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "disasm"=.\disasm\disasm.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "//depot/VirtualDub/1.x/main/disasm"
+    .\disasm
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "helpfile"=.\helpfile\helpfile.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "//depot/VirtualDub/1.x/main/helpfile"
+    .\helpfile
+    end source code control
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name Lina
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "samplefilter"=.\samplefilter\samplefilter.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "//depot/VirtualDub/1.x/main/samplefilter"
+    .\samplefilter
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "system"=.\system\system.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "//depot/VirtualDub/1.x/main/system"
+    .\system
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "vdicmdrv"=.\vdicmdrv\vdicmdrv.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "//depot/VirtualDub/1.x/main/vdicmdrv"
+    .\vdicmdrv
+    end source code control
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name vdsvrlnk
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "vdremote"=.\vdremote\vdremote.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "//depot/VirtualDub/1.x/main/vdremote"
+    .\vdremote
+    end source code control
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name vdsvrlnk
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "vdsvrlnk"=.\vdsvrlnk\vdsvrlnk.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "//depot/VirtualDub/1.x/main/vdsvrlnk"
+    .\vdsvrlnk
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

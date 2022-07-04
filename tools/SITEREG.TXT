@@ -1,0 +1,67 @@
+                    SITE LICENSE FOR CMP 5.23
+
+for _______ users at ____________________________________________
+                     (firm/organization department/division/plant)
+
+(Please see LICENSE.TXT for terms. To pay on line, see
+<http://oakroadsystems.com/sharware/>.)
+
+Please fill in blanks CLEARLY and mail form with payment to:
+    Stan Brown, Oak Road Systems
+    P.O. Box 489
+    Dryden NY 13053    USA
+(If possible, please make sure that this address is current, by
+checking at <http://oakroadsystems.com/about.htm#Contact>.)
+
+Principal contact's name and mailing address:
+
+    _____________________________________________________________
+
+    _____________________________________________________________
+
+    _____________________________________________________________
+
+    _____________________________________________________________
+
+    Country: ____________________________________________________
+
+Your e-mail address:  ___________________________________________
+will be used ONLY to notify you of new versions of CMP or of
+significant bugs discovered. The above information will not be
+given to any other person or organization.
+
+
+User survey: please check as many as apply.
+
+    Which version do you use?    [  ] 16    [  ] 32    [  ] both
+
+    [  ] Win 95/98/ME    [  ] Win NT/2000/XP    [  ] DOS no Windows
+
+[  ] Check here if you DO NOT want e-mail notice of new versions
+     or Oak Road Systems news (no more than once a month).
+
+
+[ X ] Site license fee for ________ users         US $ __________
+            1 or 2 users      US $ 15 per user
+            3 to 5                 14 per user
+            6 to 9                 13 per user
+          up to 19            US $130 flat
+          up to 39                260
+          up to 64                520
+          up to 99                780
+       100 or more users          990
+
+[   ] Optional source code registration, add $2,000    __________
+
+      Subtotal                                    US $ __________
+
+[   ] Applicable sales tax (New York State customers)  __________
+
+      Total                                       US $ __________
+
+[   ] Foreign currency: please convert amount to
+      your local currency and send nearest amount
+      in notes (no coins or checks).
+
+      Rate _________ times amount yields:        ______ __________
+                                               currency

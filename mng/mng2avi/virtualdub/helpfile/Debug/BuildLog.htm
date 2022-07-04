@@ -1,0 +1,116 @@
+<html>
+<head>
+<META HTTP-EQUIV="Content-Type" content="text/html; charset=Windows-1252">
+</head>
+<body>
+<pre>
+<table width=100% bgcolor=#CFCFE5><tr> <td> <font face=arial size=+3>
+Build Log
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>
+<h3>------- Build started: Project: helpfile, Configuration: Debug|Win32 -------
+</h3>
+</pre></table><table width=100% bgcolor=#DFDFE5><tr><td><font face=arial size=+2>
+Command Lines
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>Creating temporary file "C:\DOCUME~1\athena\LOCALS~1\Temp\BAT00005F.bat" with contents
+[
+@echo off
+nmake /nologo /c SRC=source BUILD=Debug
+if errorlevel 1 goto VCReportError
+goto VCEnd
+:VCReportError
+echo Project : error PRJ0019: A tool returned an error code from "Performing Makefile project actions"
+exit 1
+:VCEnd
+]
+Creating command line "C:\DOCUME~1\athena\LOCALS~1\Temp\BAT00005F.bat"
+</pre></table><table width=100% bgcolor=#DFDFE5><tr><td><font face=arial size=+2>
+Output Window
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>Performing Makefile project actions
+ rd /q /s ..\out\Helpfile
+ md ..\out\Helpfile
+ ..\out\Debug\Lina source/root.lina
+Processing: source/root.lina
+Processing: source/dialogs.lina
+Processing: source/videofilters.lina
+Processing: source/audiofilters.lina
+Processing: source/crash.lina
+created file: index.html
+created file: d-videofilters.html
+created file: d-videoframerate.html
+created file: d-videocolordepth.html
+created file: d-videorange.html
+created file: d-videocompression.html
+created file: d-audiofilters.html
+created file: d-audiointerleaving.html
+created file: d-audiocompression.html
+created file: d-audioconversion.html
+created file: d-audiovolume.html
+created file: d-capturesettings.html
+created file: d-capturepreferences.html
+created file: d-capturevumeter.html
+created file: d-preferences.html
+created file: video-filters.html
+created file: audio-filters.html
+created file: crash.html
+created file: capwarn.html
+copying: source/pics/d-audiocompression.png -> pics/d-audiocompression.png
+creating: ../out/Helpfile/pics
+copying: source/pics/d-audioconversion.png -> pics/d-audioconversion.png
+copying: source/pics/d-audiofilters.png -> pics/d-audiofilters.png
+copying: source/pics/d-audiointerleaving.png -> pics/d-audiointerleaving.png
+copying: source/pics/d-audiovolume.png -> pics/d-audiovolume.png
+copying: source/pics/d-capturepreferences.png -> pics/d-capturepreferences.png
+copying: source/pics/d-capturesettings.png -> pics/d-capturesettings.png
+copying: source/pics/d-capturevumeter.png -> pics/d-capturevumeter.png
+copying: source/pics/d-preferences.png -> pics/d-preferences.png
+copying: source/pics/d-videocolordepth.png -> pics/d-videocolordepth.png
+copying: source/pics/d-videocompression.png -> pics/d-videocompression.png
+copying: source/pics/d-videofilters.png -> pics/d-videofilters.png
+copying: source/pics/d-videoframerate.png -> pics/d-videoframerate.png
+copying: source/pics/d-videorange.png -> pics/d-videorange.png
+No errors.
+ cd ..\out\Helpfile
+ zip -0 -X help0.zip *.html pics/*
+  adding: audio-filters.html (stored 0%)
+  adding: capwarn.html (stored 0%)
+  adding: crash.html (stored 0%)
+  adding: d-audiocompression.html (stored 0%)
+  adding: d-audioconversion.html (stored 0%)
+  adding: d-audiofilters.html (stored 0%)
+  adding: d-audiointerleaving.html (stored 0%)
+  adding: d-audiovolume.html (stored 0%)
+  adding: d-capturepreferences.html (stored 0%)
+  adding: d-capturesettings.html (stored 0%)
+  adding: d-capturevumeter.html (stored 0%)
+  adding: d-preferences.html (stored 0%)
+  adding: d-videocolordepth.html (stored 0%)
+  adding: d-videocompression.html (stored 0%)
+  adding: d-videofilters.html (stored 0%)
+  adding: d-videoframerate.html (stored 0%)
+  adding: d-videorange.html (stored 0%)
+  adding: index.html (stored 0%)
+  adding: video-filters.html (stored 0%)
+  adding: pics/d-audiocompression.png (stored 0%)
+  adding: pics/d-audioconversion.png (stored 0%)
+  adding: pics/d-audiofilters.png (stored 0%)
+  adding: pics/d-audiointerleaving.png (stored 0%)
+  adding: pics/d-audiovolume.png (stored 0%)
+  adding: pics/d-capturepreferences.png (stored 0%)
+  adding: pics/d-capturesettings.png (stored 0%)
+  adding: pics/d-capturevumeter.png (stored 0%)
+  adding: pics/d-preferences.png (stored 0%)
+  adding: pics/d-videocolordepth.png (stored 0%)
+  adding: pics/d-videocompression.png (stored 0%)
+  adding: pics/d-videofilters.png (stored 0%)
+  adding: pics/d-videoframerate.png (stored 0%)
+  adding: pics/d-videorange.png (stored 0%)
+ del ..\Debug\VirtualDub.vdhelp
+ zip -9 -X -j ..\Debug\VirtualDub.vdhelp help0.zip
+  adding: help0.zip (deflated 59%)
+ del help0.zip
+</pre></table><table width=100% bgcolor=#DFDFE5><tr><td><font face=arial size=+2>
+Results
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>
+Build log was saved at "file://c:\p4root\dev\helpfile\Debug\BuildLog.htm"
+helpfile - 0 error(s), 0 warning(s)</pre></table><table   width=100% height=20 bgcolor=#CFCFE5><tr><td><font face=arial size=+2>
+</font></table></body></html>

@@ -1,0 +1,259 @@
+VirtualDub crash report -- build 22651 (release)
+--------------------------------------
+
+Disassembly:
+004ef540: 4e              dec    esi
+004ef541: 18f7            sbb    bh, dh
+004ef543: d8f7            fdiv   st, st(7)
+004ef545: dd              db     0ddh
+004ef546: f7da            neg    edx
+004ef548: 83e900          sub    ecx, 00h
+004ef54b: 8944241c        mov    [esp+1ch], eax
+004ef54f: 89542420        mov    [esp+20h], edx
+004ef553: 7446            jz     004ef59b (VDPixmapBltDirect+ab)
+004ef555: 49              dec    ecx
+004ef556: 7429            jz     004ef581 (VDPixmapBltDirect+91)
+004ef558: 49              dec    ecx
+004ef559: 0f8529010000    jnz    004ef688 (VDPixmapBltDirect+198)
+004ef55f: 8b4f20          mov    ecx, [edi+20h]
+004ef562: 52              push   edx
+004ef563: 8b5324          mov    edx, [ebx+24h]
+004ef566: 50              push   eax
+004ef567: 8b4724          mov    eax, [edi+24h]
+004ef56a: 50              push   eax
+004ef56b: 8b4320          mov    eax, [ebx+20h]
+004ef56e: 51              push   ecx
+004ef56f: 52              push   edx
+004ef570: 50              push   eax
+004ef571: e897f8fdff      call   004cee0d (VDMemcpyRect)
+004ef576: 8b542438        mov    edx, [esp+38h]
+004ef57a: 8b442434        mov    eax, [esp+34h]
+004ef57e: 83c418          add    esp, 18h
+004ef581: 8b4f1c          mov    ecx, [edi+1ch]
+004ef584: 52              push   edx
+004ef585: 8b5718          mov    edx, [edi+18h]
+004ef588: 50              push   eax
+004ef589: 8b431c          mov    eax, [ebx+1ch]
+004ef58c: 51              push   ecx
+004ef58d: 8b4b18          mov    ecx, [ebx+18h]
+004ef590: 52              push   edx
+004ef591: 50              push   eax
+004ef592: 51              push   ecx
+004ef593: e875f8fdff      call   004cee0d (VDMemcpyRect)
+004ef598: 83c418          add    esp, 18h
+004ef59b: 8b5614          mov    edx, [esi+14h]
+004ef59e: 0faf542418      imul   edx, [esp+18h]
+004ef5a3: 8b4710          mov    eax, [edi+10h]
+004ef5a6: 8b0f            mov    ecx, [edi]
+004ef5a8: 55              push   ebp
+004ef5a9: 52              push   edx
+004ef5aa: 8b5310          mov    edx, [ebx+10h]
+004ef5ad: 50              push   eax
+004ef5ae: 8b03            mov    eax, [ebx]
+004ef5b0: 51              push   ecx
+004ef5b1: 52              push   edx
+004ef5b2: 50              push   eax
+004ef5b3: e855f8fdff      call   004cee0d (VDMemcpyRect)
+004ef5b8: 83c418          add    esp, 18h
+004ef5bb: 5f              pop    edi
+004ef5bc: 5e              pop    esi
+004ef5bd: 5d              pop    ebp
+004ef5be: b001            mov    al, 01h
+004ef5c0: 5b              pop    ebx
+004ef5c1: c3              ret    
+004ef5c2: 8b4b14          mov    ecx, [ebx+14h]
+004ef5c5: 8b6f14          mov    ebp, [edi+14h]
+004ef5c8: 894c2418        mov    [esp+18h], ecx
+004ef5cc: e8fffeffff      call   004ef4d0 (VDPixmapGetBlitterTable)
+004ef5d1: 8b4c2418        mov    ecx, [esp+18h]
+004ef5d5: 8d54ed00        lea    edx, [ebp+ebp*8+00h]
+004ef5d9: 8d1451          lea    edx, [ecx+edx*2]
+004ef5dc: 8b0490          mov    eax, [eax+edx*4]      <-- FAULT
+004ef5df: 85c0            test   eax, eax
+004ef5e1: 7507            jnz    004ef5ea (VDPixmapBltDirect+fa)
+004ef5e3: 5f              pop    edi
+004ef5e4: 5e              pop    esi
+004ef5e5: 5d              pop    ebp
+004ef5e6: 32c0            xor    al, al
+004ef5e8: 5b              pop    ebx
+004ef5e9: c3              ret    
+004ef5ea: 8b5618          mov    edx, [esi+18h]
+004ef5ed: 85d2            test   edx, edx
+004ef5ef: 0f8f8c000000    jg     004ef681 (VDPixmapBltDirect+191)
+004ef5f5: 8bd1            mov    edx, ecx
+004ef5f7: 6bd22c          imul   edx, edx, 2ch
+004ef5fa: 8bb2b86d5500    mov    esi, [edx+556db8]
+004ef600: 85f6            test   esi, esi
+004ef602: 7f7d            jg     004ef681 (VDPixmapBltDirect+191)
+004ef604: 83fd01          cmp    ebp, 01h
+004ef607: 7433            jz     004ef63c (VDPixmapBltDirect+14c)
+004ef609: 83fd02          cmp    ebp, 02h
+004ef60c: 742e            jz     004ef63c (VDPixmapBltDirect+14c)
+004ef60e: 83fd03          cmp    ebp, 03h
+004ef611: 7429            jz     004ef63c (VDPixmapBltDirect+14c)
+004ef613: 83fd04          cmp    ebp, 04h
+004ef616: 7424            jz     004ef63c (VDPixmapBltDirect+14c)
+004ef618: 8b4c2420        mov    ecx, [esp+20h]
+004ef61c: 8b54241c        mov    edx, [esp+1ch]
+004ef620: 51              push   ecx
+004ef621: 8b4f10          mov    ecx, [edi+10h]
+004ef624: 52              push   edx
+004ef625: 8b17            mov    edx, [edi]
+004ef627: 51              push   ecx
+004ef628: 8b4b10          mov    ecx, [ebx+10h]
+004ef62b: 52              push   edx
+004ef62c: 8b13            mov    edx, [ebx]
+004ef62e: 51              push   ecx
+004ef62f: 52              push   edx
+004ef630: ffd0            call   eax
+004ef632: 83c418          add    esp, 18h
+004ef635: 5f              pop    edi
+004ef636: 5e              pop    esi
+004ef637: 5d              pop    ebp
+004ef638: b001            mov    al, 01h
+004ef63a: 5b              pop    ebx
+004ef63b: c3              ret    
+004ef63c: 83f908          cmp    ecx, 08h
+004ef63f: 8b              db     8bh
+
+Windows 5.1 (Windows XP build 2600) [Service Pack 1]
+
+EAX = 005694f0
+EBX = 0012eab0
+ECX = 00000007
+EDX = 06e40841
+EBP = 00620075
+DS:ESI = 0023:112d81bc
+ES:EDI = 0023:00b63804
+SS:ESP = 0023:0012e9fc
+CS:EIP = 001b:004ef5dc
+FS = 003b
+GS = 0000
+EFLAGS = 00010202
+FPUCW = ffff027f
+FPUTW = ffffffff
+
+MM0 = 0066667e0066667e
+MM1 = 0066667e0066667e
+MM2 = 0066667e0066667e
+MM3 = 0066667e0066667e
+MM4 = bf80177300000001
+MM5 = 8000000000000000
+MM6 = c800000000000000
+MM7 = 8000000000000000
+
+Crash reason: Access Violation
+
+Crash context:
+An out-of-bounds memory access (access violation) occurred in module 'VirtualDub'.
+
+Thread traces:
+
+Thread 00000f50 (Main thread)
+	D:\p4root\dev\VirtualDub\source\Init.cpp(331)
+	D:\p4root\dev\VirtualDub\source\Init.cpp(363)
+	D:\p4root\dev\VirtualDub\source\Init.cpp(383)
+Thread 00000fa0 (unknown)
+
+Thread call stack:0012e9fc: 0012e9fc
+004ef755: VDPixmapBltFast()
+004ef905: VDPixmapBlt()
+004bebc3: VideoSourceImages::streamGetFrame()
+004b59df: DubSource::read()
+00492114: VDProject::UpdateFrame()
+004bae0e: VideoSource::isKey()
+004bac55: VideoSource::streamSetDesiredFrame()
+00491d8d: VDProject::DisplayFrame()
+00491d8d: VDProject::DisplayFrame()
+00492996: VDProject::Open()
+00492996: VDProject::Open()
+0049b736: func_VirtualDub_Open()
+0049b736: func_VirtualDub_Open()
+00490267: ?$list::_Buynode()
+004cccf0: ?$list::insert()
+00507293: (special)()
+004cbf2d: VDScriptInterpreter::InvokeMethod()
+004cb8b3: VDScriptInterpreter::ParseExpression()
+004cc31c: VDScriptInterpreter::Token()
+004cc23f: VDScriptInterpreter::Token()
+004cb7e5: VDScriptInterpreter::ParseExpression()
+004cb274: VDScriptInterpreter::ExecuteLine()
+0049996e: RunScript()
+7f003af0: GDI32!DeleteObject [7f000000+39cc+124]
+7f003add: GDI32!DeleteObject [7f000000+39cc+111]
+004a0007: VDVideoDisplayWindow::StaticRemapPalette()
+5ad71596: uxtheme!00001596
+5ad734a3: uxtheme!GetThemePartSize [5ad70000+2e2e+675]
+5ad734b2: uxtheme!GetThemePartSize [5ad70000+2e2e+684]
+77d48e64: USER32!GetWindowLongW [77d40000+8dc6+9e]
+77d4af6c: USER32!GetSystemMetrics [77d40000+aeff+6d]
+77d4af4a: USER32!GetSystemMetrics [77d40000+aeff+4b]
+77fa3694: ntdll!bsearch [77f50000+53615+7f]
+77f701a1: ntdll!RtlActivateActivationContext [77f50000+1fd5a+447]
+77fa3694: ntdll!bsearch [77f50000+53615+7f]
+77f7096f: ntdll!RtlActivateActivationContext [77f50000+1fd5a+c15]
+77f70400: ntdll!RtlActivateActivationContext [77f50000+1fd5a+6a6]
+77f70e8c: ntdll!RtlFindActivationContextSectionString [77f50000+20db0+dc]
+77f5df7b: ntdll!RtlDosApplyFileIsolationRedirection_Ustr [77f50000+db54+427]
+7f002a5d: GDI32!GdiDrawStream [7f000000+2a1f+3e]
+5ad71596: uxtheme!00001596
+77f64eac: ntdll!LdrShutdownThread [77f50000+12904+25a8]
+77f65357: ntdll!LdrShutdownThread [77f50000+12904+2a53]
+7f0030f4: GDI32!ExtTextOutW [7f000000+2b87+56d]
+7f003036: GDI32!ExtTextOutW [7f000000+2b87+4af]
+7f00314a: GDI32!GetTextExtentPointW [7f000000+3133+17]
+77d529f7: USER32!GetScrollInfo [77d40000+12488+56f]
+77d52a55: USER32!DrawTextExW [77d40000+12a13+42]
+77d528d7: USER32!GetScrollInfo [77d40000+12488+44f]
+77d4c5de: USER32!ReleaseCapture [77d40000+c57b+63]
+77f944a8: ntdll!RtlRemoteCall [77f50000+442ea+1be]
+77f944a8: ntdll!RtlRemoteCall [77f50000+442ea+1be]
+77f57d70: ntdll!RtlAllocateHeap [77f50000+7bae+1c2]
+77f58a3a: ntdll!RtlAllocateHeap [77f50000+7bae+e8c]
+77d52773: USER32!GetScrollInfo [77d40000+12488+2eb]
+77f603c6: ntdll!LdrUnlockLoaderLock [77f50000+1034e+78]
+77f60403: ntdll!LdrUnlockLoaderLock [77f50000+1034e+b5]
+77f60403: ntdll!LdrUnlockLoaderLock [77f50000+1034e+b5]
+77f60945: ntdll!LdrGetDllHandleEx [77f50000+10656+2ef]
+77f60932: ntdll!LdrGetDllHandleEx [77f50000+10656+2dc]
+77f60932: ntdll!LdrGetDllHandleEx [77f50000+10656+2dc]
+77f59baa: ntdll!RtlAcquirePebLock [77f50000+9b82+28]
+77f84879: ntdll!RtlSizeHeap [77f50000+33316+1563]
+77f939de: ntdll!RtlNtStatusToDosError [77f50000+439a6+38]
+77f939e3: ntdll!RtlNtStatusToDosError [77f50000+439a6+3d]
+77f59bf9: ntdll!RtlReleasePebLock [77f50000+9bea+f]
+77f939e3: ntdll!RtlNtStatusToDosError [77f50000+439a6+3d]
+77dd18fe: ADVAPI32!RegCloseKey [77dd0000+17d8+126]
+77dd193b: ADVAPI32!RegCloseKey [77dd0000+17d8+163]
+77dd193b: ADVAPI32!RegCloseKey [77dd0000+17d8+163]
+77dd1b53: ADVAPI32!RegOpenKeyExW [77dd0000+1a8b+c8]
+73bd4962: MSVFW32!ICDecompress [73bd0000+478b+1d7]
+77f939e3: ntdll!RtlNtStatusToDosError [77f50000+439a6+3d]
+77dd18fe: ADVAPI32!RegCloseKey [77dd0000+17d8+126]
+77f939de: ntdll!RtlNtStatusToDosError [77f50000+439a6+38]
+77f939e3: ntdll!RtlNtStatusToDosError [77f50000+439a6+3d]
+77f5bf54: ntdll!NtQueryValueKey [77f50000+bf48+c]
+77f939e3: ntdll!RtlNtStatusToDosError [77f50000+439a6+3d]
+77dd1a72: ADVAPI32!RegCloseKey [77dd0000+17d8+29a]
+77f944cb: ntdll!RtlRemoteCall [77f50000+442ea+1e1]
+77e7df5b: kernel32!LCMapStringW [77e60000+1ddd1+18a]
+77d4e011: USER32!CharLowerBuffW [77d40000+dfe9+28]
+77d4f7d3: USER32!CharLowerBuffA [77d40000+f764+6f]
+77f5b5d4: ntdll!NtClose [77f50000+b5c8+c]
+77dd17b9: ADVAPI32!000017b9
+77dd1859: ADVAPI32!RegCloseKey [77dd0000+17d8+81]
+73bd4c74: MSVFW32!ICDecompress [73bd0000+478b+4e9]
+77d506f0: USER32!wsprintfW [77d40000+106de+12]
+73bd3599: MSVFW32!ICInfo [73bd0000+34d2+c7]
+77de615d: ADVAPI32!RegEnumValueW [77dd0000+160c5+98]
+77f5b5d4: ntdll!NtClose [77f50000+b5c8+c]
+77dd17b9: ADVAPI32!000017b9
+77f8af4b: ntdll!RtlGetUserInfoHeap [77f50000+3aea8+a3]
+77f5980f: ntdll!RtlUnlockHeap [77f50000+97ea+25]
+77f5982f: ntdll!RtlUnlockHeap [77f50000+97ea+45]
+77f59037: ntdll!RtlFreeHeap [77f50000+8a3e+5f9]
+77f59037: ntdll!RtlFreeHeap [77f50000+8a3e+5f9]
+77e7589c: kernel32!GlobalFree [77e60000+15804+98]
+77e758a4: kernel32!GlobalFree [77e60000+15804+a0]
+
+-- End of report

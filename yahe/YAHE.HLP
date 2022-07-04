@@ -1,0 +1,113 @@
+<<GENERAL>>
+  -------------------------------------------------------
+  To contact Winsor Computing:
+  EMAIL : support@winsorcomputing.ne.mediaone.net
+  WEB   : http://winsorcomputing.ne.mediaone.net
+  -------------------------------------------------------
+
+  F10     PULL DOWN MENUS
+  ALT-B   Bookmark options (goto or delete)
+  ALT-C   Cut a block
+  ALT-E   EBCDIC/ASCII Translation
+  ALT-H   Toggle DEC/HEX offsets
+  ALT-L   Load a 256 line translation table (see example table.dat)
+  ALT-M   Marks a bookmark.  To be jumped to using ALT-B later.
+  ALT-P   Print
+  ALT-R   Change max line length (in ascii view only)
+  ALT-S   Change start-up settings
+  F1      Help screen
+  F2      Load file
+  F3      Edit file
+  F4      Goto offset
+<<PAGE>>
+  F5      Search
+  F6      Search Again
+  F7      Ascii List/Hex View Toggle
+  F8      Mark start of measuring location
+  F9      Change Search Direction.  Then use F6 to search again.
+  CTL-F   Show drive free space (actively monitors space every second)
+  ~       Show calculator
+  /       Show floating programmer codes
+  +       Show next loaded file
+  -       Show previous loaded file
+  (Note: only a limted number of files may be open at one time in DOS version)
+<<END>>
+
+<<HEXEDIT>>
+ TAB         Move between hex and ascii view
+ ESC         exit and prompt for save (if modified)
+<<END>>
+
+<<GOTO OFFSET>>
+This function will allow you to jump to any part of the file you are editing.
+You may specify the jump location in:
+DEC       10 20 etc...
+HEX       0xAF etc...
+PERCENT   10% 20% etc...
+OFFSET FROM CURRENT LOCATION -10 +150 etc...
+YOU CAN EVEN MIX FORMATS  +0x0A or +10%
+<<END>>
+
+
+<<SEARCH>>
+This function will search (35 meg a minute*) through your current file
+and find a match with a string you entered.
+Use F6 (SEARCH AGAIN) to search for the string from the current location
+when a match hes been found but you would like to find the next
+occurance of your input string.
+(* on a pentium 90 with 10ms hard drive)
+<<END>>
+
+<<MGRSCROLLDIR>>
+Here is where you will select a file to load.
+Use the UP ARROW ,DOWN ARROW , PGUP, & PGDOWN keys to select
+the file you wish to load.  Then hit ENTER to load that file.
+
+To change your default drive hit D, then the drive letter
+you wish to access, then the ENTER key.
+The top of the screen should then show your selected drive & path.
+<<PAGE>>
+You can also move up directories by selecting the .. entry and
+move down directories by selecting the name itself.
+
+From this screen you may also set attributes for a highlighted
+file by hitting the A key.  The use the HSRA keys to change the
+files attributes.
+<<END>>
+<<LISTVIEW>>
+This view will give you a character view of the data.
+Scrolling up one line at a time is not as fast as PageUp when
+viewing CR/LF files. This is because reformatting may occur to
+provide correct viewing.
+
+Valid keys when viewing:
+
+R              Toggle redraw on/off when srolling through 
+               wrapping lines.
+F4             Goto Location
+F5             Search
+F6             Search Again
+
+CURSOR KEYS    uparrow, downarrow, pgdown, pgup, end, home.
+
+<<END>>
+<<CUTBLOCK>>
+This function will cut a block of data from your file and
+write it to another file that you specifiy.
+
+If you enter MEA here, it will cut from the Marked location
+(F8 key sets this) to the current cusor location.  This length
+includes the two highlighted characters as part of the length.
+
+If you enter END here, it will cut from the current cursor
+location to the end of your data. Again, this will include 
+the current cursor's highlighted location as part of the 
+output data to be written.
+<<PAGE>>
+If you enter a length here instead, it will cut from the
+current cursor's location for N number of bytes that you 
+specified.
+<<END>>
+<<YESNOBOX>>
+Please supply a yes or no answer to the specified question.
+<<END>>

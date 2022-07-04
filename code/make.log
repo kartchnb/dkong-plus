@@ -1,0 +1,43 @@
+
+F:\dkong\code>set TASMTABS=..\tasm 
+
+F:\dkong\code>..\tasm\tasm -c -b -fFF -g3 -t80 -l dkong.asm bin\dkong.bin 
+TASM Z80 Assembler.       Version 3.2 September, 2001.
+ Copyright (C) 2001 Squak Valley Software
+tasm: pass 1 complete.
+dkong.asm line 3707: Label not found: (l3a59)
+dkong.asm line 3707: Unused data in MS byte of argument. (2)
+dkong.asm line 3802: Label not found: (l3a5f)
+dkong.asm line 3802: Unused data in MS byte of argument. (2)
+dkong.asm line 8218: Label not found: (l36A5)
+dkong.asm line 8218: Label not found: (l36A5)
+dkong.asm line 8219: Label not found: (l36B2)
+dkong.asm line 8219: Label not found: (l36B2)
+dkong.asm line 8220: Label not found: (l36BF)
+dkong.asm line 8220: Label not found: (l36BF)
+dkong.asm line 8222: Label not found: (l36CC)
+dkong.asm line 8222: Label not found: (l36CC)
+dkong.asm line 8224: Label not found: (l36E6)
+dkong.asm line 8224: Label not found: (l36E6)
+dkong.asm line 8225: Label not found: (l36FD)
+dkong.asm line 8225: Label not found: (l36FD)
+dkong.asm line 8228: Label not found: (l371C)
+dkong.asm line 8228: Label not found: (l371C)
+dkong.asm line 8232: Label not found: (l375D)
+dkong.asm line 8232: Label not found: (l375D)
+dkong.asm line 8234: Label not found: (l378B)
+dkong.asm line 8234: Label not found: (l378B)
+dkong.asm line 8240: Label not found: (l379E)
+dkong.asm line 8240: Label not found: (l379E)
+dkong.asm line 8241: Label not found: (l37B6)
+dkong.asm line 8241: Label not found: (l37B6)
+dkong.asm line 8242: Label not found: (l37D2)
+dkong.asm line 8242: Label not found: (l37D2)
+dkong.asm line 8243: Label not found: (l37E1)
+dkong.asm line 8243: Label not found: (l37E1)
+dkong.asm line 8245: Label not found: (l3F00)
+dkong.asm line 8245: Label not found: (l3F00)
+dkong.asm line 8246: Label not found: (l3F09)
+dkong.asm line 8246: Label not found: (l3F09)
+tasm: pass 2 complete.
+tasm: Number of errors = 34

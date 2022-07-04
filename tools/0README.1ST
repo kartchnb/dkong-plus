@@ -1,0 +1,96 @@
+======================================================================
+                               CMP 5.23
+     shareware: Compare text or binary files or whole directories
+                   UNREGISTERED evaluation version
+======================================================================
+
+
+Contents of This ZIP File
+=========================
+
+-------------------- general information
+0README.1ST    this file
+FILE_ID.DIZ    text file describing this program for other sites
+LICENSE.TXT    program license, warranty, and support info
+                   Please read LICENSE.TXT. Its terms apply whether or not
+                   you register the software.
+REGISTER.TXT   individual registration form
+SITEREG.TXT    site license form
+
+-------------------- interactive tour of CMP
+                   Please see "Interative Tour" below.
+DEMO\DEMO.BAT  demo program
+DEMO\TOURKEY.EXE prompting program used with DEMO.BAT
+DEMO\ALICE1    data file used with DEMO.BAT
+DEMO\ALICE2    data file used with DEMO.BAT
+DEMO\ALICE3    data file used with DEMO.BAT
+
+-------------------- program
+                   For fast help: "CMP32 /? | MORE" or "CMP16 /? | MORE"
+CMP16.EXE      real-mode program, runs in DOS 2.x or later
+CMP32.EXE      protected-mode program, runs on the command line under
+               Windows 9x/ME/NT/2000/XP and uses long filenames
+
+-------------------- documentation
+                   To begin: double-click CMPUSER.HTM, or on the command line
+                   type "start CMPUSER.HTM" 
+CMPUSER.HTM    user guide in HTML
+CMPHIST.HTM    revision history (what's new) in HTML
+SCREEN.CSS     viewing style sheet used with the above HTML files
+PRINT.CSS      printing style sheet used with the above HTML files
+                   The download file no longer includes plain-text versions of
+                   the documentation; they're available by e-mail on request.
+
+
+Evaluation Version and Registered Version
+=========================================
+
+This ZIP file contains the evaluation versions of the CMP executables.
+The registered versions offer additional functions. (For details, type
+"CMP16 /?|more" or look at the "Evaluation" section of the quick
+start guide.) Please register by using the included file REGISTER.TXT or
+SITEREG.TXT, or by credit card on the Web at
+<http://oakroadsystems.com/sharware/>.
+
+If you registered a previous release of CMP, you are entitled to the
+registered version of this release at no additional charge. Send mail
+to Oak Road Systems at <mailto:support@oakroadsystems.com>. Please
+include your license number or the approximate date when you registered.
+
+
+Install and Uninstall
+=====================
+
+There is no special procedure to install CMP. Simply move CMP16.EXE,
+CMP32.EXE, or both to any convenient directory in your path. If you'll
+be using one of them most or all of the time, you may want to rename
+that version to CMP.EXE.
+
+CMP16.EXE and CMP32.EXE are stand-alone programs. They don't need
+any other files from this distribution to run.
+
+To uninstall, simply delete the files.
+
+
+Test File and Interactive Tour of New Features
+==============================================
+
+To run the interactive tour at the command prompt in Windows XP, 2000,
+or NT, type the two commands
+        cd DEMO
+        DEMO
+In plain DOS or Windows 95, 98, ME, or 3.x, type the two commands
+        cd DEMO
+        command /e:8192 /c TOUR
+The tour walks you through CMP's features, including those that are
+new with this release.
+
+
+More Information
+================
+
+You can find the latest news about CMP, as well as some other
+shareware utilities that might interest you, on the Web at
+<http://oakroadsystems.com/sharware/>.
+
+Send e-mail inquiries to <mailto:support@oakroadsystems.com>.

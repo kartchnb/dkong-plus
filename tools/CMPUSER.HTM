@@ -1,0 +1,2328 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en-US"><head>
+<link rel="StyleSheet" type="text/css" href="screen.css" media="screen, projection">
+<link rel="StyleSheet" type="text/css" href="print.css"  media="print">
+<meta name="description" content="CMP program compares text or binary files (shareware) (Oak Road Systems)">
+<meta name="keywords" content="CMP, find, compare files, file comparison, DOS program, DOS utility, DOS programs, DOS utilities, command-line utilities, shareware, Oak Road Systems">
+<title>CMP 5.23 User Guide</title>
+<link rel="Contents" href="#FULLContents">
+<link rel="Chapter" href="#Why"          title="Why CMP?">
+<link rel="Chapter" href="#Start"        title="Getting Started">
+<link rel="Chapter" href="#User"         title="User Instructions">
+<link rel="Chapter" href="#Overview"     title="Overview: How CMP Compares Files">
+<link rel="Chapter" href="#Options"      title="Options">
+<link rel="Chapter" href="#Return"       title="Return Values (ERRORLEVEL)">
+<link rel="Chapter" href="#FULLContents" title="Full Table of Contents">
+<style type="text/css">
+    .annotations pre { font-size:95% }
+    .annotations p   { margin-left:5em }
+</style>
+</head><body>
+
+<div class="senzastil"><table border="2" cellpadding="5"><tr><td>
+<p><big><big><b>NOTE!</b></big></big></p>
+<p><big>
+This HTML document is meant to be viewed with its associated CSS style
+sheets; I've designed the formatting and spacing to help you read
+the text most easily. Without the style sheets, some things like lists of
+options may be much harder to read.
+</big></p>
+<p><big>
+If you have MSIE 5 or later, Netscape 6 or later, or a modern browser
+like Mozilla or Firefox or Opera, probably you just need to unzip the
+CSS files to the same directory as this document. If you have an older
+browser, I apologize but it may not be able to display this document
+to best advantage. You'll still have all the text, but some of the
+formatting may look odd or wrong.</big></p>
+</td></tr></table></div>
+
+<div class="maintitle">
+<h1>CMP&nbsp;&#8212; Compare Text or Binary Files
+<br>User&nbsp;Guide for Release&nbsp;5.23</h1>
+<p>Program Dated 16 January 2006&nbsp;&nbsp;/&nbsp; This Document Dated 7&nbsp;Nov&nbsp;2005</p>
+<p> Copyright &copy; 1994&#8211;2006 Stan&nbsp;Brown, <a href="http://oakroadsystems.com">Oak&nbsp;Road&nbsp;Systems</a> </p>
+</div>
+
+
+<p class="Summary" id="Summary"><span class="SummaryH"><strong class="key">Summary:</strong>&nbsp;</span>
+CMP compares text or binary files (or groups of files) and report any differences. Output is suitable for piping, or processing by other programs. A value returned in <span class="fname">ERRORLEVEL</span> lets batch files take action based on whether files are the same or different.</p>
+
+<p class="Summary" id="SeeAlso1"><span class="SummaryH"><strong class="key">See&nbsp;also:</strong>&nbsp;</span>
+<a href="cmphist.htm">CMP Revision History</a>
+<br>These documents are sometimes revised between software releases.
+You may want to check for revisions at
+&lt;<small><a href="http://oakroadsystems.com/sharware/cmp.htm">http://oakroadsystems.com/sharware/cmp.htm</a></small>&gt;.</p>
+
+<div class="TOC"><p class="secondhalf"><span class="TOCH"><a name="TOC0"><strong class="key">Contents:</strong>&nbsp; </a></span>
+<table cellspacing=0 cellpadding=0 border=0>
+<tr><td><a href="#Why">Why CMP?</a></td></tr>
+<tr><td><a href="#Start">Getting Started</a></td></tr>
+<tr><td><a href="#User">User Instructions</a></td></tr>
+<tr><td><a href="#Overview">Overview: How CMP Compares Files</a></td></tr>
+<tr><td><a href="#Options">Options</a></td></tr>
+<tr><td><a href="#Return">Return Values (ERRORLEVEL)</a></td></tr>
+<tr><td><a href="#FULLContents">Full Table of Contents</a></td></tr>
+</table>
+
+</div>
+
+
+<hr class="senzastil">
+<h2 id="Why">Why CMP?</h2>
+<hr class="senzastil">
+
+<p class="brk">CMP works your way, much more than the DOS utilities
+<span class="cmd">comp</span> and <span class="cmd">fc</span>.</p> <ul>
+
+<li><p>CMP can compare text or <a href="#OptR">binary
+files</a>, or compare <a href="#SingleEx5">output from some program</a> to a
+reference file.</p></li>
+
+<li><p>CMP comes in both <a href="#Requirements">16-bit and 32-bit
+versions</a>. CMP16 runs in virtually any DOS, and CMP32 recognizes
+<strong class="key">long filenames</strong>.</p></li>
+
+<li><p>CMP can compare multiple files, even <a href="#OptS">entire
+subdirectory trees</a>.</p></li>
+
+<li><p>CMP lets you <a href="#OptionsCompare">configure</a> virtually
+every aspect of the comparison process, including
+    <a href="#OptL">the lookahead depth and resync threshold</a>,
+    whether to <a href="#OptI">treat A-Z and a-z as the same or
+    different</a>,
+    whether to treat all <a href="#OptB">runs of spaces</a> as the
+    same, and whether to <a href="#OptE">ignore blank
+    lines</a>.</p></li>
+
+<li><p>CMP lets you <a href="#OptionsOutput">configure</a> most
+aspects of the output such as
+    <a href="#OptU">UNIX <span class="cmd">diff</span> style</a> or traditional style (line
+    number on each line),
+    width and formatting of <a href="#OptF">line numbers</a>,
+    <a href="#OptN">separators</a> between line numbers and lines,
+    whether to show <a href="#OptJ">differing lines from both files
+    or just one</a>,
+    and the quantity of
+    <a href="#OptQ">warning and diagnostic messages</a>.</p></li>
+
+<li><p>CMP returns <a href="#Return">status values</a> that can be useful
+in batch files or makefiles.</p></li>
+
+<li><p>CMP lets you store often-used options in an
+<a href="#Envvar">environment variable</a> instead of typing them on
+the command line every time.</p></li>
+
+</ul>
+
+
+<hr class="senzastil">
+<h2 id="Start">Getting Started</h2>
+<hr class="senzastil">
+
+
+<h3 class="secondheader" id="Requirements">System Requirements</h3>
+
+<p class="brk">The 16-bit program CMP16 runs under plain DOS, or in a DOS box
+under Windows. The 32-bit program CMP32 runs at the command
+prompt under Windows&nbsp;9x, ME, NT, 2000, 2003, or XP.</p>
+
+<p class="nonbrk">CMP16 and CMP32 operate the same and have the same features,
+with two exceptions: <ul class="nospaceafter">
+
+<li>CMP32 supports long filenames; CMP16 can handle files that have
+long names, but you must use the short names of those files.</li>
+
+<li>CMP32 has larger capacity for
+<a href="#OverviewDiff">lookahead</a>, because it can use all real
+and virtual memory while CMP16 can use only DOS memory.</li>
+
+</ul>
+
+<p class="secondhalf">If you typically run CMP on the command line under
+<strong class="key">any Windows model 1995 or later</strong>,
+CMP32 is the one you want.</p>
+
+
+<h3 id="Installation">Installation and Demo</h3>
+
+<p class="brk">There is no special installation procedure. Simply move
+<span class="fname">cmp16.exe</span> <span class="fname">cmp32.exe</span>, or both to
+<strong class="key">any convenient directory in your path</strong>. Each
+executable is completely self contained.</p>
+
+<p class="nonbrk">You may wish to rename the executable you use more often,
+<span class="fname">cmp32.exe</span> or <span class="fname">cmp16.exe</span>, to the
+simpler <span class="fname">cmp.exe</span>.
+All the examples in this user guide assume you've
+done that. Otherwise, just substitute <kbd>cmp16</kbd> or
+<kbd>cmp32</kbd> wherever you see <kbd>cmp</kbd> in the examples.</p>
+
+<p class="nonbrk">If you'd like to see a <strong class="key">demo</strong> of CMP, change to the subdirectory
+containing the demo files and execute the batch program:</p>
+<pre class="secondhalf">
+        cd demo
+        demo</pre>
+<p class="secondhalf">You need to have 100&nbsp;KB or so free on your hard drive for
+temporary files that will be created. The files are automatically
+deleted when the demo finishes.</p>
+
+
+<h3 id="License">Evaluation, License, and Warranty</h3>
+
+<p class="brk">CMP is shareware. If you use it past a 30-day evaluation period,
+you are morally and legally bound to register and pay for it. Please
+see the file <span class="fname">license.txt</span> for full details,
+including support and warranty information.</p>
+
+<p class="brk">The <strong class="key">registered version offers some rewards</strong>: <ul>
+<li>the <a href="#OptQ"><kbd>/Q</kbd> option</a> to suppress
+various levels of non-essential output</li>
+<li>full directory tree searches with the
+<a href="#OptS"><kbd>/S</kbd> option</a> (The evaluation version searches only two
+levels.)</li>
+<li>the ability to store often-used options in an
+<a href="#Envvar">environment variable</a></li>
+<li>and, of course, no reminder to register</li>
+</ul>
+
+
+<hr class="senzastil">
+<h2 id="User">User Instructions</h2>
+<hr class="senzastil">
+
+<p class="brk">The basic command form is</p>
+<pre>
+        cmp <var>options</var> <var>file(s)</var> <var>otherfile_or_directory</var></pre>
+<p>See <a href="#UserSingle">Comparing Single Files</a> and
+<a href="#UserMult">Comparing Groups of Files</a>, below, for the
+principal variations on this basic form.</p>
+
+<p class="brk">CMP normally lists differences on the screen, but you can send
+them to a file with normal <strong class="key">DOS redirection</strong> (&gt;<var>reportfile</var>). If
+you don't want to see the differences at all, but just want CMP to
+<strong class="key">test whether the files are the same</strong>, <kbd>&gt;NUL</kbd> does that, or
+you can use the <a href="#OptQ"><kbd>/Q3</kbd> or <kbd>/Q4</kbd> option</a> to get a
+one-line "report".</p>
+
+<p class="brk"><a href="#Options">Options</a> can actually be specified anywhere
+on the command line, not just before the first filespec, and they can
+be stored in an <a href="#Envvar">environment variable</a>.
+<strong class="key">All options apply to all files</strong>, no matter where they
+appear on the command line</p>
+
+<p class="brk">Filespecs may contain wild cards; see
+<a href="#UserMult">Comparing Groups of Files</a> below.
+There are two special rules for filespecs that contain certain
+characters:</p>
+
+<ul>
+
+<li><p>If a filespec begins with a hyphen
+(-), CMP interprets it as an option. To prevent this, specify a
+file like <span class="fname">&#8211;sleep</span> as <kbd>.\-sleep</kbd> or <kbd>./-sleep</kbd>
+instead. The period (.) is the standard DOS character for "current
+directory".</p>
+<p class="nonbrk">Exception to the exception: CMP recognizes a bare hyphen as meaning
+standard input; see <a href="#SingleEx5">Example 5</a> below.</p></li>
+
+<li><p>If a filespec contains spaces, remember that DOS requires you
+to enclose it in quotes.</p></li>
+</ul>
+
+<p class="brk">For a <strong class="key">summary of operating instructions</strong> and options, type</p>
+<pre>
+        cmp /? | more</pre>
+
+
+<h3 id="UserSingle">Comparing Single Files</h3>
+
+<p class="brk">To <strong class="key">compare one file to another</strong>:</p>
+<pre>
+        cmp [<var>options</var>] <var>filespec1</var> <var>filespec2</var> [&gt;<var>reportfile</var>]</pre>
+
+<p>Each <var>filespec</var> can contain a drive letter of path. Either
+one (not both) can be <kbd>-</kbd> (a hyphen), indicating standard input; see
+<a href="#SingleEx5">Example 5</a> below.</p>
+
+
+<h4 id="UserSingleMissing">Single Compare and Missing Files</h4>
+
+<p class="brk">If you're comparing one specified file to another specified
+file&nbsp;&#8212; no wild cards, no subdirectory search&nbsp;&#8212;
+then CMP considers it an error if either one can't be found. In that
+case, CMP displays an error message and stops.</p>
+
+
+<h4 id="UserSingleExample">Examples</h4>
+
+<p class="brk"><strong class="key">Example 1</strong>: Compare two files in the current directory.</p>
+<pre>
+        cmp /w100 mywords.txt herwords.txt</pre>
+
+<p class="brk"><strong class="key">Example 2</strong>: Compare <span class="fname">mywords.txt</span> in directory
+<span class="fname">d:\ordinal</span> to <span class="fname">ourwords.txt</span> in the current directory.</p>
+<pre>
+        cmp /w100 d:\ordinal\mywords.txt ourwords.txt</pre>
+
+<p class="brk"><strong class="key">Example 3</strong>: Compare <span class="fname">ferns.txt</span> in the
+<span class="fname">ordinal</span> directory of disk <span class="fname">d:</span> to a
+file of the same name in the <span class="fname">backup</span> directory of the current
+disk. As you can see, when the two files have the same name, you need
+only type the file name once.</p>
+<pre>
+        cmp /w100 d:\ordinal\ferns.txt \backup</pre>
+<p class="secondhalf">or<pre class="secondhalf">
+        cmp /w100 d:\ordinal\ferns.txt \backup\ferns.txt</pre>
+
+<p class="brk"><strong class="key">Example 4</strong>: Compare <span class="fname">lizard.cpp</span> in the
+<span class="fname">ordinal</span> directory of disk <span class="fname">d:</span> to a
+file of the same name in the current directory of the current disk.
+Remember that "." means "current directory" in DOS commands.</p>
+<pre>
+        cmp /w100 d:\ordinal\lizard.cpp .</pre>
+<p class="secondhalf">or<pre class="secondhalf">
+        cmp /w100 d:\ordinal\lizard.cpp .\lizard.cpp</pre>
+
+<p class="brk" id="SingleEx5"><strong class="key">Example 5</strong>: Compare output of some program
+to a benchmark or reference file, using the <kbd>-</kbd> (hyphen)
+to stand for standard input:</p>
+<pre>
+        someprogram | cmp \path\reference.log -</pre>
+
+<p class="brk" id="SingleEx6"><strong class="key">Example 6</strong>: Locate the lines that are in
+<span class="fname">updated</span> not not in <span class="fname">original</span>, using the
+<a href="#OptJ"><kbd>/J2*</kbd> option</a>, and write them to file <span class="fname">diffs</span>:</p>
+<pre>
+        cmp /J2* updated original &gt;diffs</pre>
+
+
+<h3 id="UserMult">Comparing Groups of Files</h3>
+
+<p class="brk">To <strong class="key">compare groups of files</strong>, specify only a disk and/or directory as
+the last filespec:</p>
+<pre>
+        cmp [<var>options</var>] [<var>path</var>\]<var>files</var> <var>path</var> [&gt;<var>reportfile</var>]</pre>
+
+<p class="brk">When you're comparing multiple files,
+<strong class="key">only the first and last filespecs can have disk or path specified</strong>.
+CMP applies the first path to the other files automatically; see
+<a href="#MultipleEx3">Example 3</a> below.</p>
+
+<p class="brk">CMP tells you at the end how many comparisons it tried,
+broken down to file pairs the same, file pairs different, and files
+missing.</p>
+
+
+<h4 id="UserMultWild">Wild Card Expansion</h4>
+
+<p class="brk">Please be aware that CMP16 and CMP32
+<strong class="key">expand wild cards slightly differently</strong> because CMP32 supports
+long filenames. Thus CMP32 would expand <kbd>abc*</kbd>
+to include all files, with any extension or none, whose names start
+with <span class="fname">abc</span>; with CMP16 you need <kbd>abc*.*</kbd> to get
+the same result. This matches the way commands like <span class="cmd">dir</span> operate
+in a 32-bit command prompt versus traditional DOS.</p>
+
+<p class="nonbrk">When expanding wild cards, CMP considers hidden and system
+files for possible matches.</p>
+
+
+<h4 id="UserMultMissing">Multiple Compare and Missing Files</h4>
+
+<p class="brk">If you're comparing multiple files, CMP processes the filespecs
+in order, comparing each one against any matching files in the other
+directory. If you used the <a href="#OptS"><kbd>/S</kbd> option</a>
+to search subdirectories, CMP matches all filespecs from the
+command line against each directory before moving on to the next
+subdirectory.</p>
+
+<p class="nonbrk">The question then arises, what to do about missing files? Consider
+this example, which compares all <span class="fname">.htm</span> and <span class="fname">.css</span>
+files in directory <span class="fname">d:\a</span> to their counterparts in directory
+<span class="fname">d:\b</span>:</p>
+<pre>
+        cmp d:\a\*.htm *.css d:\b </pre>
+
+<p class="brk">That example will illustrate the two possibilities for
+missing files:</p>
+
+<dl>
+<dt><strong class="key">Class 1</strong></dt>
+<dd>File doesn't exist in the first directory. In the above
+example, this problem occurs if there are no <span class="fname">.css</span> files in directory
+<span class="fname">d:\a</span>. Since you specified <kbd>*.css</kbd>, you probably want to know if there are no
+<span class="fname">.css</span> files at all, and CMP will tell you.
+<p class="nonbrk">If you specified the
+<a href="#OptS"><kbd>/S</kbd> option</a> for subdirectory search, any particular subdirectory
+might lack matching files. CMP won't tell you about
+each directory that has no <span class="fname">*.css</span> files, but if there aren't
+any <span class="fname">*.css</span>
+files anywhere in the directory tree CMP will tell you that.</p></dd>
+
+<dt><strong class="key">Class 2</strong></dt>
+<dd>File exists in the first directory but not the second. In the
+above example, suppose CMP finds files <span class="fname">p.htm</span>,<span class="fname">q.htm</span>, and
+<span class="fname">r.htm</span> in
+directory <span class="fname">d:\a</span> but only <span class="fname">r.htm</span> in directory <span class="fname">d:\b</span>.
+Then <span class="fname">p.htm</span> and <span class="fname">q.htm</span>
+are considered missing files from directory <span class="fname">d:\b</span>.
+<p class="nonbrk">CMP tells you about each <span class="fname">.htm</span> file that's in
+<span class="fname">a</span> but not in <span class="fname">b</span>.</p></dd>
+
+</dl>
+
+<p class="brk">Which types of missing files does CMP warn you about? By default
+you get warnings for both types; if you don't want
+that information, use the <a href="#OptC"><kbd>/C</kbd> option</a> to suppress either
+type of warning, or both. (This is a
+<strong class="key">change effective with CMP release&nbsp;5.2</strong>. In
+earlier releases, CMP didn't tell you about missing files unless you
+set an option to get that information. This resulted in confusion and
+questions from users, and therefore I've changed the default as
+indicated above.)</p>
+
+<p class="brk">Where are warnings about missing files written? That depends
+on the <a href="#OptQ"><kbd>/Q</kbd> option</a> and some additional factors. The following
+scheme may seem complex, but it developed in response to user
+requests:</p><ul>
+
+<li>If you specified the <a href="#OptQ"><kbd>/Q3</kbd> or <kbd>/Q4</kbd> option</a>, CMP writes
+"not found" messages only to standard output, <span class="fnamelit">stdout</span>.
+This makes sense because with those options the result of
+<em>every</em> comparison of file pairs is a one-line message.</li>
+
+<li>If you specified the <a href="#OptQ"><kbd>/Q2</kbd> option</a>, CMP writes
+"not found" messages only to the standard error stream,
+<span class="fnamelit">stderr</span>. Usually this means your screen, but some command
+processors let you redirect <span class="fnamelit">stderr</span>. For instance, in the
+Windows XP command processor and in 4NT you can redirect the standard
+error stream to a file with <kbd>2&gt;</kbd><var>filename</var>.</li>
+
+<li>If you didn't specify the <a href="#OptQ"><kbd>/Q2</kbd> option</a> or higher, and neither
+<span class="fnamelit">stderr</span> not <span class="fnamelit">stdout</span> is being redirected, then
+CMP writes warning messages about missing files to your screen via
+<span class="fnamelit">stderr</span>.</li>
+
+<li>If you didn't specify the <a href="#OptQ"><kbd>/Q2</kbd> option</a> or higher, and either
+<span class="fnamelit">stderr</span> or <span class="fnamelit">stdout</span> or both are being redirected, then
+CMP writes duplicate warning messages about missing files to
+<span class="fnamelit">stderr</span> and <span class="fnamelit">stderr</span>.</li>
+
+</ul>
+
+<p class="brk">For even more information about every possible file match and
+mismatch, use the <a href="#OptD"><kbd>/D</kbd> option</a> and look
+for the lines beginning "cmp CF:".</p>
+
+
+<h4 id="UserMultExample">Examples</h4>
+
+<p class="brk"><strong class="key">Example 1</strong>: Compare all files in the current directory with
+extension <span class="fname">.txt</span> to files of the same names in directory
+<span class="fname">d:\other</span>.</p>
+<pre>
+        cmp *.txt d:\other</pre>
+
+<p class="brk"><strong class="key">Example 2</strong>: Compare three named files in the current
+directory to files of the same names in directory <span class="fname">d:\placate</span>.</p>
+<pre>
+        cmp sheep.txt goat.txt eland.txt d:\placate</pre>
+
+<p class="brk" id="MultipleEx3"><strong class="key">Example 3</strong>: Compare the three named files in directory
+<span class="fname">f:\first</span> to files of the same name in directory <span class="fname">second</span>,
+a subdirectory of the current directory.</p>
+<pre>
+        cmp f:\first\sheep.txt goat.txt eland.txt second</pre>
+
+<p class="brk"><strong class="key">Example 4</strong>: Compare all the <span class="fname">.doc</span> files in the
+current directory of drive <span class="fname">a:</span>, plus <span class="fname">xx.htm</span> in the
+current directory of drive <span class="fname">a:</span>, to files
+of the same names in the current directory of drive <span class="fname">b:</span>.</p>
+<pre>
+        cmp a:*.doc xx.htm b:</pre>
+
+<p class="brk"><strong class="key">Example 5</strong>: Compare every file in the <span class="fname">january</span>
+directory to same-named files in the <span class="fname">february</span> directory.</p>
+<pre>
+        cmp january february</pre>
+<p>CMP tells you about any file in the <span class="fname">january</span> directory
+that had no counterpart in the <span class="fname">february</span> directory. You can
+alter this behavior with the <a href="#OptC"><kbd>/C</kbd> option</a> if you don't want those
+warning messages.</p>
+
+
+<hr class="senzastil">
+<h2 id="Overview">Overview: How CMP Compares Files</h2>
+<hr class="senzastil">
+
+<p class="brk">You can customize almost every aspect of CMP's operation, but so
+many choices can be bewildering. This section gives you an overview
+of how CMP operates, so that you can understand the various options in
+context. There's a lot here, so by all means feel free to skip right
+to the <a href="#Options">options</a> when you're first getting
+started.</p>
+
+<p class="nonbrk">Try playing around with the <strong class="key">sample files</strong> <span class="fname">alice1</span>,
+<span class="fname">alice2</span>, and <span class="fname">alice3</span>
+that are included in the <span class="fname">demo</span> subdirectory. Try comparing files with
+various options, and then look at the differences in results. The
+included <a href="#Installation"><span class="fname">demo.bat</span> program</a> shows you the
+effects of some options.</p>
+
+<p class="brk">Hint: When you are comparing the output of CMP with different
+options, you can redirect the two runs to two different files and then
+use CMP itself to compare them. For example, to compare two files with
+and without the <a href="#OptE"><kbd>/E</kbd> option</a>, and see what difference it makes, you could
+do this:</p>
+<pre>
+        cmp alice1 alice2    >without
+        cmp alice1 alice2 /e >with
+        cmp with without | more</pre>
+
+
+<h3 id="OverviewOut">CMP Output</h3>
+
+<p class="brk">A good way to get an idea of what CMP does is to look at a
+typical output. Next to each section you'll have commentary on that,
+explaining what it means and which options can modify it.</p>
+
+<p class="nonbrk">The input command I ran is</p>
+<p class="algebra"><kbd>cmp32&nbsp;cmp_opti*&nbsp;../5.15&nbsp;/2&nbsp;/L,5&nbsp;/W84</kbd></p>
+<p class="secondhalf">to compare <span class="fname">cmp_opti</span> source files from release 5.2 to
+those in an archive or internal "release" 5.15. Here's how I chose my
+options:</p><ul>
+
+<li>I always use the <a href="#Opt2"><kbd>/2</kbd> option</a> option to ensure that file 1 is
+the older file and file 2 is the newer file.</li>
+
+<li>Usually I use the <a href="#OptL"><kbd>/L,2</kbd> option</a> to set <var>resync</var> to 2
+(see). However, for these particular files I found I got a shorter
+difference report by setting <var>resync</> to 5. See
+<a href="#OverviewResync">The Resync Value</a>.</li>
+
+<li>I normally leave the <a href="#OptW"><kbd>/W</kbd> option</a> (line width) at its default
+setting, but I've lowered it for this run to illustrate the truncation
+messages.</li>
+</ul>
+
+<p class="secondhalf">Here's the annotated output:</p>
+
+<div class="annotations">
+<pre>
+cmp32 5.2           Copyright 2005  Oak Road Systems  http://oakroadsystems.com</pre>
+
+<p class="secondhalf">The <strong class="key">program logo</strong>, written to <span class="fnamelit">stderr</span> not
+<span class="fnamelit">stdout</span>, so it won't be redirected by &gt;.
+<a href="#License">Registered users</a> can suppress the logo entirely
+with the <a href="#OptQ"><kbd>/Q1</kbd> option</a> or higher.</p>
+
+<pre>
+Please buy the registered version at http://oakroadsystems.com/sharware/</pre>
+
+<p class="secondhalf">The opening <strong class="key">registration reminder</strong>, written to
+<span class="fnamelit">stderr</span> but only in the <a href="#License">evaluation
+version</a> of CMP. To suppress this message, buy the program.
+&lt;grin&gt;</p>
+
+<pre>
+** comparing (1) .\CMP_OPTI.H and (2) ..\5.15\CMP_OPTI.H</pre>
+
+<p class="secondhalf">A <strong class="key">"comparing" header</strong> appears at the start of comparison
+for each pair of files. This is important to remind you which is file
+1 and which is file 2 in the difference blocks (see below).</p>
+
+<p class="nonbrk">The "comparing" header is suppressed entirely with the
+<a href="#OptQ"><kbd>/Q3</kbd> or <kbd>/Q4</kbd> option</a>, available to <a href="#License">registered
+users</a>. Otherwise, the "comparing" header is written to
+<span class="fnamelit">stdout</span> if neither the <a href="#OptQ"><kbd>/Q2</kbd> option</a> nor the
+<a href="#OptJ"><kbd>/J1*</kbd> or <kbd>/J2*</kbd> option</a> option was specified; if any of those three
+options was specified the "comparing" header is written to
+<span class="fnamelit">stdout</span>.</p>
+
+<pre>
+** Time: 0.0 s    Lines in file 1: 86   file 2: 86
+** The files are identical.</pre>
+
+<p class="secondhalf">A <strong class="key">summary</strong> appears at the end of comparison of each pair
+of files; or if you set the <a href="#OptQ"><kbd>/Q3 or Q4</kbd> option</a> then the
+"comparing" header and summary report are squeezed into a single line.
+Please see <a href="#OverviewSummary">Summary Report</a> below for a
+full list of the possible summaries, and the options that affect
+them.</p>
+
+<pre>
+** comparing (1) ..\5.15\CMP_OPTI.C and (2) .\CMP_OPTI.C</pre>
+
+<p class="secondhalf">This <strong class="key">"comparing" header</strong> for the next pair of files shows
+that CMP interchanged the order I specified on the command line, so
+that the older file compares first. This is the effect of the
+recommend <a href="#Opt2"><kbd>/2</kbd> option</a>.</p>
+
+<pre>
+2.20&gt;2005-10-30/5.16 A bare - is now a filename (stdin), not an option. The /R, /S,
+2.21&gt;                and /2 options aren't allowed with input from stdin.
+2.22&gt;2005-10-31/5.2  Default is now /C3 instead of /C0.
+2.23&gt;2005-11-06/5.2  Allow /Q2 with /U (why was it disallowed?).
+2.24&gt;                /2 with stdin is now a level-1 warning.</pre>
+
+<p class="secondhalf">Here's the first <a href="#OverviewReport">difference block</a>,
+showing five lines that were added between the old and new versions
+of the file: they're in file 2 but there are no corresponding lines in
+file 1.</p>
+
+<p class="nonbrk">To save space, the next two difference blocks aren't shown here.</p>
+
+<pre>
+87,90c110,113
+&lt;     /* If /Q2 or higher then /U is irrelevant. */
+&lt;
+&lt;     if (op.quiet &gt;= 2  &amp;&amp;  op.unix) {
+&lt;         swWrn(2, nugatory, "Q2 or Q3 or Q4", "U (UNIX output)");
+---
+&gt;     /* If /Q3 or higher then /U is irrelevant. */
+&gt;
+&gt;     if (op.quiet &gt;= 3  &amp;&amp;  op.unix) {
+&gt;         swWrn(2, nugatory, "Q3 or Q4", "U (UNIX output)");</pre>
+
+<p class="secondhalf">Here's the fourth difference block, shown in UNIX <span class="cmd">diff</span>
+format. (See the <a href="#OptU"><kbd>/U</kbd> option</a>.) In reality CMP shows all
+<a href="#OverviewReport">difference blocks</a> for any particular run
+in one format, but this seems like a good opportunity to show you the
+alternative formats. Notice that line numbers aren't shown on
+individual lines; instead there's a header to show you that lines
+87&#8211;90 from file 1 (marked with &lt;) were replaced with lines
+110&#8211;113 in file 2 (marked with &gt;).</p>
+
+<pre>
+2.205&gt;    if (*opch == '-'  &amp;&amp;  opch[1] == '\0')
+2.206&gt;        return FALSE;
+
+1.339&gt;    op.complain = 0;
+2.364&gt;    op.complain = OptiMaxComplain;</pre>
+
+<p class="secondhalf">Here are the fifth and sixth <a href="#OverviewReport">difference
+blocks</a> for those files. The fifth block shows two lines added, and
+the sixth shows one line changed.</p>
+
+<p class="brk">By the way, difference blocks are normally separated by
+blank lines, as shown here. <a href="#License">Registered users</a>
+can make the output more compact by setting the <a href="#OptQ"><kbd>/Q2</kbd> option</a> to
+suppress those blank lines.</p>
+
+<pre>
+cmp warning: ..\5.15\CMP_OPTI.C line 463: last 1 char chopped
+cmp warning: .\CMP_OPTI.C line 488: last 1 char chopped</pre>
+
+<p class="secondhalf">Here are two <strong class="key">truncation warnings</strong>. By default, CMP shows
+you a warning for every line that is longer than the <var>width</var>
+specified with the <a href="#OptW"><kbd>/W</kbd> option</a>. Knowing I had to 85-character
+lines, I specified <kbd>/W84</kbd> to show you the truncation
+messages.</p>
+
+<p class="nonbrk">CMP displays these warnings to <span class="fnamelit">stderr</span> as it reads
+the lines, interspersed with the difference blocks. These particular
+messages just happen to come after the last difference block, because
+the long lines occur after the last difference blocks in the
+files.</p>
+
+<p class="nonbrk">To suppress the line-by-line truncation messages, set the
+<a href="#OptQ"><kbd>/Q1</kbd> option</a> or higher (available to
+<a href="#License">registered users</a>). The
+<a href="#OverviewOutTruncFinal">final summary truncation
+message</a> will still appear.</p>
+
+
+<pre>
+** Time: 0.0 s    Lines in file 1: 474   file 2: 499
+** The files are significantly different (5+30 lines in 6 blocks)</pre>
+
+<p class="secondhalf">Here's the summary for the two versions of <span class="fname">cmp_opti.c</span>.
+The old version had five lines that weren't in the new version, and
+the new version had 30 lines that weren't in the old; the differing
+lines occurred in a total of six <a href="#OverviewReport">difference
+blocks</a>.</p>
+
+<p class="nonbrk">Again, please see <a href="#OverviewSummary">Summary
+Report</a> below for a full list of the possible summaries, and the
+options that affect them.</p>
+
+<pre>
+** summary: 2 pairs compared -- same 1, different 1, missing 0</pre>
+
+<p class="secondhalf">This <strong class="key">"&uuml;ber-summary"</strong> is always written to
+<span class="fnamelit">stderr</span>, if you're comparing <a href="#UserMult">multiple
+files</a>.</p>
+
+<pre id="OverviewOutTruncFinal">
+cmp warning: lines were truncated -- use /W85 for complete comparison</pre>
+
+<p class="secondhalf">This <strong class="key">summary truncation message</strong> appears if any lines
+were longer than <var>width</var> characters (<a href="#OptW"><kbd>/W</kbd> option</a>), even if
+you suppressed the individual messages with the <a href="#OptQ"><kbd>/Q1</kbd> option</a>.
+(There are only messages for individual lines and a final message; CMP
+ doesn't report file-by-file summaries of truncations.)</p>
+
+<p class="nonbrk">For your convenience, the message shows the length of the
+longest line read in any file. You should probably re-run CMP with the
+suggested <a href="#OptW"><kbd>/W</kbd> option</a> value to find all differences.</p>
+
+<p class="nonbrk">The <a href="#OptQ"><kbd>/Q3 /Q4</kbd> option</a> (<a href="#License">registered
+users</a>) suppresses even this final summary truncation message. I
+don't recommend that unless you're certain your <var>width</var> is
+set large enough.</p>
+
+<pre>
+Thanks for trying cmp. Your feedback is very welcome! If you like cmp, please
+buy it at http://oakroadsystems.com/sharware/ -- if it doesn't meet your needs,
+please write to support@oakroadsystems.com and tell us how we can improve it.</pre>
+
+<p class="secondhalf">This <strong class="key">shareware reminder</strong> appears at the end of execution
+of the <a href="#License">evaluation version</a>, but not in the
+registered version of CMP.</p> </div>
+
+
+<h3 id="OverviewIn">The Input Stage</h3>
+
+<p class="brk">After scanning the <a href="#Envvar">environment variable</a> and
+the <a href="#User">command line</a>, CMP reserves
+computer memory as needed for the <a href="#OverviewDiff">lookahead
+buffer</a>, according to the values set by the
+<a href="#OptL"><kbd>/L</kbd> option</a> and the <a href="#OptW"><kbd>/W</kbd> option</a>.
+Then CMP begins reading lines from the (first) two files to be
+compared.</p>
+
+<p class="nonbrk">The <a href="#OptW"><kbd>/W<var>width</var></kbd> option</a> is important in
+reading files. For binary files, CMP reads chunks of <var>width</var>
+characters at a time. For text files, CMP reads a line at a time, but
+<strong class="key">ignores the excess</strong> on any line that is longer than <var>width</var>
+characters. CMP lets you know about every such line; use the
+<a href="#OptQ"><kbd>/Q1</kbd> option</a> to suppress such warnings.
+
+<p class="nonbrk">After reading each line of a text file, CMP immediately discards
+any spaces and tabs at the end. Therefore, if two lines are the same
+except that one of them has some <strong class="key">trailing spaces or tabs</strong> and the other
+does not, CMP considers them to be the same. Those trailing spaces and
+tabs do count against the maximum <var>width</var>, however.</p>
+
+<p class="nonbrk"><strong class="key">Empty lines</strong> are normally treated the same as any other
+lines, but
+you can use the<a href="#OptE"><kbd>/E</kbd> option</a> to tell CMP
+to discard empty or blank lines. In that case, they are ignored in comparison
+and don't appear in <a href="#OverviewReport">difference reports</a>.
+(They are still counted, so that line numbers in the output are
+be correct.)</p>
+
+
+<h4 id="OverviewMassage">"Massaged" Lines</h4>
+
+<p class="brk">Upon reading each line, CMP may store it in memory as it was read
+from the file, in a "massaged" form, or both.
+If the <a href="#OptI"><kbd>/I</kbd> option</a> is set, CMP
+massages the line by changing all letters A-Z to lower case.
+If the <a href="#OptB"><kbd>/B</kbd> option</a> is set (for text
+files), CMP massages the line by changing all runs of spaces
+and/or tabs to a single space. (If neither the <a href="#OptB"><kbd>/B</kbd> option</a>
+nor the <a href="#OptI"><kbd>/I</kbd> option</a> is set,
+there is no massaging of lines.)
+It is the massaged lines that CMP compares between files.</p>
+
+<p class="nonbrk">When lines are massaged, CMP normally stores both forms, so that the
+<a href="#OverviewReport">difference reports</a> show the lines
+exactly as they were in the files. But if the
+<a href="#OptM"><kbd>/M</kbd> option</a> is set then CMP doesn't
+save the original lines for display. In that case the difference
+reports show the massaged lines, but you have
+<a href="#OverviewMemory">more memory</a>
+available for <a href="#OverviewDiff">lookahead</a>. I recommend the
+<kbd>/M</kbd> option with CMP16, but not with CMP32.</p>
+
+
+<h3 id="OverviewDiff">Difference Blocks, Lookahead, and Resync</h3>
+
+<p class="brk">As long as corresponding lines from the two files are the same
+(after any massaging), CMP discards them and keeps reading. But when
+they don't match, CMP recognizes the beginning of a difference block.
+Now CMP keeps reading lines trying to <strong class="key">resynchronize</strong> the files.</p>
+
+<p class="nonbrk">The <a href="#OptL"><kbd>/L<var>lookahead,resync</var></kbd> option</a>
+limits this lookahead procedure. CMP may accumulate
+up to <var>lookahead</var> lines from each file, trying to find
+lines that match again. CMP considers that it has resynchronized the
+files if <var>resync</var> consecutive lines are the same between the
+two.</p>
+
+<p class="brk">An <strong class="key">example</strong> may help clarify the significance of <var>lookahead</var>
+and <var>resync</var>. Suppose CMP finds, after the first 31 lines of the
+two files match, that line 32 of file 1 doesn't match line 32 of file
+2. In this case, CMP has to look ahead at line 33 of file 1 and line
+33 of file 2.</p>
+
+<pre>
+              file 1               file 2
+        ------------------   ------------------
+        (two files identical to this point)
+        (31) line d          (31) line d
+        (32) line e          (32) something different
+        (33) ??              (33) ??</pre>
+
+<p>Maybe the two lines 33 will match, or maybe line 32 of file 1 will match
+line 33 of file 2 (meaning that line 32 of file 2 is new in that file
+and doesn't exist in file 1). Maybe there are 25 new lines in file 2,
+and line 32 of file 1 will match line 57 of file 2. CMP needs to keep
+looking ahead until it does find a match.</p>
+
+<p class="brk">If CMP can't resynchronize files within the specified
+lookahead depth (<a href="#OptL"><kbd>/L</kbd> option</a>), it displays the message</p>
+
+<pre>
+        cmp warning: <var>lookahead</var> lines (/L) from both files with no match</pre>
+
+<p>and then report the differing lines. Then it proceeds to the
+next files to be compared, if there are any. To avoid this message, run the
+comparison again with a higher lookahead value in the
+<a href="#OptL"><kbd>/L</kbd> option</a>.
+
+
+<h4 id="OverviewResync">The Resync Value</h4>
+
+<p class="brk">After a difference, finding
+<strong class="key">just one line from file 1 that matches a line from file 2 may not be enough</strong>.
+This is where the <var>resync</var>
+value of the <a href="#OptL"><kbd>/L</kbd> option</a> comes in. CMP
+does not consider the two files resynchronized until that number of
+lines from the two files are the same.</p>
+
+<p class="nonbrk">The resync value
+<strong class="key">affects the quality of difference reports</strong>,
+meaning how differences are grouped. CMP always
+finds all differences, but depending on your value of resync the
+comparison report from the same two files may be longer or shorter.
+Yes, <strong class="key">CMP's default is optimal in most situations</strong>, but it's not
+even theoretically possible to set one value that is always best for
+all possible file pairs.</p>
+
+<p class="brk">This is quite a long section. If you find yourself <strong class="key">getting bored</strong>,
+you may prefer to skip it and simply try come compares, experimenting
+with different values for both numbers on the
+<a href="#OptL"><kbd>/L</kbd> option</a>. The <strong class="key">supplied demo</strong>
+can help you explore this.</p>
+
+<p class="brk">Here are two examples that show graphically
+<strong class="key">what difference the resync value makes</strong>.
+By the way, CMP can <a href="#OverviewReport">report differences</a>
+in traditional format or UNIX <span class="cmd">diff</span> format,
+depending on the <a href="#OptU"><kbd>/U</kbd> option</a>.
+<a href="#OverviewResyncEx1">Example 1</a> shows traditional format, and
+<a href="#OverviewResyncEx2">Example 2</a> shows UNIX <span class="cmd">diff</span> format.)</p>
+
+
+<p class="brk" id="OverviewResyncEx1"><strong class="key">Example 1</strong>:
+Consider the lilies of the field, and this scenario:</p>
+
+<pre>
+             file 1                 file 2
+        -----------------    -------------------
+        (80) Four score       (90) Four score
+        (81) and seven        (91) and seven
+                              (92) (i.e., 87)
+        (82) years ago,       (93) years ago,
+        (83) our fathers      (94) somebody
+        (84) brought forth    (95) brought forth
+        (85) upon this        (96) on this
+        (86) continent a      (97) continent a
+        (87) new nation,      (98) mighty nation,
+        (88) conceived in     (99) born in
+        (89) liberty and     (100) liberty and
+        (90) dedicated to    (101) dedicated to</pre>
+
+<p>As you can see, a number of edits have been made in this one
+paragraph of Lincoln's famous speech. Do you want
+<strong class="key">each edit reported as a separate difference</strong>, or would you prefer to see
+<strong class="key">all the differences in a paragraph as one connected change</strong>?</p>
+
+<p class="brk">With a resync value of 1 (the <a href="#OptL"><kbd>/L,1</kbd> option</a>),
+each difference is reported separately, like this:</p>
+
+<pre>
+        2.92&gt;(i.e., 87)
+
+        1.83&gt;our fathers
+        2.94&gt;somebody
+
+        1.85&gt;upon this
+        2.96&gt;on this
+
+        1.87&gt;new nation,
+        1.88&gt;conceived in
+        2.98&gt;mighty nation,
+        2.99&gt;born in</pre>
+
+<p>With <var>resync</var>&nbsp;=&nbsp;1, as shown above, CMP sees that
+file 1 line 82 matches file 2 line 93, so it considers that difference
+block at an end; then one line later it starts a new difference
+block because file 1 line 83 is different from file 1 line 94.</p>
+
+<p class="brk">But you might prefer that CMP not consider the files matched up again
+until it finds more than one consecutive matching line, like lines 89-90 and
+100-101 in the above example&nbsp;&#8212; you want
+<strong class="key">longer difference blocks but fewer of them</strong>.
+With <var>resync</var> set to 2 (the <a href="#OptL"><kbd>/L,2</kbd> option</a>m which is CMP's
+default), CMP reports a single connected series of edits on the above
+passage:</p>
+
+<pre>
+        1.82&gt;years ago,
+        1.83&gt;our fathers
+        1.84&gt;brought forth
+        1.85&gt;upon this
+        1.86&gt;continent a
+        1.87&gt;new nation,
+        1.88&gt;conceived in
+        2.92&gt;(i.e., 87)
+        2.93&gt;years ago,
+        2.94&gt;somebody
+        2.95&gt;brought forth
+        2.96&gt;on this
+        2.97&gt;continent a
+        2.98&gt;mighty nation,
+        2.99&gt;born in </pre>
+
+<p>Higher values of <var>resync</var> are allowed, but for the above
+passage higher values would have the same effect as
+<var>resync</var>&nbsp;=&nbsp;2.</p>
+
+<p class="brk"><strong class="key">Which <var>resync</var> value is right?</strong>
+CMP sets <var>resync</var>&nbsp;= 2 by default, but which <var>resync</var>
+value is "right" depends on the specifics of the data.
+If CMP seems to be reporting a lot of differences for files that have
+<strong class="key">clusters of changes</strong> like the above, you may find the report is more useful
+if you set a higher <var>resync</var> value with the
+<a href="#OptL"><kbd>/L</kbd> option</a>. But don't make
+<var>resync</var> too large: you'll slow CMP down without making the
+reports better. I recommend setting
+<strong class="key"><var>resync</var> no higher than about 5</strong>.</p>
+
+<p class="nonbrk">CMP must be able to find <var>resync</var> identical lines within the
+<var>lookahead</var> limit. For instance, suppose you specify the
+<a href="#OptL"><kbd>/L</kbd> option</a> as <kbd>/L10,2</kbd>.
+That tells CMP to look ahead ten lines at a time, but of those
+ten lines two must resynchronize. That means that, with
+<kbd>/L10,2</kbd>, upon reading any difference block longer than 10-2&nbsp;= 8
+lines CMP gives up on those two files and moves on to the
+next files, if any.</p>
+
+<p class="nonbrk">If you need to reduce <var>resync</var> to 1 for some reason, you
+probably want to turn on the <a href="#OptE"><kbd>/E</kbd> option</a>
+as well. That prevents CMP from synchronizing on
+blank lines.</p>
+
+<p class="brk" id="OverviewResyncEx2"><strong class="key">Example 2</strong>:
+Here's an even clearer example of how
+<var>resync</var> can make a difference.
+The problem is especially likely to crop up if you have
+<strong class="key">sections of text separated by blank lines</strong>,
+because then CMP resynchronizes on the
+blank lines instead of actual matching text. (Blank lines can be
+ignored by setting the <a href="#OptE"><kbd>/E</kbd> option</a>, but
+the same problem also applies to lines of dashes, the closing
+<kbd>*/</kbd> and <kbd>}</kbd> in C or C++ code, and so forth.)
+
+<p class="nonbrk">Consider this excerpt:</p>
+
+<pre>
+             file 1                 file 2
+        -----------------    -------------------
+        (20) line A           (20) line A
+        (21) end.             (21) end.
+        (22) line B
+        (23) end.
+        (24) line D           (22) line D
+        (25) line E           (23) line E
+        (26) end.             (24) end.
+        (27) line G           (25) line G
+        (28) line H           (26) line H
+        (29) end.             (27) end.
+        (30) same after this  (28) same after this</pre>
+
+<p>As you see, file 1 lines 22-23 do not exist in file 2; otherwise
+the files are identical.</p>
+
+<p class="nonbrk">Suppose <var>resync</var>&nbsp;= 1. CMP sees that the two
+lines 22 don't match and reads ahead to file 1 line 23 and file 2
+line 24, which do match; so CMP reports a difference block of file
+1 line 22 and file 2 lines 22-23. (This is illustrated immediately
+below this paragraph.) But now the next sections don't
+match: file 1 lines 24-25 are different from file 2 lines 25-26. So
+CMP reports another difference, which ends at file 1
+line 26 and file 2 line 27. Then there's another mismatch, and so on
+right down the file. CMP never does resynchronize:</p>
+
+<pre>
+        22c22,23
+        &lt; line B
+        ---
+        &gt; line D
+        &gt; line E
+        24,25c25,26
+        &lt; line D
+        &lt; line E
+        ---
+        &gt; line G
+        &gt; line H</pre>
+<p>and so on for a very long report from just one real difference.</p>
+
+<p class="nonbrk">With <var>resync</var>&nbsp;=&nbsp;2, CMP recognizes that there is
+really only one difference. CMP doesn't consider file 1 line 23 and
+file 2 line 24 as a match because <var>resync</var>&nbsp;=&nbsp;2
+requires two consecutive matching lines. So CMP keeps looking and
+finds that file 1 lines 24-25 match file 2 lines 22-23. For these
+particular files, CMP reports just one difference:</p>
+
+<pre>
+        22,23d21
+        &lt; line B
+        &lt; end.</pre>
+
+<p>For this particular pair of files, a <var>resync</var> value of 2 is
+definitely better. Other pairs of files may work best with a different
+<var>resync</var>, but <strong class="key">2 is usually a good first choice</strong>, which is
+why it's CMP's default.</p>
+
+
+<h4 id="OverviewMemory">Lookahead and Memory Use</h4>
+
+<p class="brk">The lookahead buffer uses your computer's memory.
+CMP32 can use <strong class="key">all memory including virtual memory</strong>, but CMP16
+can use <strong class="key">only DOS memory</strong>.
+
+<p class="nonbrk">The lookahead buffer uses, in bytes,  either roughly
+the <var>lookahead</var> value in the <a href="#OptL"><kbd>/L</kbd> option</a>
+times the <var>width</var> in the <a href="#OptW"><kbd>/W</kbd> option</a>,
+or double that product. Why double? If you set an option that
+causes input lines to be <a href="#OverviewMassage">massaged</a>, CMP
+stores two copies of each line, one massaged for comparison and one
+original for display in <a href="#OverviewReport">difference
+reports</a>. In that case, you can free up memory for the lookahead
+buffer by setting the <a href="#OptM"><kbd>/M</kbd> option</a> (recommended for CMP16).</p>
+
+<p class="brk">You don't need to remember all this. If you exceed the available
+memory with the combined options, CMP displays a message
+suggesting you try lower values for the <kbd>/L</kbd> option or the
+<kbd>/W</kbd> option, or turn on the <a href="#OptM"><kbd>/M</kbd> option</a>
+if that would help.</p>
+
+
+<h4 id="OverviewRunTime">Lookahead and Program Run Times</h4>
+
+<p class="brk">In a difference block, CMP has to compare
+each new line from each file with all the non-matching lines from the
+other file. This means that the number of compares grows as
+<strong class="key">the square of the number of different lines</strong>,
+and therefore the program may run rather slowly
+on files that have very long difference blocks.</p>
+
+<p class="nonbrk">For instance, if you set
+<kbd>/L2500</kbd>, you are telling CMP that whenever it finds a
+difference between the two files, it should look ahead as far as 2500
+lines in each file to try to resynchronize. If in fact the next 2499
+lines of the two files are different, CMP performs roughly
+2499&sup2;&nbsp;= over 6 million comparisons on that block alone.
+(The number of lines
+in the file is not an issue, just the number of consecutive lines that
+are actually different.) If you have files with long runs of differing
+lines, you can make CMP run faster by using a smaller
+<var>lookahead</var> value.</p>
+
+
+<h3 id="OverviewReport">Reporting Difference Blocks</h3>
+
+<p class="brk">CMP normally reports each difference block to the screen; you can
+add &gt;<var>reportfile</var> on the <a href="#User">command line</a> to
+send this <strong class="key">output to a file</strong> instead. You have a number of
+<a href="#OptionsOutput">options</a> for modifying the output
+format.</p>
+
+<p class="nonbrk">Your biggest choice is
+<strong class="key">between UNIX <span class="cmd">diff</span> format and traditional format</strong> (both illustrated below
+and in the interactive demo).
+If you choose traditional format there are additional options
+for line numbers and separators.</p>
+
+<p class="nonbrk">For either format, if you choose to compress runs of white space
+with the <a href="#OptB"><kbd>/B</kbd> option</a> or to
+ignore case with the <a href="#OptI"><kbd>/I</kbd> option</a>,
+CMP normally displays the original lines in the difference blocks.
+To <strong class="key">reduce use of computer memory</strong>, if that's a problem,
+use the <a href="#OptM"><kbd>/M</kbd> option</a>.
+This tells CMP to display the
+<a href="#OverviewMassage">"massaged" lines</a> in difference reports,
+and frees up extra memory for a larger <a href="#OverviewDiff">lookahead
+buffer</a>.</p>
+
+<p class="brk"><strong class="key">UNIX <span class="cmd">diff</span> format</strong> (the <a href="#OptU"><kbd>/U</kbd> option</a>)
+shows the lines without line numbers, but precedes each
+difference block with the numbers of the lines <strong class="key">a</strong>dded,
+<strong class="key">c</strong>hanged, or <strong class="key">d</strong>eleted, like this:</p>
+
+<pre>
+    1a2,5
+    &gt;                  SHERLOCK HOLMES
+    &gt;         THE ADVENTURE OF THE SPECKLED BAND
+    &gt;             by Sir Arthur Conan Doyle
+    &gt;
+    8,10c12,14
+    &lt; the acquirement of wealth, he refused to associate
+    &lt; with any investigation which did not tend
+    &lt; towards the unusual, and even the fantastic. Of
+    ---
+    &gt; the acquisition of wealth, he refused to associate
+    &gt; himself with any investigation which did not tend
+    &gt; toward the unusual, and even the fantastic. Of
+    52,54d59
+    &lt;   "My dear fellow, I would not miss it for
+    &lt; anything."
+    &lt;</pre>
+
+<p class="brk">By contrast, the <strong class="key">traditional CMP report form</strong> shows the differing
+lines from file 1 and file 2 with their line numbers, like this:</p>
+
+<pre>
+    2.2&gt;                 SHERLOCK HOLMES
+    2.3&gt;        THE ADVENTURE OF THE SPECKLED BAND
+    2.4&gt;            by Sir Arthur Conan Doyle
+    2.5&gt;
+
+    1.8&gt;the acquirement of wealth, he refused to associate
+    1.9&gt;with any investigation which did not tend
+    1.10&gt;towards the unusual, and even the fantastic. Of
+    2.12&gt;the acquisition of wealth, he refused to associate
+    2.13&gt;himself with any investigation which did not tend
+    2.14&gt;toward the unusual, and even the fantastic. Of
+
+    1.53&gt;  "My dear fellow, I would not miss it for
+    1.54&gt;anything."
+    1.55&gt;</pre>
+
+<p>With the traditional report form, a block of added lines is shown
+by leading 2s with no leading 1s, changed lines have some of each, and
+deleted lines have leading 1s with no corresponding leading 2s.</p>
+
+<p class="brk">You can <strong class="key">customize the traditional report form</strong> in several
+ways:</p><ul>
+
+<li>Line numbers are normally free format as shown above, but with the
+<a href="#OptF"><kbd>/F</kbd> option</a> you can left or right
+justify them in a fixed width.</li>
+
+<li>Line numbers are normally separated from the text of the lines by
+a greater-than sign (&gt;), but with the <a href="#OptN"><kbd>/N</kbd> option</a>
+you can specify a string of up to six characters.</li>
+
+<li>The difference blocks are normally separated by blank lines, but
+the <a href="#OptQ"><kbd>/Q2</kbd> option</a> suppresses them.</li>
+</ul>
+
+
+<h3 id="OverviewSummary">Summary Report</h3>
+
+<p class="brk">After comparing each pair of files, CMP summarizes what it
+found for that pair. The message depends on whether differences were
+found, and also on what constraints were laid on the comparison by
+options. This section shows you all the possible summary messages.</p>
+
+<p class="brk">The longer form of summary message appears if you didn't set the
+<a href="#OptQ"><kbd>/Q3 /Q4</kbd> option</a>. This form is written to <span class="fnamelit">stderr</span> if
+you specified the <a href="#OptQ"><kbd>/Q2</kbd> option</a> or the <a href="#OptJ"><kbd>/J1*</kbd> or <kbd>/J2*</kbd> option</a>;
+otherwise it's written to <span class="fnamelit">stdout</span>.</p>
+
+<p class="nonbrk">In the longer form of summary message there are two lines, one
+for the elapsed time and line counts, one for the result of comparison
+and number of differences found. The first line (time and line counts)
+is suppressed if you set the <a href="#OptA"><kbd>/A</kbd> option</a> or the <a href="#OptQ"><kbd>/Q1</kbd> option</a>.</p>
+
+<p class="nonbrk">Here are the possibilities for the longer form (if the
+<a href="#OptQ"><kbd>/Q3</kbd> or <kbd>/Q4</kbd> option</a> isn't set):</p>
+
+<div class="annotations" style="margin-left:4em">
+
+<pre>
+** Time: 0.2 s    Lines in file 1: 120   file 2: 125
+** The files are significantly different. (17+42 lines in 7 blocks)</pre>
+
+<p class="secondhalf">This tells you that the files are different, how many lines
+differed between the two files, and in how many
+<a href="#OverviewReport">difference blocks</a>.</p>
+
+<p class="nonbrk">Specifying the <a href="#OptB"><kbd>/B</kbd> option</a>, the <a href="#OptE"><kbd>/E</kbd> option</a>,
+the <a href="#OptI"><kbd>/I</kbd> option</a>, or the <a href="#OptW"><kbd>/W</kbd> option</a> sets constraints on
+the differences CMP might find. The above message indicates that even
+with any constraints some lines compared different (though without
+the constraints there might have been more differences).
+If CMP didn't find
+any differences, you'll see one of the next four messages.</p>
+
+<pre>
+** Time: 0.2 s    Lines in file 1: 120   file 2: 120
+** The files are identical.</pre>
+
+<p class="secondhalf">The files are truly identical. You didn't constrain comparison
+with the <a href="#OptB"><kbd>/B</kbd> option</a>, <a href="#OptE"><kbd>/E</kbd> option</a>, or <a href="#OptI"><kbd>/I</kbd> option</a>,
+and none of the lines was longer than <var>width</var> characters
+(see the <a href="#OptW"><kbd>/W</kbd> option</a>).</p>
+
+<pre>
+** Time: 0.2 s    Lines in file 1: 120   file 2: 124
+** The files are effectively identical for the options chosen.</pre>
+
+<p class="secondhalf">You constrained comparisons with the
+<a href="#OptB"><kbd>/B</kbd> option</a>, <a href="#OptE"><kbd>/E</kbd> option</a>, or <a href="#OptI"><kbd>/I</kbd> option</a>,
+but none of the lines was longer than <var>width</var> characters
+(see the <a href="#OptW"><kbd>/W</kbd> option</a>). Within the constraints, no differences were
+found.</p>
+
+<p class="nonbrk">Note that the files compare equal even though they have different
+numbers of lines. This can happen when empty lines are suppressed with
+the <a href="#OptE"><kbd>/E</kbd> option</a>.</p>
+
+<pre>
+** Time: 0.1 s    Lines in file 1: 86   file 2: 86
+** The files are effectively identical within the /W width.</pre>
+
+<p class="secondhalf">You didn't constrain comparisons with the
+<a href="#OptB"><kbd>/B</kbd> option</a>, <a href="#OptE"><kbd>/E</kbd> option</a>, or <a href="#OptI"><kbd>/I</kbd> option</a>,
+but some of the lines were longer than <var>width</var> characters
+(see the <a href="#OptW"><kbd>/W</kbd> option</a>). Within the first <var>width</var> characters
+of every line, no differences were found.</p>
+
+<pre>
+** Time: 0.1 s    Lines in file 1: 86   file 2: 86
+** The files are effectively identical for the options and /W width.</pre>
+
+<p class="secondhalf">You constrained comparisons with the
+<a href="#OptB"><kbd>/B</kbd> option</a>, <a href="#OptE"><kbd>/E</kbd> option</a>, or <a href="#OptI"><kbd>/I</kbd> option</a>,
+and some of the lines were longer than <var>width</var> characters
+(see the <a href="#OptW"><kbd>/W</kbd> option</a>). Within the constraints, within the first
+<var>width</var> characters of every line, no differences were
+found.</p>
+
+<pre>
+cmp warning: ..\5.15\demo\DEMO52.OUT not found in second directory</pre>
+
+<p class="secondhalf">This message can occur only with <a href="#UserMultMissing">multiple
+compare</a>, when a file in the fir directory has no counterpart in the
+second directory. Messages of this type can be suppressed with the
+<a href="#OptC"><kbd>/C0</kbd> or <kbd>/C1</kbd> option</a>, if you really want to.</p>
+
+</div>
+
+
+<p class="brk"><a href="#License">Registered users</a> can set the
+<a href="#OptQ"><kbd>/Q3</kbd> or <kbd>/Q4</kbd> option</a>, and then CMP will compress the
+<a href="#OverviewOut">"comparing" header</a> and summary into a
+single line per file, suppressing <a href="#OverviewReport">difference
+blocks</a> entirely. In this case, you'll see one of the following
+messages:</p>
+
+<div class="annotations" style="margin-left:4em">
+<pre>
+different: CMP_OPTI/H and ..\5.15\CMP_OPTI.H
+identical: CMP_OPTI/H and ..\5.15\CMP_OPTI.H
+identical/massaged: CMP_OPTI/H and ..\5.15\CMP_OPTI.H
+identical/truncated: CMP_OPTI/H and ..\5.15\CMP_OPTI.H
+identical/truncated/massaged: CMP_OPTI/H and ..\5.15\CMP_OPTI.H
+not found: ..\5.15\demo\DEMO52.OUT</pre>
+</div>
+
+<p>These correspond to the cases above, depending on whether
+differences were found, the setting of the
+<a href="#OptB"><kbd>/B</kbd> option</a>, <a href="#OptE"><kbd>/E</kbd> option</a>, and <a href="#OptI"><kbd>/I</kbd> option</a>,
+and whether any lines in the file were longer than <var>width</var>
+characters (see the <a href="#OptW"><kbd>/W</kbd> option</a>). With the <a href="#OptQ"><kbd>/Q4</kbd> option</a>, CMP
+suppresses even the four types of "identical" messages, showing only
+the "different" and "not found" messages for the most compact output
+possible.</p>
+
+<p class="brk"> After processing all files in <a href="#UserMult">multiple
+compare</a>, CMP writes one final &uuml;ber-summary of this
+form to <span class="fnamelit">stderr</span>:</p>
+
+<pre>
+** summary: 2 pairs compared -- same 1, different 1, missing 0</pre>
+
+
+<hr class="senzastil">
+<h2 id="Options">Options</h2>
+<hr class="senzastil">
+
+<p class="brk">CMP's operation can be modified by quite a number of options,
+either on the command line or in an <a href="#Envvar">environment
+variable</a>.</p>
+
+<p class="nonbrk">Because there are a great many options, they are presented below
+both <a href="#OptionsCategory">by category</a> and
+<a href="#OptionsAlpha">alphabetically</a>.</p>
+
+
+<h3 id="OptionsHow">How to Specify Options</h3>
+
+<p class="brk">You have a lot of freedom about <strong class="key">how you enter options</strong>: <ul>
+
+<li><p>You can use a <strong class="key">leading hyphen or slash</strong>.</p></li>
+
+<li><p>You can use <strong class="key">upper- or lower-case letters</strong>. (This document
+always uses capital letters for the options, to make it easier to
+distinguish letter l and figure 1.)</p></li>
+
+<li><p>You can put options <strong class="key">anywhere on the command line</strong>,
+before, among, or after the filespecs; or you can specify them in an
+<a href="#Envvar">environment variable</a>.</p></li>
+
+<li><p>When specifying more than one option, you can leave
+<strong class="key">spaces between options</strong> or combine them.</p></li>
+
+</ul>
+
+<p>For instance, the following are just some of the different ways of
+turning on both the <a href="#OptW"><kbd>/W100</kbd> option</a> and the <a href="#OptB"><kbd>/B</kbd> option</a>:
+<kbd>/w100&nbsp;/b</kbd>,
+<kbd>/w100-b</kbd>,
+<kbd>/w100/b</kbd>,
+<kbd>/w100B</kbd>,
+<kbd>-W100-B</kbd>,
+<kbd>-W100&nbsp;/b</kbd>.</p>
+
+
+<h3 id="OptionsCategory">Options by Category</h3>
+
+<p class="brk">(Some options are listed in multiple categories to make them easier
+to find.)</p>
+
+<p class="brk" id="OptionsInput">These options affect <strong class="key">file input</strong>:
+<ul>
+
+<li>Are you comparing binary files? Use the <a href="#OptR"><kbd>/R</kbd> option</a>.</li>
+
+<li>Use the <a href="#OptW"><kbd>/W</kbd> option</a> to specify the
+maximum line width for text files or the block size for binary
+files.</li>
+
+<li>With the <a href="#OptS"><kbd>/S</kbd> option</a>, you can
+compare entire directory trees.</li>
+
+</ul>
+
+
+<p class="brk" id="OptionsCompare">These options affect <strong class="key">the comparison process</strong>:<ul>
+
+<li>When the files are different, the <a href="#OptL"><kbd>/L</kbd> option</a>
+tells CMP how far to <a href="#OverviewDiff">look ahead</a>
+to try to resynchronize them, and how <a href="#OverviewResync">stringent</a>
+to be.</li>
+
+<li>You can ignore case with the <a href="#OptI"><kbd>/I</kbd> option</a>.</li>
+
+<li>You can compare only the first parts of text lines with the
+<a href="#OptW"><kbd>/W</kbd> option</a>.</li>
+
+<li>Want just the first few differences in each file? Use
+the <a href="#OptA"><kbd>/A</kbd> option</a>.</li>
+
+<li>If comparing text files, you can
+treat all runs of blanks and tabs as equal
+(<a href="#OptB"><kbd>/B</kbd> option</a>)
+and ignore blank lines (<a href="#OptE"><kbd>/E</kbd> option</a>).</li>
+
+<li>With the <a href="#Opt2"><kbd>/2</kbd> option</a>, CMP
+always arranges comparisons so that the newer file is file 2 and the
+older file is file 1.</li>
+
+</ul>
+
+<p class="brk" id="OptionsOutput">These options affect <strong class="key">output</strong>:<ul>
+
+<li>You can select UNIX <span class="cmd">diff</span>-style output in preference to CMP's
+traditional format (<a href="#OptU"><kbd>/U</kbd> option</a>).</li>
+
+<li>With traditional output, you can control the formatting of line
+numbers (<a href="#OptF"><kbd>/F</kbd> option</a>) and the separator
+between line numbers and lines (<a href="#OptN"><kbd>/N</kbd> option</a>).</li>
+
+<li>To get only lines that are in one file but not the other, use the
+<a href="#OptJ"><kbd>/J</kbd> option</a>.</li>
+
+<li>If comparing case blind or compressing strings of blanks, you can
+use the <a href="#OptM"><kbd>/M</kbd> option</a> to
+display <a href="#OverviewReport">difference lines</a> as
+<a href="#OverviewMassage">massaged</a>, not as read from the
+files.</li>
+
+<li>You can suppress non-essential messages with the
+<a href="#OptQ"><kbd>/Q</kbd> option</a>, or even restrict output to
+a single line per comparison. On the other hand, with the
+<a href="#OptD"><kbd>/D</kbd> option</a> you can get extra
+information about CMP's operation and progress.</li>
+
+</ul>
+
+<p class="brk" id="OptionsGeneral">Finally, here are the <strong class="key">general program options</strong>:<ul>
+<li>The <a href="#OptZ"><kbd>/Z</kbd> option</a> tells CMP to ignore
+any options that were set in
+<a href="#Envvar">the <span class="fnamelit">ORS_CMP</span> environment
+variable</a>.</li>
+
+<li>The <a href="#OptC"><kbd>/C</kbd> option</a> tells CMP to
+display warning messages when expected files are not found.</li>
+
+<li>With the <a href="#Opt0"><kbd>/0</kbd> or <kbd>/1</kbd> option</a>, you control the status
+values sent to DOS or the command processor. You can test that
+return status in a makefile, or
+with <span class="cmd">if errorlevel</span> in a batch file.</li>
+
+<li>Don't have this user guide handy? Use the
+<a href="#OptHelp"><kbd>/?</kbd> option</a> for a summary of operating
+instructions for CMP.</li>
+
+</ul>
+
+
+<h3 id="Envvar">Environment Variable</h3>
+
+<p class="brk">If you use certain <a href="#Options">options</a> frequently, with
+the registered version of CMP you can
+put them in the <span class="fnamelit">ORS_CMP</span> environment variable. You have
+the same <a href="#OptionsHow">freedom</a> as on the command line: leading slashes or hyphens,
+space separation or options run together, caps or lower case.</p>
+
+<p class="nonbrk">CMP processes the environment variable before any command-line
+options, and therefore
+<strong class="key">an option on the command line overrides</strong>
+the corresponding option in the environment variable.</p>
+
+<p class="nonbrk">The toggles,
+<a href="#Opt2">/2</a>
+<a href="#OptB">/B</a>
+<a href="#OptE">/E</a>
+<a href="#OptI">/I</a>
+<a href="#OptM">/M</a>
+<a href="#OptR">/R</a>
+<a href="#OptS">/S</a>
+<a href="#OptU">/U</a>,
+reverse their state every time you
+specify them. So if you usually want case-blind comparisons, put
+the <kbd>/I</kbd> option in the environment variable; then, if you want
+case-sensitive comparisons for a particular run, simply put
+the <kbd>/I</kbd> option on the command line to reverse the setting
+from the environment variable.</p>
+
+<p class="nonbrk">To alter the settings of other options,
+like the <a href="#OptL"><kbd>/L</kbd> option</a> and <a href="#OptF"><kbd>/F</kbd> option</a>,
+simply put the option on the command line with the new desired setting.
+
+<p class="brk">You may want to specify options without regard to what might be in
+the environment variable. To ensure this, put the
+<a href="#OptZ"><kbd>/Z</kbd> option</a> first on the command line.
+I <strong class="key">strongly recommend</strong> you do this in any <strong class="key">batch files</strong>.</p>
+
+<p class="nonbrk">If you have any question which options are in effect, simply use
+<a href="#OptD"><kbd>/D</kbd> option</a> the command line to display all
+option values.</p>
+
+
+<h3 id="OptionsAlpha">Alphabetical List of Options</h3>
+
+<p class="brk">Here's a quick hyperlink to each option:</p>
+<p class="illo">
+<a href="#OptHelp">?</a> &nbsp;
+<a href="#Opt0">0</a> &nbsp;
+<a href="#Opt1">1</a> &nbsp;
+<a href="#Opt2">2</a> &nbsp;
+<a href="#OptA">A</a> &nbsp;
+<a href="#OptB">B</a> &nbsp;
+<a href="#OptC">C</a> &nbsp;
+<a href="#OptD">D</a> &nbsp;
+<a href="#OptE">E</a> &nbsp;
+<a href="#OptF">F</a> &nbsp;
+<a href="#OptI">I</a> &nbsp;
+<a href="#OptJ">J</a> &nbsp;
+<a href="#OptL">L</a> &nbsp;
+<a href="#OptM">M</a> &nbsp;
+<a href="#OptN">N</a> &nbsp;
+<a href="#OptQ">Q</a> &nbsp;
+<a href="#OptR">R</a> &nbsp;
+<a href="#OptS">S</a> &nbsp;
+<a href="#OptU">U</a> &nbsp;
+<a href="#OptW">W</a> &nbsp;
+<a href="#OptZ">Z</a>
+</p>
+
+<h4 id="OptHelp">/?&nbsp;&#8212; Show help</h4>
+
+<p class="brk">CMP displays a help message and option summary, then exits with no
+further processing.</p>
+
+<p class="brk">You can redirect or pipe this information. For instance,
+you can display the help text one screen at a time by typing</p>
+<pre>
+        cmp /? | more</pre>
+<p>or print the help text with the command</p>
+<pre>
+        cmp /? &gt;prn</pre>
+
+
+<h4 id="Opt0">/0 and /1&nbsp;&#8212; Select return values</h4>
+
+<p class="brk" id="Opt1">Normally, CMP returns 0 in <span class="fname">ERRORLEVEL</span> if it
+finishes normally, whether it found any differences or not.
+These options
+let you control the values that CMP returns in
+<span class="fname">ERRORLEVEL</span> if the run finishes normally:</p>
+
+<table class="mynb">
+<tr><td><kbd>/0</kbd></td>
+<td>CMP returns 0 in <span class="fname">ERRORLEVEL</span> if
+there are any differences in any files, or 1 if every pair of files
+compares equal. (The option is a digit zero, not a letter
+oh.)</td></tr>
+
+<tr><td><kbd>/1</kbd></td>
+<td>CMP returns 1 in <span class="fname">ERRORLEVEL</span> if
+there are any differences in any files, or 0 if every pair of files
+compares equal.</td></tr>
+</table>
+
+<p>With neither <kbd>/0</kbd> nor <kbd>/1</kbd>, CMP returns 0 in
+<span class="fname">ERRORLEVEL</span>.</p>
+
+<p class="nonbrk">Regardless of these options, CMP returns 2 or higher in
+<span class="fname">ERRORLEVEL</span> if there's a problem.
+The error codes are listed in <a href="#Return">Return Values</a>, later in
+this user guide.</p>
+
+
+<h4 id="Opt2">/2&nbsp;&#8212; Compare old to new</h4>
+
+<p class="brk">With this option, CMP checks the date and time each file was last
+modified, and it considers the older file as file 1.
+This can be particularly helpful with diff-style output
+(the <a href="#OptU"><kbd>/U</kbd> option</a>), which reports lines added to or deleted from
+file&nbsp;1 to make file&nbsp;2.</p>
+
+<p class="nonbrk">CMP always displays the file names in the difference report, so you
+know which file is which.</p>
+
+<p class="brk">Example:</p>
+<pre>
+        cmp /2 cat dog</pre>
+<p>If file <span class="fname">cat</span> was changed more recently than file
+<span class="fname">dog</span>, CMP makes <span class="fname">dog</span> file 1 for purposes of
+comparison, equivalent to</p>
+<pre>
+        cmp dog cat</pre>
+
+<p class="brk">Dependencies: The <kbd>/2</kbd> option is ignored when
+<a href="#SingleEx5">comparing a file to <kbd>-</kbd></a>
+(standard input or <span class="fnamelit">stdin</span>);
+the <a href="#OptQ"><kbd>/Q2</kbd> option</a> or higher suppresses the warning message.</p>
+
+<h4 id="OptA">/A<var>n</var>&nbsp;&#8212; Stop after <var>n</var> difference blocks</h4>
+
+<p class="brk">CMP stops reading each pair of files after reporting
+<var>n</var>
+<a href="#OverviewDiff">difference blocks</a> for that pair.
+If you expect some files to have lots of differences, you can use
+this option to limit the output and make CMP run faster.</p>
+
+<p class="nonbrk">If you
+just want to know whether files are the same or different
+<strong class="key">without seeing the actual differences</strong>, use the
+<a href="#OptQ"><kbd>/Q3</kbd> or <kbd>/Q4</kbd> option</a>, not the <kbd>/A</kbd> option.
+(When <kbd>/Q3</kbd> or <kbd>/Q4</kbd> option is set,
+any <kbd>/A</kbd> option is ignored and <kbd>/A1</kbd> is
+implied.)</p>
+
+<p class="nonbrk">The parameter <var>n</var> limits the number of <em>difference blocks</em>
+reported, not the number of different <em>lines</em>, and it applies
+to each pair of files. Example:</p>
+<pre>
+        cmp code\*.cpp \bkup /A4</pre>
+<p>compares all <span class="fname">.cpp</span> files in the <span class="fname">code</span>
+subdirectory to files of the same
+names in the <span class="fname">bkup</span> root directory.
+CMP reports no more than 4 difference blocks
+between any one pair of files. This
+would be a good choice when you think most files are the same or
+nearly the same, but a few have lots of differences.</p>
+
+<p class="brk">The default is to read every file to the end and report
+all difference blocks; that's equivalent to <kbd>/A0</kbd>.
+
+
+<h4 id="OptB">/B&nbsp;&#8212; Compress blanks and tabs</h4>
+
+<p class="brk">CMP compresses all runs of blanks and/or tabs in each line of a
+text file to a single blank, for purposes of comparison and display.
+With this option, CMP considers "a&nbsp;&nbsp;&nbsp;&nbsp;b",
+"a&nbsp;b", "a{tab}b", and "a&nbsp;&nbsp;{tab}&nbsp;b" identical.</p>
+
+<p class="nonbrk">Runs of blanks and/or tabs are compressed to a single
+space, not completely removed. Thus CMP always considers "ab"
+(with no space between "a" and "b") different from "a&nbsp;b"
+(any spaces or tabs between "a" and "b").
+Carriage return and line feed are <em>not</em> compressed: in other
+words, blank and tab compression with the <kbd>/B</kbd> option
+operates only on runs of blanks and/or tabs
+within one line at a time.</p>
+
+<p class="nonbrk">Regardless of this option, CMP always ignores spaces and tabs
+at the ends of lines in text files. Some more details are given above in
+"<a href="#OverviewIn">Overview: The Input Stage</a>".</p>
+
+<p class="brk">Dependencies: The <kbd>/B</kbd> option is ignored when the
+<a href="#OptR"><kbd>/R</kbd> option</a> (binary files) is set.</p>
+
+
+<h4 id="OptC">/C&nbsp;&#8212; Complain about missing files</h4>
+
+<p class="brk">CMP normally warns you about any missing files, but with the
+<kbd>/C</kbd> option you can fine tune which sorts of missing files CMP warns
+you about during multiple compares.</p>
+
+<p class="nonbrk">Caution:
+<strong class="key">The default has changed, effective in release&nbsp;5.2.</strong> The
+old default was <kbd>/C0</kbd>, a poor choice because CMP did nothing
+when users unknowingly mistyped a file name, and then users couldn't
+understand why they got no output. The new default is <kbd>/C3</kbd>.</p>
+
+<p class="brk">This option may have any of four values:</p>
+
+<table class="mynb">
+<tr><td><kbd>/C0</kbd></td>
+    <td>Don't display any warnings for missing files.</td></tr>
+
+<tr><td><kbd>/C1</kbd></td>
+    <td>Display a warning, at the end of execution, for each filespec
+    on the command line that didn't match any files in the first
+    directory (class 1 missing files). If the <a href="#OptS"><kbd>S</kbd> option</a> (search
+    subdirectories) is set, the warning appears only if there are no
+    matching files in the first directory or any of its
+    subdirectories.</td></tr>
+
+<tr><td><kbd>/C2</kbd></td>
+    <td>Display a warning for class 2 missing files, when an existing
+    file in the first directory has no counterpart with the same name
+    in the second directory.</td></tr>
+
+<tr><td><kbd>/C3</kbd></td>
+    <td>(default) Display warnings for both classes of missing files.</td></tr>
+
+</table>
+
+<p class="brk">For more on missing files, including circumstances under which
+messages are written to <span class="fnamelit">stderr</span> or <span class="fnamelit">stdout</span> or
+both, please see <a href="#UserMultMissing">Multiple Compare and Missing
+Files</a>, earlier.</p>
+
+<p class="brk">Dependencies: The <kbd>/C</kbd> option is meaningful only in
+<a href="#UserMult">multiple compare</a>.
+By contrast, in <a href="#UserSingle">single compare</a>,
+a missing file is
+always an error since there is nothing for CMP to do.</p>
+
+
+<h4 id="OptD">/D<var>file</var>&nbsp; or&nbsp; /D-&nbsp; or&nbsp; /D&nbsp;&#8212; Display Debugging Output</h4>
+
+<p class="brk">Debugging information is very extensive, and includes
+whether you're running CMP16 or CMP32,
+whether this program is <a href="#License">registered</a>,
+the contents of the <a href="#Envvar">environment variable</a>,
+the values of all options specified or implied,
+the files specified,
+and
+details of every file scanned.</p>
+
+<p class="nonbrk">This information is normally suppressed, but you may find it helpful
+if CMP seems to behave in a way you don't expect.
+Also if you report a problem I'll ask to see the debugging output.</p>
+
+<table class="mynb">
+
+<tr><td><kbd>/D</kbd><var>file</var></td>
+<td>(<strong class="key">recommended form</strong>) sends debugging output to the named
+file. The name must follow the <kbd>D</kbd> with no intervening
+space, and the filename ends at the next space. CMP appends to the
+file if it already exists. Since the debugging information can be
+voluminous, if you want to see it at all you probably want to
+specify an output file.</td></tr>
+
+<tr><td><kbd>/D</kbd></td>
+<td>sends debugging information to the standard
+error output (normally the screen). Be careful not to specify any
+other options between <kbd>/D</kbd> and the next space, or they'll
+be taken as a filename.</td></tr>
+
+<tr><td><kbd>/D-</kbd></td>
+<td>sends debugging information to the standard
+output, which you can redirect (&gt;) or pipe (|). This form of the
+option intersperses
+debug information with the actual output of CMP.</td></tr>
+</table>
+
+<p>You can weed through the debugging output to some extent. CMP
+writes the following unique strings on most lines of output, so you
+can send debug output to a file and then grep the file for
+<ul class="nospaceafter">
+<li><samp>cmp CC:</samp> parsing the command line</li>
+<li><samp>cmp CF:</samp> expanding directory and filespecs, including
+subdirectories</li>
+<li><samp>cmp CM:</samp> memory usage</li>
+<li><samp>cmp CP:</samp> comparison process</li>
+<li><samp>cmp CQ:</samp> messages suppressed by the <a href="#OptQ"><kbd>/Q</kbd> option</a></li>
+</ul>
+
+<p>The <a href="http://oakroadsystems.com/sharware/">GREP utility</a> from Oak
+Road Systems can be very helpful in scanning output.</p>
+
+
+<h4 id="OptE">/E&nbsp;&#8212; Ignore empty lines</h4>
+
+<p class="brk">With the <kbd>/E</kbd> option, CMP can do a much better job on some
+text files, because <kbd>/E</kbd> keeps CMP from
+<a href="#OverviewResync">resynchronizing</a> on an empty line. Please
+see <a href="#OverviewResyncEx2">Example 2</a> in the overview.
+(Even if empty lines are ignored in the comparison, they're still
+counted, so that line numbers are reported consistently.)</p>
+
+<p class="nonbrk">Without the <kbd>/E</kbd> option, CMP keeps track of blank
+lines and report added or deleted blank lines as differences.</p>
+
+<p class="brk">A line is considered empty if it contains no characters at all, or
+contains only blanks and tabs.</p>
+
+<p class="brk">Dependencies: The <kbd>/E</kbd> option is ignored when
+the <a href="#OptR"><kbd>/R</kbd> option</a> (binary files) is set.</p>
+
+
+<h4 id="OptF">/F<var>n</var>&nbsp; or&nbsp; /F0<var>n</var>&nbsp; or&nbsp; /F-<var>n</var>&nbsp;&#8212; Fix the width of line numbers</h4>
+
+<p class="brk">With the <kbd>/F</kbd> option,
+CMP formats line numbers in a field of <var>n</var> columns
+(n&nbsp;&#8804;&nbsp;10) when
+reporting <a href="#OverviewReport">difference blocks</a>.
+The <kbd>/F</kbd> option lets you ensure that reported difference
+lines all line up visually.</p>
+<ul class="nospaceafter">
+
+<li><kbd>/F</kbd><var>n</var> and <kbd>/F0</kbd><var>n</var>
+<strong class="key">right justify</strong> the line numbers, filling unused positions with spaces
+and zeroes respectively.
+
+<li><kbd>/F-</kbd><var>n</var> <strong class="key">left justifies</strong> the line numbers.
+</ul>
+
+<p class="brk"><var>n</var> is a minimum field width, but the whole line number
+is always displayed. For example, if you specify
+<kbd>/F4</kbd>, <kbd>/F04</kbd>, or <kbd>/F-4</kbd>,
+line numbers for any differences in lines 1 through
+9999 are justified in a four-character field. Any larger
+line numbers expand to the right, like this:
+<pre>
+        /F4 output         /F04 output         /F-4 output
+    1.  98&gt;text1a      1.0098&gt;text1a       1.98  &gt;text1a
+    2.  99&gt;text1b      2.0099&gt;text1b       2.99  &gt;text1b
+    2. 100&gt;text1c      2.0100&gt;text1c       2.100 &gt;text1c
+
+    1.2398&gt;text2a      1.2398&gt;text2a       1.2398&gt;text2a
+    2.2399&gt;text2b      2.2399&gt;text2b       2.2399&gt;text2b
+
+    1.234168&gt;text3a    1.234168&gt;text3a     1.234168&gt;text3a
+    1.234169&gt;text3b    1.234169&gt;text3b     1.234169&gt;text3b
+    2.234170&gt;text3c    2.234170&gt;text3c     2.234170&gt;text3c</pre>
+
+<p class="brk">Without the <kbd>/F</kbd> option (or with plain <kbd>/F0</kbd>),
+CMP formats line numbers as however long they
+happen to be, with no padding.
+(You might wonder why CMP doesn't just figure the necessary width on
+its own. To do that, CMP would have to read each file an extra time,
+just to count lines.
+That would slow the program down significantly.)</p>
+
+<p class="brk">Dependencies: The <kbd>/F</kbd> option is ignored when you've set
+the <a href="#OptQ"><kbd>/Q3</kbd> or <kbd>/Q4</kbd> option</a> (don't display
+difference blocks) or
+the <a href="#OptJ"><kbd>/J<var>filenum</var>*</kbd> option</a> (suppress line numbers).</p>
+
+
+<h4 id="OptI">/I&nbsp;&#8212; Ignore case</h4>
+
+<p class="brk">CMP treats letters A-Z the same as a-z for comparison.</p>
+
+<p class="nonbrk">Because of limitations in the MSVC library, the <kbd>/I</kbd> option
+affects only the English letters A through Z. Accented or non-English
+lower-case letters are always considered different from the
+corresponding upper-case letters.</p>
+
+
+<h4 id="OptJ">/J<var>filenum</var>* or /J<var>filenum</var>&nbsp;&#8212; Display difference lines from just one file</h4>
+
+<p class="brk">Normally CMP shows lines from both files in the
+<a href="#OverviewReport">difference report</a>. If you want just the
+lines that are in file 1 but not file 2 (or vice versa), the
+<kbd>/J</kbd> option does the job. This can be very handy when piping lines to
+another program.</p>
+
+<p class="nonbrk">Here are the values of the <kbd>/J</kbd> option:</p>
+<table class="mynb">
+
+<tr><td><kbd>/J0</kbd></td>
+<td>(default) gives the
+regular <a href="#OverviewReport">difference report</a> of
+differing lines from both files.</td></tr>
+
+<tr><td><kbd>/J1</kbd></td>
+<td>shows only the lines that occur in file 1 but not
+file 2, with line numbers and with the "comparing" header and summary
+footer.</td></tr>
+
+<tr><td><kbd>/J1*</kbd></td>
+<td>shows only the lines that occur in file 1 but not
+file 2, <em>without</em> line numbers.
+The "comparing" header and the summary footer still appear, but are
+written to <span class="fnamelit">stderr</span> rather than <span class="fnamelit">stdout</span> so that they won't be redirected
+or piped. The output to std is the bare lines from file 1.</td></tr>
+
+<tr><td><kbd>/J2</kbd><br><kbd>/J2*</kbd></td>
+<td>are analogous to
+<kbd>/J1</kbd> and <kbd>/J1*</kbd>, showing lines that occur in
+file 2 but not in file 1.</td></tr>
+</table>
+
+<p>With a non-default <kbd>/J</kbd> option, the other options have
+their usual meanings. For instance, you can suppress empty lines with
+the <a href="#OptE"><kbd>/E</kbd> option</a> option,
+stop comparing early with
+the <a href="#OptA"><kbd>/A</kbd> option</a>, and so forth.</p>
+
+<p class="nonbrk">The <a href="#OptL"><kbd>/L</kbd> option</a> does behave slightly
+differently. With the default or <kbd>/J0</kbd> option, if a difference block is longer
+than the specified <var>lookahead</var>, CMP stops without reading the
+rest of the file. But with a non-default <kbd>/J</kbd> option, if a
+difference block is longer than <var>lookahead</var> lines, CMP
+reports those lines and then every line till the end of that file. For
+example, if you have <kbd>/J1&nbsp;/L200</kbd> and CMP finds a difference
+block of more than 200 lines, it reports those lines and every
+line from there to the end of file 1. You still see a warning
+message (unless you've specified the <a href="#OptQ"><kbd>/Q1</kbd> option</a> or higher), and can
+adjust the <var>lookahead</var> value in the <kbd>/L</kbd> option if
+this is an issue.</p>
+
+<p class="brk">Dependencies:</p>
+<p class="nonbrk">With any <kbd>/J</kbd> option other than <kbd>/J0</kbd>,
+CMP ignores the <a href="#OptU"><kbd>/U</kbd> option</a> (UNIX output).</p>
+
+<p class="nonbrk">With the <kbd>/J1*</kbd> and <kbd>/J2*</kbd>, which suppress
+line numbers, CMP ignores the
+the <a href="#OptF"><kbd>/F</kbd> option</a>
+and <a href="#OptN"><kbd>/N</kbd> option</a>, which set line number formats.</p>
+
+
+<h4 id="OptL">/L<var>lookahead,resync</var>&nbsp; or&nbsp; /L<var>lookahead</var>&nbsp; or&nbsp; /L,<var>resync</var>&nbsp;&#8212; Set lookahead</h4>
+
+<p class="brk">When a difference is found, CMP looks ahead as many as
+<var>lookahead</var> lines in each file to find where the files become
+the same again, and
+considers that the files are the same again only when <var>resync</var>
+lines from the two files are the same.
+(If the <kbd>E</kbd> option is set, empty lines don't count
+against either <var>resync</var> or <var>lookahead</var>.)
+Please see the explanation and examples in
+<a href="#OverviewDiff">Overview: Difference Blocks and
+Lookahead</a>.</p>
+
+<p class="nonbrk">The default is <kbd>/L20,2</kbd> in CMP16 and
+<kbd>/L100,2</kbd> in CMP32.
+As the option forms above show, you can specify either <var>resync</var> or
+<var>lookahead</var> without changing the other.</p>
+
+<p class="nonbrk"><var>resync</var> can be 1 or greater.
+<var>lookahead</var> must be at least <var>resync</var>&nbsp;+&nbsp;2
+but may not exceed 32000
+or <a href="#OverviewMemory">available memory</a>.
+Even if CMP and available memory let you set <var>lookahead</var> as
+large as 32000, values greater than a few hundred are not recommended.
+Please see the <a href="#OverviewRunTime">note on run times</a> in the
+Overview.</p>
+
+
+<h4 id="OptM">/M&nbsp;&#8212; Save memory by displaying massaged lines</h4>
+
+<p class="brk">Normally you want the difference report to contain lines as they
+were formatted in the original files. But if your computer memory is
+scarce, set the <kbd>/M</kbd> option to tell CMP to use half as
+much memory. The tradeoff is that CMP then displays
+lines as they were <a href="#OverviewMassage">massaged</a>
+according to the <a href="#OptB"><kbd>/B</kbd> option</a> or <a href="#OptI"><kbd>/I</kbd> option</a>,
+not as they appear in the files.</p>
+
+<p class="brk">This option is available in both CMP16 and CMP32, but isn't really
+needed with CMP32 because virtual memory is available to the 32-bit
+program. It's CMP16 that might have memory problems, depending on the
+<var>lookahead</var> value in the <a href="#OptL"><kbd>/L</kbd> option</a>.</>
+
+<p class="nonbrk">CMP normally retains copies of the
+original lines from file for display in
+<a href="#OverviewReport">reporting difference blocks</a>.
+This roughly doubles the computer memory needed used for the
+<a href="#OverviewDiff">the lookahead buffer</a>, which could be a
+problem for CMP16.
+If you're short on memory and you're
+willing to see approximate versions of the original lines in
+the difference reports, by setting the <kbd>/M</kbd> option you increase
+the space available for lookahead.</p>
+
+<p class="brk">Dependencies:
+The <kbd>/M</kbd> option has effect only if you have turned on
+the <a href="#OptB"><kbd>/B</kbd> option</a>
+or <a href="#OptI"><kbd>/I</kbd> option</a> or both and if you have <em>not</em> set
+the <a href="#OptQ"><kbd>/Q3</kbd> or <kbd>/Q4</kbd> option</a>
+to suppress output of the <a href="#OverviewReport">difference
+blocks</a>.</p>
+
+
+<h4 id="OptN">/N<var>str</var>&nbsp;&#8212; Set number separator</h4>
+
+<p class="brk">CMP separates line numbers from lines by <var>str</var>
+instead of the default <samp>&gt;</samp> character when
+<a href="#OverviewReport">reporting difference blocks</a> in
+traditional form.</p>
+
+<p class="nonbrk">You can specify a string of up to six characters; the string is
+terminated by the next space or tab. Don't use quotes with this option
+unless you want them in the output.</p>
+
+<p class="nonbrk">If you want certain characters like =, |, &lt;, or space in your
+separator, you can't simply type them because DOS or the command
+prompt gives them special meanings.
+Use special "numeric escape sequences" to represent those
+characters in the <kbd>/N</kbd> option. For example,
+to make your output look like this:</p>
+<pre>
+        1. 98 : text1a
+        2. 99 : text1b
+        2.100 : text1c
+
+        1.398 : text2a
+        2.399 : text2b</pre>
+<p>use the sequence <kbd>\32</kbd> to represent the space character.
+The entire command looks like this:</p>
+<pre>
+        cmp /N\32:\32 /F3 file1 file2</pre>
+<p>The numeric escape sequences are a backslash (\) followed by the
+numeric value of the character, up to three decimal digits. A leading
+0 denotes octal; a leading 0x or 0X denotes hexadecimal. Here are some
+sample sequences:</p>
+
+<div class="acchild"><table cellpadding="0" cellspacing="0" border="0">
+<tr><th align=center>instead of<th align=center>use any of
+<td> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </tr>
+<tr><td>(space)<td><kbd>\32&nbsp;&nbsp;\0x20&nbsp;\040</kbd></tr>
+<tr><td>(tab)<td><kbd>\9&nbsp;&nbsp;&nbsp;\0x09&nbsp;\011</kbd></tr>
+<tr><td><kbd>&lt;</kbd> (less)<td><kbd>\60&nbsp;&nbsp;\0x3C&nbsp;\074</kbd></tr>
+<tr><td><kbd>=</kbd> (equal)<td><kbd>\61&nbsp;&nbsp;\0x3D&nbsp;\075</kbd></tr>
+<tr><td><kbd>&gt;</kbd> (greater)<td><kbd>\62&nbsp;&nbsp;\0x3E&nbsp;\076</kbd></tr>
+<tr><td><kbd>|</kbd> (vertical bar)<td><kbd>\124&nbsp;\0x7C&nbsp;\0174</kbd></tr>
+<tr><td style="padding-right:2em"><kbd>"</kbd> (double quote)<td><kbd>\34&nbsp;&nbsp;\0x22&nbsp;\042</kbd></tr>
+</table></div>
+
+<p>The above are only examples: you can enter any character as a numeric
+sequence. For example, capital A would be <kbd>\65</kbd>,
+<kbd>\0x41</kbd>, or <kbd>\0101</kbd>.</p>
+
+<p class="brk">Dependencies: The <kbd>/N</kbd> option is ignored when you've set the
+<a href="#OptU"><kbd>/U</kbd> option</a> (UNIX <span class="cmd">diff</span>-style output),
+the <a href="#OptJ"><kbd>/J<var>filenum</var>*</kbd> option</a> (suppress line numbers),
+or the <a href="#OptQ"><kbd>/Q3</kbd> or <kbd>/Q4</kbd> option</a> (don't display
+difference blocks).</p>
+
+
+<h4 id="OptQ">/Q<var>level</var>&nbsp;&#8212; Set quietness level</h4>
+
+<p class="brk">(registered program only) Suppress some output that you may not
+want. Please see the <a href="#Overview">Overview</a> for discussion
+of the normal output from CMP. Please see <a href="#OptC"><kbd>/C</kbd> option</a> for
+additional control on warning messages for missing files.</p>
+
+<table class="mynb">
+
+<tr><td><kbd>/Q0</kbd></td>
+    <td>(default) Display all normal messages and warnings.
+    <p class="nonbrk">Send <a href="#UserMultMissing">warnings about missing
+    files</a> to <span class="fnamelit">stderr</span>, and if either
+    <span class="fnamelit">stderr</span> or <span class="fnamelit">stdout</span> has been redirected send
+    those warnings to <span class="fnamelit">stdout</span> as well.</td></tr>
+
+<tr><td><kbd>/Q1</kbd></td>
+    <td>Suppress the program logo, any <a href="#OverviewIn">warning
+    messages about individual truncated lines</a>, and the final
+    display of line counts for the two files.
+    If any lines were truncated, a single message still appears at the
+    end of processing.
+    <p class="nonbrk">Send <a href="#UserMultMissing">warnings about missing
+    files</a> to <span class="fnamelit">stderr</span>, and if either
+    <span class="fnamelit">stderr</span> or <span class="fnamelit">stdout</span> has been redirected send
+    those warnings to <span class="fnamelit">stdout</span> as well.</td></tr>
+
+<tr><td><kbd>/Q2</kbd></td>
+    <td>Suppress the items mentioned for <kbd>/Q1</kbd> plus the
+    blank lines between <a href="#OverviewReport">difference
+    blocks</a>. Also, send the headers (file names) and footers (<a
+    href="#OverviewSummary">count of difference blocks or message that
+    files are equal</a>) to <span class="fnamelit">stderr</span> (the error output,
+    normally your screen) rather than
+    <span class="fnamelit">stdout</span> (standard output, which can be redirected with
+    &gt; or piped with |).
+    <p class="nonbrk">Send <a href="#UserMultMissing">warnings about missing
+    files</a> only to <span class="fnamelit">stderr</span>.</p>
+    <p class="nonbrk">This lets you redirect the output of CMP and get
+    only the difference lines from the two files. You still get line
+    numbers, but by using the <a href="#OptF"><kbd>/F</kbd> option</a>
+    you can force them to a fixed format that is easily stripped away.
+    Example:</p>
+<pre class="secondhalf">
+    cmp /Q2 /F6 file1 file2 &gt;report</pre>
+    <p class="secondhalf">sends just the difference blocks to the file called
+    <span class="fname">report</span>, suppressing all non-essential messages.
+    Essential messages still appear on your screen because they are
+    written to <span class="fnamelit">stderr</span> and are not redirected.
+    Assuming each file has fewer than a million lines, each line
+    redirected to the <span class="fname">report</span> file has 9-character
+    prefix: file number (1 or 2), a period, a six-digit line number
+    field, and the separator character &gt;.</td></tr>
+
+<tr><td><kbd>/Q3</kbd></td>
+    <td>Suppress the program logo and all output, even the
+    <a href="#OverviewOutTruncFinal">summary truncation warning</a> and
+    warnings about questionable use of options.
+    Display <strong class="key">just one line of output</strong> for each pair
+    of files compared,
+    consisting of the file names and the comparison status; please see
+    <a href="#OverviewSummary">Summary Report</a>, above, for the
+    possible one-line messages and what they mean.
+    <p class="secondhalf">CMP still displays error messages (to <span class="fnamelit">stderr</span>),
+    as well as the one-line summary showing
+    numbers of files same, different, and missing. Warnings for
+    missing files go only to <span class="fnamelit">stdout</span>.</p>
+    <p class="nonbrk">The <kbd>/Q3</kbd> option is handy when you have two sets of files to compare and don't
+    care about the actual differences, only which files are different
+    between the two sets.</p></td></tr>
+
+<tr><td><kbd>/Q4</kbd></td>
+    <td>Identical to <code>/Q3</code>, except display the one-line
+    messages only for pairs of different files and for missing files.
+    Display nothing at all for pairs of identical files.
+    <p class="nonbrk"><kbd>/Q4</kbd> is best when you have many files in a
+    directory and expect only a few of them to be different from their
+    counterparts. It lets you skip the extra step of filtering out
+    "identical" messages from the output of the <kbd>/Q3</kbd> option.</td></tr>
+
+</table>
+
+<p><kbd>/Q</kbd> without a following number is normally the same as
+<kbd>/Q1</kbd>. The old <kbd>/QQ</kbd> option still works and is
+about the same as <kbd>/Q2</kbd>. For
+<a href="cmphist.htm#TransitionQ">historical reasons</a>,
+a plain <kbd>/Q</kbd> after any previous <kbd>/Q</kbd> option resets
+the quietness level to 0.</p>
+
+<p class="brk">Dependencies: When <kbd>/Q3</kbd> or <kbd>/Q4</kbd> is set, the
+<a href="#OptA"><kbd>/A</kbd> option</a> and the
+<a href="#OptU"><kbd>/U</kbd> option</a> are ignored.</p>
+
+
+<h4 id="OptR">/R&nbsp;&#8212; Compare files as binary</h4>
+
+<p class="brk">CMP compares files in fixed-length blocks instead of
+variable-length lines; the block size is given
+by the <a href="#OptW"><kbd>/W</kbd> option</a>.
+This is useful for non-text files such as some word-processing
+files, spreadsheets, databases, and executable programs.</p>
+
+<p class="nonbrk">A text file has lines ending with carriage return (ASCII
+13), line feed (ASCII 10), or both; and the first Control-Z (ASCII 26)
+marks the end of file.
+Also, a text file doesn't contain any NUL characters (ASCII 0).
+Binary files, on the other hand, may have NUL and Control-Z characters in
+the middle, and often don't have "lines" separated by anything.</p>
+
+<p class="nonbrk">DOS and Windows don't mark files as binary or text, and
+therefore CMP has no way to
+know which a given file may be. By default it reads all files as
+text, but if you specify the <kbd>R</kbd> option then CMP
+reads all files as binary.</p>
+
+<p class="brk">Your choice of text or binary mode also affects how CMP displays lines
+in <a href="#OverviewReport">difference blocks</a>.
+In normal text mode, any differing lines are
+displayed as simple strings. Non-printing characters, like tab
+(ASCII 9) or Control-X (ASCII 24), are given no special treatment
+and appear just as the <kbd>TYPE</kbd> command displays them; thus
+screen output may appear strange if a text file
+contains non-printing characters. But in binary mode,
+non-printing characters are displayed using their numeric values in
+hex, such as &lt;09&gt; or &lt;18&gt;.</p>
+
+<p class="nonbrk">If all you care about is whether two binary files are the same or
+different, I recommend
+the <a href="#OptQ"><kbd>/Q3</kbd> or <kbd>/Q4</kbd> option</a> to suppress the
+display of difference blocks, or the
+<a href="#OptA"><kbd>/A</kbd> option</a> option to stop reporting after
+the first difference.</p>
+
+<p class="brk">Dependencies:</p>
+<p class="nonbrk">When the <kbd>/R</kbd> option is set, the <a href="#OptB"><kbd>/B</kbd> option</a> and the
+<a href="#OptE"><kbd>/E</kbd> option</a> are ignored.</p>
+<p class="nonbrk">When <a href="#SingleEx5">comparing a file to <kbd>-</kbd></a>
+(<span class="fnamelit">stdin</span> or standard input), you can't use the <kbd>/R</kbd> option
+because <span class="fnamelit">stdin</span> is always read as text.</p>
+
+
+<h4 id="OptS">/S&nbsp;&#8212; Compare subdirectories</h4>
+
+<p class="brk">After comparing the indicated files, CMP works down the
+subdirectory tree to compare matching files in subdirectories,
+including directories marked hidden or system. (The registered version
+of CMP travels all the way down; the evaluation version
+searches only two levels, the initial level and one level of
+subdirectories below that.)</p>
+
+<p class="brk">The <kbd>/S</kbd> option is most useful with wild cards. Consider
+this <strong class="key">example</strong>:</p>
+<pre>
+        cmp /s *.htm d:\new</pre>
+<p>Here CMP compares all <span class="fname">.htm</span>
+files in the current directory to files
+with the same names in directory <span class="fname">d:&#92;new</span>. Then CMP works its way
+down all subdirectories below the current directory, and whenever it
+finds a corresponding file in a corresponding subdirectory under
+<span class="fname">d:&#92;new</span> it compares them.</p>
+
+<p class="brk">The first set of files need not be in the current directory. For
+example, suppose that you made a backup a couple of days ago. Since
+then you've edited a lot of files, and now you want to list all the
+changes you made. If the backup is rooted at directory <span class="fname">janbkup</span>
+on drive <span class="fname">E:</span>, and the current files are rooted at
+directory <span class="fname">working</span> on drive <span class="fname">C:</span>, you could use this
+command:</p>
+<pre>
+        cmp /s e:\janbkup\*.h *.cpp c:\working</pre>
+<p>Wherever there's a <span class="fname">.h</span> or <span class="fname">.cpp</span> file in
+<span class="fname">e:\janbkup</span> or a subdirectory,
+such as <span class="fname">e:\janbkup\westregn</span>,
+CMP tries to compare it to a file of the same name
+the corresponding subdirectory (<span class="fname">c:\working\westregn</span>). Please see
+<a href="#UserMultMissing">Multiple Compare and Missing Files</a> for
+details of how CMP diagnoses missing files.</p>
+
+
+<h4 id="OptU">/U&nbsp;&#8212; Set UNIX diff-style output</h4>
+
+<p class="brk">CMP displays UNIX-style output, putting line numbers above each
+difference block with a letter for <b>a</b>dded, <b>c</b>hanged, or
+<b>d</b>eleted. (Traditional CMP output displays the line number with
+each line.) Please see <a href="#OverviewReport">Overview: Reporting
+Difference Blocks</a> for sample outputs, or run the interactive demo.</p>
+
+<p class="nonbrk">When selecting UNIX-style output, you probably want the
+<a href="#Opt2"><kbd>/2</kbd> option</a> also. The reports
+list added or deleted lines, and "added" and "deleted" make sense only
+if the first file is actually older.</p>
+
+<p class="nonbrk">The freeware <a href="http://www.vim.org">Vim editor</a>
+color-codes UNIX-style difference reports, if your terminal can display
+colors.</p>
+
+<p class="brk">Dependencies:</p>
+<p class="nonbrk">When the <a href="#OptQ"><kbd>/Q3</kbd> or <kbd>/Q4</kbd> option</a> or higher
+is set, the <kbd>/U</kbd> option is ignored.</p>
+<p class="nonbrk">When the <kbd>/U</kbd> option is set,
+the <a href="#OptN"><kbd>/N</kbd> option</a> is ignored.</p>
+
+
+<h4 id="OptW">/W<var>width</var>&nbsp;&#8212; Set line or block width</h4>
+
+<p class="brk">CMP compares text lines only up to <var>width</var> characters
+or binary files in <var>width</var>-character blocks.
+The default <var>width</var> is 254
+<var>width</var> can be 2 to 32764 in CMP16 and
+2 to 2147483644 in CMP32.
+But the width is also limited by available memory;
+see <a href="#OverviewMemory">Lookahead and Memory Use</a> in the
+Overview.</p>
+
+<h5>Comparing text files</h5>
+
+<p class="brk">CMP examines each line only up to the specified <var>width</var>, and
+displays a warning message for any lines that exceed it.
+The <a href="#OptQ"><kbd>/Q1</kbd> option</a> or higher suppresses these line-by-line warnings.</p>
+
+<p class="nonbrk">In addition to the warning for each line, if any lines were truncated
+then CMP displays a <a href="#OverviewOutTruncFinal">single warning
+at the end of execution</a> to tell
+you the longest line that was read from any file. Then you know the
+exact value to use with <kbd>/W</kbd> if you want to run CMP again
+and have it compare all lines to the end.
+The <a href="#OptQ"><kbd>/Q3</kbd> or <kbd>/Q4</kbd> option</a> suppresses this summary warning.</p>
+
+<p class="nonbrk">If you want to predict the needed <var>width</var> for a given file,
+simply compare the file to itself with a small <var>width</var> value and
+the <a href="#OptQ"><kbd>/Q1</kbd> option</a> to suppress messages about individual lines,
+like this:</p>
+<pre>
+        cmp /Q1W10 file1 file1</pre>
+
+<h5>Comparing binary files</h5>
+
+<p class="brk">CMP reads the files in chunks of <var>width</var> bytes and
+compares them. There is no question of truncation.</p>
+
+
+<h4 id="OptZ">/Z&nbsp;&#8212; Reset all options</h4>
+
+<p class="brk">CMP disregards all options read up to this point.
+This can be <strong class="key">useful in batch files</strong>, to make sure that the action of
+CMP is controlled only by the options on the command line, and not by
+any settings in the environment variable.</p>
+
+<p class="nonbrk">If you use the <kbd>Z</kbd> option on the command line, CMP disregards any
+options in the <a href="#Envvar">environment variable</a>,
+as well as any preceding options on the command line.</p>
+
+<p class="nonbrk">The <kbd>Z</kbd> option is the only one whose
+effect can't be reversed. If you use <kbd>/Z</kbd> more than once,
+CMP disregards the environment variable and all command-line options
+up through the last <kbd>/Z</kbd>.</p>
+
+
+<hr class="senzastil">
+<h2 id="Return">Return Values (ERRORLEVEL)</h2>
+<hr class="senzastil">
+
+<p class="brk">By default, CMP returns one of the following values,
+which <a href="#ERRORLEVELcaution">you can test</a> with
+<span class="cmd">if errorlevel</span> in a batch file or a makefile:</p>
+
+<div class="acchild"><table class="mynb" border="0">
+
+<tr><th class="ar">0&nbsp;&nbsp;</th><td> The program ran to completion (whether the files are the
+same or different).</td></tr>
+
+<tr><th class="ar">2&nbsp;&nbsp;</th><td> The help message was displayed (<a href="#OptHelp"><kbd>/?</kbd> option</a>), or
+no files were specified on the command line.</td></tr>
+
+<tr><th class="ar">128&nbsp;&nbsp;</th><td> The program self-check failed; please contact Oak Road
+Systems.</td></tr>
+
+<tr><th class="ar">253&nbsp;&nbsp;</th><td> There was <a href="#OverviewMemory">not enough memory</a>
+for lookahead or other program requirements.</td></tr>
+
+<tr><th class="ar">254&nbsp;&nbsp;</th><td> A specified file was not available in
+<a href="#UserSingleMissing">single-file compare</a>.</td></tr>
+
+<tr><th class="ar">255&nbsp;&nbsp;</th><td> You typed an invalid option or made some other error
+on the command line.</td></tr>
+
+</table></div>
+
+<p>You might want to use CMP in a batch file or a makefile and take
+<strong class="key">different actions depending on whether two files are the same or different</strong>.
+To do this, use the <a href="#Opt0"><kbd>/0</kbd> or <kbd>/1</kbd> option</a>. The <kbd>/1</kbd> option
+emulates UNIX <span class="cmd">diff</span> by returning an error level of 1 if the files are
+different or 0 if they're the same. <kbd>/0</kbd> is the opposite:
+it returns 0 if the files are different or 1 if they're the same. In
+other words, the <kbd>/0</kbd> option or <kbd>/1</kbd> option gives the
+value CMP should return if differences are found.</p>
+
+<p class="nonbrk">When comparing multiple files, the <a href="#Opt0"><kbd>/1</kbd> option</a>
+tells CMP to return an error level of 1 if any files compare as
+different, or 0 if all files compare as identical. The
+<a href="#Opt0"><kbd>/0</kbd> option</a> returns 0 if any files compare
+different, or 1 if all files compare identical.
+<a href="#UserMultMissing">Missing files</a> do not count as
+different, whether or not you have turned on warning messages for
+them.</p>
+
+<p class="brk" id="ERRORLEVELcaution"><strong class="key">Caution</strong>:
+<span class="cmd">if errorlevel</span> tests whether <span class="fname">ERRORLEVEL</span> is greater
+than or equal to the specified number, not whether it's equal. If you
+want to test for a specific error number, in later NT-based systems
+you can test a special environment variable:</p>
+
+<p class="algebra"><kbd>if&nbsp;%errorlevel%&nbsp;==&nbsp;1</kbd> ...</p>
+
+<p class="secondhalf">but in Windows 9x and earlier you must make two tests, one
+that <span class="fname">ERRORLEVEL</span> is greater than your target value (in which
+case you skip the next test) and one
+that it's greater or equal. For instance, you test for an error level
+equal to 1 with these two lines:</p>
+
+<p class="algebra"><kbd>if&nbsp;errorlevel&nbsp;2&nbsp;goto&nbsp;<var>some_label</var></kbd></p>
+<p class="algebra"><kbd>if&nbsp;errorlevel&nbsp;1</kbd> ...</p>
+
+
+<hr class="senzastil">
+<h2 id="FULLContents">Full Table of Contents</h2>
+<hr class="senzastil">
+
+<table cellspacing=0 cellpadding=0 border=0>
+<tr><td colspan=3><a href="#Why">Why CMP?</a></td></tr>
+<tr><td colspan=3><a href="#Start">Getting Started</a></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td colspan=2><a href="#Requirements">System Requirements</a></td></tr>
+<tr><td></td><td colspan=2><a href="#Installation">Installation and Demo</a></td></tr>
+<tr><td></td><td colspan=2><a href="#License">Evaluation, License, and Warranty</a></td></tr>
+<tr><td colspan=3><a href="#User">User Instructions</a></td></tr>
+<tr><td></td><td colspan=2><a href="#UserSingle">Comparing Single Files</a></td></tr>
+<tr><td></td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td><a href="#UserSingleMissing">Single Compare and Missing Files</a></td></tr>
+<tr><td></td><td></td><td><a href="#UserSingleExample">Examples</a></td></tr>
+<tr><td></td><td colspan=2><a href="#UserMult">Comparing Groups of Files</a></td></tr>
+<tr><td></td><td></td><td><a href="#UserMultWild">Wild Card Expansion</a></td></tr>
+<tr><td></td><td></td><td><a href="#UserMultMissing">Multiple Compare and Missing Files</a></td></tr>
+<tr><td></td><td></td><td><a href="#UserMultExample">Examples</a></td></tr>
+<tr><td colspan=3><a href="#Overview">Overview: How CMP Compares Files</a></td></tr>
+<tr><td></td><td colspan=2><a href="#OverviewOut">CMP Output</a></td></tr>
+<tr><td></td><td colspan=2><a href="#OverviewIn">The Input Stage</a></td></tr>
+<tr><td></td><td></td><td><a href="#OverviewMassage">"Massaged" Lines</a></td></tr>
+<tr><td></td><td colspan=2><a href="#OverviewDiff">Difference Blocks, Lookahead, and Resync</a></td></tr>
+<tr><td></td><td></td><td><a href="#OverviewResync">The Resync Value</a></td></tr>
+<tr><td></td><td></td><td><a href="#OverviewMemory">Lookahead and Memory Use</a></td></tr>
+<tr><td></td><td></td><td><a href="#OverviewRunTime">Lookahead and Program Run Times</a></td></tr>
+<tr><td></td><td colspan=2><a href="#OverviewReport">Reporting Difference Blocks</a></td></tr>
+<tr><td></td><td colspan=2><a href="#OverviewSummary">Summary Report</a></td></tr>
+<tr><td colspan=3><a href="#Options">Options</a></td></tr>
+<tr><td></td><td colspan=2><a href="#OptionsHow">How to Specify Options</a></td></tr>
+<tr><td></td><td colspan=2><a href="#OptionsCategory">Options by Category</a></td></tr>
+<tr><td></td><td colspan=2><a href="#Envvar">Environment Variable</a></td></tr>
+<tr><td></td><td colspan=2><a href="#OptionsAlpha">Alphabetical List of Options</a></td></tr>
+<tr><td></td><td></td><td><a href="#OptHelp">/?&nbsp;&#8212; Show help</a></td></tr>
+<tr><td></td><td></td><td><a href="#Opt0">/0 and /1&nbsp;&#8212; Select return values</a></td></tr>
+<tr><td></td><td></td><td><a href="#Opt2">/2&nbsp;&#8212; Compare old to new</a></td></tr>
+<tr><td></td><td></td><td><a href="#OptA">/A<var>n</var>&nbsp;&#8212; Stop after <var>n</var> difference blocks</a></td></tr>
+<tr><td></td><td></td><td><a href="#OptB">/B&nbsp;&#8212; Compress blanks and tabs</a></td></tr>
+<tr><td></td><td></td><td><a href="#OptC">/C&nbsp;&#8212; Complain about missing files</a></td></tr>
+<tr><td></td><td></td><td><a href="#OptD">/D<var>file</var>&nbsp; or&nbsp; /D-&nbsp; or&nbsp; /D&nbsp;&#8212; Display Debugging Output</a></td></tr>
+<tr><td></td><td></td><td><a href="#OptE">/E&nbsp;&#8212; Ignore empty lines</a></td></tr>
+<tr><td></td><td></td><td><a href="#OptF">/F<var>n</var>&nbsp; or&nbsp; /F0<var>n</var>&nbsp; or&nbsp; /F-<var>n</var>&nbsp;&#8212; Fix the width of line numbers</a></td></tr>
+<tr><td></td><td></td><td><a href="#OptI">/I&nbsp;&#8212; Ignore case</a></td></tr>
+<tr><td></td><td></td><td><a href="#OptJ">/J<var>filenum</var>* or /J<var>filenum</var>&nbsp;&#8212; Display difference lines from just one file</a></td></tr>
+<tr><td></td><td></td><td><a href="#OptL">/L<var>lookahead,resync</var>&nbsp; or&nbsp; /L<var>lookahead</var>&nbsp; or&nbsp; /L,<var>resync</var>&nbsp;&#8212; Set lookahead</a></td></tr>
+<tr><td></td><td></td><td><a href="#OptM">/M&nbsp;&#8212; Save memory by displaying massaged lines</a></td></tr>
+<tr><td></td><td></td><td><a href="#OptN">/N<var>str</var>&nbsp;&#8212; Set number separator</a></td></tr>
+<tr><td></td><td></td><td><a href="#OptQ">/Q<var>level</var>&nbsp;&#8212; Set quietness level</a></td></tr>
+<tr><td></td><td></td><td><a href="#OptR">/R&nbsp;&#8212; Compare files as binary</a></td></tr>
+<tr><td></td><td></td><td><a href="#OptS">/S&nbsp;&#8212; Compare subdirectories</a></td></tr>
+<tr><td></td><td></td><td><a href="#OptU">/U&nbsp;&#8212; Set UNIX diff-style output</a></td></tr>
+<tr><td></td><td></td><td><a href="#OptW">/W<var>width</var>&nbsp;&#8212; Set line or block width</a></td></tr>
+<tr><td></td><td></td><td><a href="#OptZ">/Z&nbsp;&#8212; Reset all options</a></td></tr>
+<tr><td colspan=3><a href="#Return">Return Values (ERRORLEVEL)</a></td></tr>
+<tr><td colspan=3><a href="#FULLContents">Full Table of Contents</a></td></tr>
+</table>
+</body></html>

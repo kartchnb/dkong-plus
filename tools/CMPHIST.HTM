@@ -1,0 +1,435 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en-US"><head>
+<link rel="StyleSheet" type="text/css" href="screen.css" media="screen, projection">
+<link rel="StyleSheet" type="text/css" href="print.css"  media="print">
+<meta name="description" content="CMP program compares text or binary files (shareware) (Oak Road Systems)">
+<meta name="keywords" content="CMP, find, compare files, file comparison, DOS program, DOS utility, DOS programs, DOS utilities, command-line utilities, shareware, Oak Road Systems">
+<title>CMP 5.23 Revision History</title>
+</head><body class="minor">
+
+
+<div class="maintitle">
+<h1>CMP&nbsp;&#8212; Compare Text or Binary Files
+<br>Revision&nbsp;History for Release&nbsp;5.23</h1>
+<p>Program Dated 16 January 2006&nbsp;&nbsp;/&nbsp; This Document Dated 16&nbsp;Jan&nbsp;2006</p>
+<p> Copyright &copy; 1994&#8211;2006 Stan&nbsp;Brown, <a href="http://oakroadsystems.com">Oak&nbsp;Road&nbsp;Systems</a> </p>
+</div>
+
+
+<p class="Summary" id="Summary"><span class="SummaryH"><strong class="key">Summary:</strong>&nbsp;</span>
+This document is the complete revision history, starting with the 
+most recent changes. To use CMP, please see the separate 
+<a href="cmpuser.htm">user guide</a>.</p>
+
+
+<div class="TOC"><p class="secondhalf"><span class="TOCH"><a name="TOC0"><strong class="key">Contents:</strong>&nbsp; </a></span>
+<table cellspacing=0 cellpadding=0 border=0>
+<tr><td><a href="#v5">What's New in CMP 5</a></td></tr>
+<tr><td><a href="#Transition">Transitional Note, CMP 4 to CMP 5</a></td></tr>
+<tr><td><a href="#Olderhist">History of Older Versions</a></td></tr>
+</table>
+
+</div>
+
+
+<hr class="senzastil">              <!-- end section -->
+<h2 id="v5">What's New in CMP 5</h2>
+<hr class="senzastil">              <!-- begin section -->
+
+<h3>CMP 5.23, January 2006</h3>
+<p>Previously, paths were limited to 259 bytes, a Windows limit as far
+as I could determine. In tests with Windows XP Pro SP2, I am still unable to
+create longer usable paths. However, one customer reported having
+paths longer than that, presumably created by some application
+program. Now, CMP allocates path strings dynamically according to
+their actual length.</p>
+
+<p class="brk"><strong class="key">CMP 5.21</strong> and <strong class="key">CMP 5.22</strong> were private releases to
+the customer who reported the bug.</p>
+
+<h3>CMP 5.2, November 2005</h3>
+<p>Program changes:</p><ul>
+<li>The new <a href="cmpuser.htm#OptJ"><kbd>/J1</kbd> or <kbd>/J2</kbd> option</a> tells CMP to report only the lines that
+occur in one file but not the other. To suppress line numbers, as you'll
+probably want to do, use <kbd>/J1*</kbd> or <kbd>/J2*</kbd>.</li>
+<li>The new <a href="cmpuser.htm#OptQ"><kbd>/Q4</kbd> option</a>
+reports one line each for different or missing files and nothing
+at all for identical files. This is very handy when comparing large groups of
+files.</li>
+<li>The default value of the <a href="cmpuser.htm#OptC"><kbd>/C</kbd> option</a> was changed from <kbd>/C0</kbd> to
+<kbd>/C3</kbd>: by default, CMP now warns you about missing files.</li>
+<li>With the <a href="cmpuser.htm#OptC"><kbd>/C1</kbd> or <kbd>/C3</kbd> option</a> and the <a href="cmpuser.htm#OptS"><kbd>/S</kbd> option</a>,
+CMP no longer complains with "<samp>not found: <var>path</var>\*</samp>"
+in each individual directory.
+(CMP still warns you if a filespec matches no files
+in the entire set of directories.)</li>
+<li>The <a href="cmpuser.htm#OptU"><kbd>/U</kbd> option</a> is now allowed with the <a href="cmpuser.htm#OptQ"><kbd>/Q2</kbd> option</a>.</li>
+<li>You can now compare standard input to a file, using the
+<kbd>-</kbd> (hyphen) pseudo-filespec. This is useful to compare
+a program's output to a benchmark or reference file.</li>
+<li>In the display of options with the
+<a href="cmpuser.htm#OptD"><kbd>/D</kbd> option</a> (debugging output),
+all messages now use the same verb tense and mood. (Previously, some used future
+passive, some used present passive, and some used imperative.)</li>
+<li>With the <a href="cmpuser.htm#OptQ"><kbd>Q3</kbd> option</a>, one of the summary messages contained the
+misspelling "trucated".</li>
+</ul>
+
+<p>Documentation changes:</p><ul>
+<li>A new section in the user manual,
+<a href="cmpuser.htm#OverviewOut">CMP Output</a>, shows sample CMP output in one
+place with callouts to the options that can affect each part. The
+<a href="cmpuser.htm#OverviewSummary">Summary Report</a> section was
+rewritten and expanded.</li>
+<li>Both the <a href="cmpuser.htm">user guide</a> and this revision
+history now take advantage of CSS style sheets. The user manual has
+also been improved by a number of small text changes, in addition to
+documentation of the new features.</li>
+</ul>
+
+<p>Changes to the demo, file <span class="fname">demo\demo.bat</span>:</p><ul>
+<li>The <a href="cmpuser.htm#OptJ"><kbd>/J</kbd> option</a> and comparisons to
+<span class="fnamelit">stdin</span> are now included.</li>
+<li>The demo now works in Windows XP and other NT-based Windows. 
+(Background:
+XP doesn't have the <span class="fname">choice.exe</span> program, which the demo
+uses, and therefore Windows XP users couldn't run the demo from
+previous releases of CMP. To solve this problem, I wrote a
+<span class="fname">tourkey.exe</span> work-alike for <span class="fname">choice.exe</span>, and I
+include it with the download file.)</li>
+<li>You now choose 32-bit or 16-bit CMP at the start of the demo.</li>
+<li>You now have the option to quit whenever you're asked for input,
+saving you from typing a long succession of <kbd>N</kbd>
+responses.</li>
+</ul>
+
+
+<h3>CMP 5.13, 17 Dec 2001</h3>
+<p>This is a minor release.
+By user request, "file not found" messages
+(<a href="cmpuser.htm#OptC"><kbd>/C</kbd> option</a>) are now
+written to both standard output and standard error, if you redirected
+standard output to a report file. Also by user request, when you
+append <a href="cmpuser.htm#OptD">debug output</a> to an existing
+file, a prominent header separates new output from previous output.
+Other minor improvements to debug output include a clearer list of
+filespec arguments, for help in diagnosing possible user errors on the
+command line.</p>
+
+<h3>CMP 5.12, 2 July 2001</h3>
+<p>This is a minor release. It adds one feature: when
+<a href="cmpuser.htm#UserMult">comparing multiple files</a>, CMP now tells
+you at the end how many pairs were the same, how many pairs were
+different, and how many sought files were missing.</p>
+
+<p>One line of the help message was 82 characters long; now it
+isn't.</p>
+
+<h3>CMP 5.11, 5 June 2001</h3>
+<p>This is a very minor release, for one new feature: CMP now tells
+you not only how many blocks of lines were different between the two
+files, but also how many actual lines were different.</p>
+
+<h3>CMP 5.1, 8 April 2001</h3>
+<p>new feature: <ul>
+<li><p>The <a href="cmpuser.htm#OptC"><kbd>/C</kbd> option</a> makes CMP warn
+you about missing files.
+(Previously, a small subset of warnings appeared by default and could
+be turned off with the <a href="cmpuser.htm#OptQ"><kbd>/Q3</kbd> option</a>,
+but there was no way to get warnings for most missing files without
+weeding through the large output of the <a href="cmpuser.htm#OptD"><kbd>/D</kbd> option</a>.)</p>
+<p>The old behavior was equivalent to <kbd>/C0</kbd> with the
+<a href="cmpuser.htm#OptS"><kbd>/S</kbd> option</a> and <kbd>/C1</kbd>
+without the <kbd>/S</kbd> option.</p>
+</ul>
+
+<p>bugs fixed: <ul>
+<li><p>When the first filespec contained a wild card, and the first
+physical entry in the directory was a subdirectory that matched the
+wild card, CMP might not find all files that actually matched.</p>
+<li><p>(CMP16 only) When the first filespec was a directory,
+CMP16 ignored files with an extension (that is, the program expanded
+<span class="fname">dir\*</span> instead of <span class="fname">dir\*.*</span>). This did not affect CMP32.</p>
+<li><p>When a line was added or deleted at end of file, and
+<a href="cmpuser.htm#OptU">UNIX output</a> was selected, the line
+number displayed for the other file was off by 1.</p>
+</ul>
+
+<h3>CMP 5.0, 4 March 2001</h3>
+<p>CMP 5.0 was a complete rewrite of the program from
+scratch. The program is about 40 pages of code, compared to
+about 14 pages for the previous release, CMP 4.3! The executables
+are still comfortably small, under 90&nbsp;KB for CMP32 and 60&nbsp;KB for
+CMP16.</p>
+
+<p><strong>If you used CMP 4.3 or earlier, please see the
+<a href="#Transition">Transitional Note</a> below.</strong>
+
+<p>The new program can handle binary files, can search subdirectories,
+displays results in your choice of formats,
+and makes better use of available memory; details are
+listed below. The <a href="cmpuser.htm">user guide</a> has been very
+greatly revised and expanded, and this revision history has become a separate
+document. A <a href="cmpuser.htm#Installation">demo</a> has been added
+to display some of CMP's features.</p>
+
+<p>New options:</p> <ul>
+<li><a href="cmpuser.htm#OptR"><kbd>/R</kbd> option</a> allows comparison of binary files.
+<li>The <a href="cmpuser.htm#OptS"><kbd>/S</kbd> option</a> compares files in subdirectory trees.
+<li>The <a href="cmpuser.htm#OptU"><kbd>/U</kbd> option</a> displays results in UNIX diff format.
+<li>A second parameter on the <a href="cmpuser.htm#OptL"><kbd>/L</kbd> option</a>
+now lets you specify the number of lines necessary to
+resynchronize. This should make for much more useful comparison
+reports. (The <a href="#TransitionL">Transitional Note</a> gives more
+information.)
+<li>The <a href="cmpuser.htm#OptA"><kbd>/A</kbd> option</a> lets you limit
+the number of difference blocks reported.
+<li>The <a href="cmpuser.htm#Opt2"><kbd>/2</kbd> option</a>
+always puts the older file first and new file second in comparisons.
+
+</ul>
+<p>Old options enhanced:</p> <ul>
+<li>The <a href="cmpuser.htm#OptQ"><kbd>/Q</kbd> option</a> now takes a
+numeric parameter, for finer control on the quantity of messages.
+<li>The <a href="cmpuser.htm#OptD"><kbd>/D</kbd> option</a> now takes an
+optional file name for debug information, and the program makes much more
+information available.
+<li>The <a href="cmpuser.htm#OptF"><kbd>/F</kbd> option</a> now allows
+additional formatting choices.
+
+</ul>
+<p>Other enhancements:</p> <ul>
+<li>Difference lines are now displayed exactly as they exist in the
+files, not with blanks compressed out as <a href="#TransitionM">formerly</a>.
+(The new <a href="cmpuser.htm#OptM"><kbd>/M</kbd> option</a> displays
+the <a href="cmpuser.htm#OverviewMassage">massaged lines</a> instead,
+if you prefer the old behavior.)
+<li>Options can now appear anywhere on the command line, not just
+before the filespecs.
+<li>The limits for the look-ahead buffer
+(<a href="cmpuser.htm#OptL"><kbd>/L</kbd> option</a> and <a href="cmpuser.htm#OptW"><kbd>/W</kbd> option</a>) have been
+increased in CMP16. Previously, the buffer was limited to
+65&nbsp;KB; now it can use all available DOS memory. (CMP32 has always
+used virtual memory, effectively unlimited.)
+<li>Comparisons should be faster: CMP now precomputes the line lengths
+and doesn't compare characters if the two line lengths are different.
+<li>A <a href="cmpuser.htm#Installation">demo</a> has been added
+to display some of CMP's features.
+<li>For people who license the source code, the build procedure was
+streamlined to a single makefile.
+</ul>
+
+
+<hr class="senzastil">              <!-- end section -->
+<h2 id="Transition">Transitional Note, CMP 4 to CMP 5</h2>
+<hr class="senzastil">              <!-- begin section -->
+
+<p>If you are upgrading from CMP 4.3 or earlier, please note that certain
+options have changed their meanings. This section points them out and
+tells you how to retain the old behavior if you want to.</p>
+
+<p>If you use the <a href="cmpuser.htm#Envvar"><span class="fnamelit">ORS_CMP</span>
+environment variable</a> to store options, make sure to check it and
+see whether you need to make changes.</p>
+
+<p>Please see <a href="#v5">What's New in CMP 5</a> for a
+number of new options and other enhancements.</p>
+
+<h3 id="TransitionBET">Transforming Inputs: <kbd>/B</kbd>, <kbd>/E</kbd>, <kbd>/T</kbd></h3>
+
+<p>The <a href="cmpuser.htm#OptB"><kbd>/B</kbd> option</a> and the <a href="cmpuser.htm#OptE"><kbd>/E</kbd> option</a>
+now default to the opposite of their old settings.
+Formerly, if you did not specify any options, CMP would do some
+<a href="cmpuser.htm#OverviewMassage">massaging</a> of the file lines
+before comparing. Now, by default CMP compares files character for
+character.</p>
+
+<p>If you want the old behavior, you can get it easily. For individual
+runs of CMP, specify the
+<kbd>/BE</kbd> options on the command line. If you simply want to
+restore the old defaults, you can use the
+<a href="cmpuser.htm#Envvar">environment variable</a>. Put this command in your
+<span class="fname">autoexec.bat</span> file:
+<pre>
+        set ORS_CMP=/BE
+</pre>
+
+<p>In this case, you may want to consider the new
+<a href="#TransitionM"><kbd>/M</kbd> option</a> as well.</p>
+
+<p>The <kbd>/T</kbd> option has been withdrawn. It allowed you to expand
+tabs to an equivalent run of spaces, but this was redundant with the
+<a href="cmpuser.htm#OptB"><kbd>/B</kbd> option</a>.</p>
+
+<h3 id="TransitionL">Comparison Resync: <kbd>/L</kbd></h3>
+
+<p>CMP 4.3 and earlier would consider that files were resynchronized
+after a difference block as soon as it found a line in file 1 that
+matched a line in file 2. If you edited every other line of a
+paragraph or block of code, you would get a lot of little difference
+blocks.</p>
+
+<p>To avoid this, CMP now requires two consecutive identical lines
+before it considers a difference block to have ended. Though that will
+usually give a more usable report that the old default, it's
+not be the best choice for every comparison. You can now use the
+<a href="cmpuser.htm#OptL"><kbd>/L</kbd> option</a> to increase or
+decrease that value. This flexibility should let you get much better
+difference reports for many sets of files.</p>
+
+<p>If you want to restore the old behavior as the default, you can use
+an <a href="cmpuser.htm#Envvar">environment variable</a>. Put this
+command in your AUTOEXEC.BAT file:
+<pre>
+        set ORS_CMP=/L,1
+</pre>
+<p>Note that comma after the letter L.</p>
+
+<h3 id="TransitionQ">Suppressing Messages: <kbd>/Q</kbd>, <kbd>/QQ</kbd></h3>
+
+<p>The <a href="cmpuser.htm#OptQ"><kbd>/Q</kbd> option</a> has changed
+from a pure toggle to a numeric, <kbd>/Q0</kbd> through
+<kbd>/Q3</kbd>. You will still get the old behavior if you type
+<kbd>/Q</kbd> or <kbd>/QQ</kbd>.
+
+<p>Because you can combine options, one particular combination has
+changed its meaning.
+<kbd>/Q1</kbd> or <kbd>/Q0</kbd> used to mean
+the <a href="cmpuser.htm#OptQ"><kbd>/Q</kbd> option</a> followed by the
+<a href="cmpuser.htm#Opt0"><kbd>/1</kbd> option</a> or the
+<a href="cmpuser.htm#Opt0"><kbd>/0</kbd> option</a>; now it means the
+<a href="cmpuser.htm#OptQ"><kbd>/Q1</kbd> or <kbd>/Q0</kbd> option</a> to set quietness level to 1 or 0. To specify
+separate options, simply use a slash or hyphen between them, or
+specify them in the other order: <kbd>/Q/1</kbd> or <kbd>/1Q</kbd>.
+</p>
+
+<h3 id="TransitionM">Displaying Massaged Lines: <kbd>/M</kbd></h3>
+
+<p>Before release 5.0, CMP would transform
+("<a href="cmpuser.htm#OverviewMassage">massage</a>")
+the input lines to collapse runs of blanks. To conserve computer
+memory, CMP would store and display only the massaged lines. Then when
+CMP reported differences, it would display the massaged lines, which
+would be similar to the lines in the files but not necessarily
+identical.</p>
+
+<p>Beginning with release 5.0, CMP saves both the massaged and the
+original lines, and displays the original lines. If you want to
+display the massaged lines, use the
+<a href="cmpuser.htm#OptM"><kbd>/M</kbd> option</a>. If you want
+that behavior to be the default, you can use the
+<a href="cmpuser.htm#Envvar">environment variable</a>. Put this command in your
+AUTOEXEC.BAT file:
+<pre>
+        set ORS_CMP=/M
+</pre>
+
+<p>This is less of an issue than it was before CMP 5.0. In
+<a href="#TransitionBET">earlier releases of CMP</a>, lines were
+massaged unless you set options to prevent it. Now, lines are not
+massaged unless you set the <a href="cmpuser.htm#OptB"><kbd>/B</kbd> option</a>
+or the <a href="cmpuser.htm#OptI"><kbd>/I</kbd> option</a>. So if you set no
+options at all, CMP 5.0 will display difference lines exactly
+as they are in the files, which is probably what you'd expect.</p>
+
+
+<hr class="senzastil">              <!-- end section -->
+<h2 id="Olderhist">History of Older Versions</h2>
+<hr class="senzastil">              <!-- begin section -->
+
+<p>This section is of only historical interest, since the program was
+completely <a href="#v5">rewritten</a> in February 2001. But some
+users have said they find a complete revision history interesting, so
+here it is.</p>
+
+<h3>CMP 4.9, 8 Feb 2001</h3>
+<p>This was a beta release version of 5.0. Between this and the final
+release, a number of improvements were made, including some new
+features, and a few bugs were fixed. Full details were in the
+<span class="fname">cmpbeta5.htm</span> file distributed with release 5.0.</p>
+
+<h3>CMP 4.3, 22 May 2000</h3>
+<p>Added the <a href="cmpuser.htm#OptZ"><kbd>/Z</kbd> option</a>;
+updated the logo message to use the URL for Oak Road Systems; expanded
+the help message; suggested <kbd>cmp&nbsp;/?|more</kbd> when the user types
+<kbd>cmp</kbd> with no files.</p>
+
+<p class="nonbrk">CMP 4.3a, 24 Aug 2000, updated the user guide but did not
+change the program. It clarified the values you can check with 
+<span class="cmd">if errorlevel</span> after running CMP with the <a href="cmpuser.htm#Opt0"><kbd>/0</kbd> or <kbd>/1</kbd> option</a> 
+to compare multiple files.
+It also spelled out the limitation that CMP
+couldn't be used for binary files; that capability was added in
+CMP 5.0.</p>
+
+<h3>CMP 4.2, 31 Oct 1999</h3>
+<p>Added the <a href="cmpuser.htm#OptF"><kbd>/F</kbd> option</a>,
+the <a href="cmpuser.htm#OptN"><kbd>/N</kbd> option</a>,
+and the <a href="cmpuser.htm#OptQ"><kbd>/QQ</kbd> option</a>; sent
+the <a href="cmpuser.htm#OptHelp">help message</a> to stdout instead
+of stderr as previously; reorganized the user guide, adding
+many hyperlinks and a few small clarifications.</p>
+
+<h3>CMP 4.1, 9 Jan 1999</h3>
+<p>Added the <a href="cmpuser.htm#OptI"><kbd>/I</kbd> option</a> and
+<a href="cmpuser.htm#OptD"><kbd>/</kbd> option</a>. Split the
+confusing three-valued <kbd>/B</kbd><var>n</var> option into separate
+<a href="cmpuser.htm#OptB"><kbd>/B</kbd> option</a> and
+<kbd>/T</kbd> toggle-type options. (The <kbd>/T</kbd> option was
+dropped from release 5.0.) Changed the
+CMP32 default to <a href="cmpuser.htm#OptL"><kbd>/L100</kbd> option</a>.
+Improved
+diagnostics for a bad option in the environment variable. Converted
+documentation to HTML from Word for Windows.</p>
+
+<p class="nonbrk">Two minor releases involved no changes to the program or user guide.
+Version 4.1a, 20 Feb 1999, updated contact information when Oak Road
+Systems changed Internet providers. Version 4.1b, 4 Aug 1999, updated
+contact information when we changed physical addresses; it also
+simplified the registration options and added site license
+pricing.</p>
+
+<h3>CMP 4.0, June 1998</h3>
+<p>Allowed multiple filespecs before a directory name, not just one
+filespec with wild cards. Supported long filenames in the new 32-bit
+version.</p>
+
+<p class="nonbrk">CMP 4.0 was packaged on 18 Nov 1998 for the 
+<strong class="key">first shareware release</strong>.</p>
+
+<h3>CMP 3.4, Oct 1997</h3>
+<p>Added the <a href="cmpuser.htm#Opt0"><kbd>/0</kbd> option</a> and <a href="cmpuser.htm#Opt0"><kbd>/1</kbd> option</a>; systematized
+all return values. Stopped requiring the trailing backslash on a
+directory argument. Instead of "effectively identical", reported a more
+specific phrase when the files are not significantly different based
+on the <a href="cmpuser.htm#OptB"><kbd>/B</kbd> option</a> and the <a href="cmpuser.htm#OptE"><kbd>/E</kbd> option</a>.</p>
+
+<h3>CMP 3.3, July 1997</h3>
+<p>Compressed sequences of spaces and tabs to a single space; added the
+<kbd>/B</kbd> option to control that feature and tab expansion.
+Added
+the <a href="cmpuser.htm#OptQ"><kbd>/Q</kbd> option</a>. Made the format of
+command-line options more flexible, and scanned the
+<a href="cmpuser.htm#Envvar"><span class="fnamelit">ORS_CMP</span></a>
+environment variable for options.</p>
+
+<h3>CMP 3.0, July 1994</h3>
+<p>Allocated string arrays far, allowing larger combined values of
+the <a href="cmpuser.htm#OptL"><kbd>/L</kbd> option</a> and the <a href="cmpuser.htm#OptW"><kbd>/W</kbd> option</a>.</p>
+
+<h3>CMP 2.4, Nov 1989</h3>
+<p>Defaulted to <kbd>/L20</kbd> (previously <kbd>/L10</kbd>).</p>
+
+<h3>CMP 2.1, March 1985</h3>
+<p>Expanded tabs in input lines to the appropriate number of
+spaces.</p>
+
+<h3>CMP 1.1, Oct 1984</h3>
+<p>Allowed wild cards in the first file argument.</p>
+
+<h3>CMP 1.0, Aug 1984</h3>
+<p>Initial release (private releases, to clients only, until 4.0)</p>
+
+
+</body></html>

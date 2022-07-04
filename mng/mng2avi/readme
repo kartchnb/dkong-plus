@@ -1,0 +1,45 @@
+Hello,
+
+I have created a program which converts a mng file into a series of png
+images along with a VirtualDub script to convert the png images into
+an AVI movie. 
+
+The program first takes the mng file and splits it out into the series
+of png images. As it does this, it checks for an attract mode loop. If it
+finds a loop, the program will create the VirtualDub script and then
+terminate.
+
+The loop detection can be disabled by using the -movieloops 0 option in
+the command line call to mng2avi.exe or by passing movieloops 0 in the
+mng2avi.ini file.
+
+I also have a batch file which takes a source mng file, a destination
+avi file to be created, and an optional .wav file, and creates the
+.avi file by calling the mng2avi program and VirtualDub.
+
+The encoding used to create the avi file is controlled by the -movieaudio
+and -movievideo parameters to the mng2avi program.
+
+This program uses the public domain zlib library. I also thieved some of the
+data structures and png handling functions from MAME.
+
+This program uses the free VirtualDub program, which is at
+http://www.virtualdub.org.
+
+I have also enclosed a useful video codec. If your movie files are extremely
+large, try running -movievideo 3 after installing the xvid codec.
+
+If you want to build from sources, first run make from the src\zlib directory,
+then run make from this directory.
+
+Lastly, I've enclosed a copy of the LAME MP3 codec. Installation instructions are at:
+http://users.tpg.com.au/mtam/install_lame.htm
+
+Please contact me with any problems or suggestions.
+
+Regards,
+Buddabing
+buddabing@houston.rr.com
+
+
+

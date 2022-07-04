@@ -1,0 +1,300 @@
+                 SOFTWARE LICENSE FOR CMP RELEASE 5.23
+
+revised 5 Jul 2004
+
+Copyright ¸ 2002-2005 Stan Brown, Oak Road Systems
+
+Summary:  Following are the terms of license for this release of
+CMP. These terms apply to you whether or not you register the
+software.
+
+Contact:  Please address queries, bug reports, and suggested
+improvements to:
+Stan Brown, Oak Road Systems
+support (at) oakroadsystems (dot) com
+<http://oakroadsystems.com>
+
+Contents:
+  * 1. Trial Period and Registration
+  * 2. Registration Categories:   2.1  Individual Registration  |
+    2.2  Site License  |  2.3  Source Code
+  * 3. How to Pay:   3.1  Payment on Line  |  3.2  Direct Payment
+  * 4. Redistributing CMP
+  * 5. Support for CMP
+  * 6. Upgrades to CMP
+  * 7. Warranty for CMP
+  * 8. Controlling Law
+
+======================================================================
+1. Trial Period and Registration
+======================================================================
+
+This product is copyrighted shareware, not public-domain software. You
+may use the unregistered version at no charge for an evaluation period
+of 30 days only. To continue to use the software beyond the 30-day
+evaluation period, you must register it.
+
+The "must" in the previous paragraph is a legal and moral must, not an
+engineering must. This software is not time limited in any way. When
+you register you eliminate the registration reminder, and gain one or
+two extra features ("CMP /? | more" for details).
+
+To register, see "How to Pay" below.
+
+======================================================================
+2. Registration Categories
+======================================================================
+
+  2.1  Individual Registration
+  
+Individual registration at the current price, as shown on the Web site
+<http://oakroadsystems.com/sharware/>, entitles one user to use
+CMP forever, both the current release and any future releases;
+see "Upgrades", below. It also gives priority in response to questions
+or bug reports.
+
+Feel free to install CMP on multiple computers that you use
+regularly, provided that no more than one of those computers is in use
+at any one time and no other person will be making significant use of
+it on those computers. (If several people will be using CMP,
+please see "Site License" immediately below for discounts.)
+
+You may make copies of the registered version of CMP for backup
+or archival use, but you may not give copies to anyone else.
+
+  2.2  Site License
+  
+A company or other organization(*) may purchase a site license at a
+discount under the single-copy price. If you wish, we will send you an
+invoice or site certificate for your records, either on paper or by
+e-mail.
+
+(*)By "company or other organization" is meant a single legal entity
+operating under a single name at a single location, or a single
+government office at a single location. Multiple branches or
+subsidiaries normally need separate licenses, unless other terms are
+negotiated.
+
+A site license at the current price, as shown on the Web site
+<http://oakroadsystems.com/sharware/>, entitles the licensed number of
+users at your licensed location(s) to use CMP forever, both the
+current release and any future releases; see "Upgrades", below. It
+also gives priority in response to questions or bug reports.
+
+As long as the total number of users does not exceed the licensed
+number, you may:
+  * Install CMP on more than one computer within your
+    organization;
+  * Make copies of CMP pursuant to your normal archival policy;
+  * Allow your employees to install CMP on their home computers
+    for use in the course of their employment; and
+  * Allow your subcontractors, agents, and consultants to use
+    CMP on computers owned by your organization at the licensed
+    location(s).
+    
+If you need to add users after purchasing a license, you will receive
+100% credit for your prior individual or site license.
+
+You may not give copies of the registered version of CMP to
+anyone outside the organization and location(s) that licensed it. Your
+subcontractors, agents, and consultants may not install CMP on
+their computers under your site license, but should purchase their own
+or use it on your computers.
+
+  2.3  Source Code
+  
+The source-code license covers one release of the source code. If you
+license the source code, we will make future releases available to you
+gratis or at reduced prices, depending on the extent of the changes.
+This pricing will be at our sole discretion.
+
+If you purchase a site license and also purchase source code, you pay
+for just one copy of source code. You can distribute the source code
+within your organization to any or all of the users covered by the
+site license.
+
+The source code is presently in ISO/ANSI C and compiles in Microsoft
+Visual C/C++, but we reserve the right to change compilers or
+programming languages.
+
+If you license the source code, you may examine it and also modify and
+recompile it for your own use. The modified code must bear this legend
+or one substantially identical:
+
+developed from code by Stan Brown, Oak Road Systems;
+portions Copyright {YEAR} Oak Road Systems http://oakroadsystems.com
+
+You must not sell or otherwise distribute the CMP source code or
+any derivative products without our agreement in advance.
+
+If you make a substantial improvement in the source code and offer it
+to us for inclusion in the product, and we accept it, we will refund
+all or a part of your license fee. The decision whether to incorporate
+the changes, and the amount of refund, will be in our sole discretion.
+
+======================================================================
+3. How to Pay
+======================================================================
+
+You may pay either on line or by mailing a payment to Oak Road
+Systems.
+
+  3.1  Payment on Line
+  
+You may find it most convenient to pay on line by credit card or other
+means (including PayPal). Please see the "buy online" links at
+<http://oakroadsystems.com/sharware/>.
+
+You can buy individual licenses or a site license. (Source code can be
+purchased only directly from Oak Road Systems.) You will receive a
+prompt e-mail with a secure link for downloading the code from the
+Web.
+
+(The on-line payment system is not set up to upgrade the number of
+users on a site license. Please e-mail us at
+sales (at) oakroadsystems (dot) com to arrange payment.)
+
+  3.2  Direct Payment
+  
+To mail your payment to Oak Road Systems, please print REGISTER.TXT or
+SITEREG.TXT, fill in the blanks, and enclose it with your payment.
+(Make sure you are printing the file from the latest version of
+CMP; see <http://oakroadsystems.com/sharware/> for version
+information.) As soon as payment is received, we will e-mail you a
+link to download your purchase from the Web.
+
+If that is not convenient, we will be happy to make other reasonable
+arrangements.
+
+We can accept these forms of direct payment:
+  * US currency
+  * US-dollar check drawn on a US bank
+  * US-dollar money order issued by a US agency
+  * foreign currency (no coins, please)
+    
+If your check is dishonored by your bank for any reason, you agree to
+make the check good and to pay the fee charged by our bank.
+
+Sorry, non-US checks can be accepted on line only; please see "Payment
+on Line" above. We can't accept non-US checks directly because local
+banks charge punitive fees for converting them.
+
+======================================================================
+4. Redistributing CMP
+======================================================================
+
+You are free to distribute unmodified copies of CMP, under these
+conditions:
+ 1. Distribute only the unregistered version. The registered version
+    (file name ending RG.ZIP) and the source code (file name ending
+    SR.ZIP) are for your own use only, or for the number of users
+    stated in your site license.
+ 2. You must supply either the original ZIP file or the entire
+    unpacked contents of the ZIP file. If you supply the unpacked
+    contents of the ZIP file, the files for CMP must be in a
+    separate subdirectory on the distribution medium.
+ 3. Your documentation must explain prominently that this is
+    shareware, that a more recent release may be available on line,
+    and that the user must purchase a registration from Oak Road
+    Systems, as explained in the program documentation.
+ 4. The total price of a compilation (such as a CD-ROM) that includes
+    CMP must be no more than US $1 per package in the
+    compilation.
+    
+You may redistribute CMP under these terms even if you have not
+registered it yourself.
+
+======================================================================
+5. Support for CMP
+======================================================================
+
+Support is available via e-mail at
+support (at) oakroadsystems (dot) com. We're sorry, but at the given
+fees for registration it is not economical for us to provide free
+phone support. Phone support may be negotiated in advance with a site
+license.
+
+All registered users: We guarantee that we will respond to the best of
+our ability, and as promptly as is reasonably possible, to all
+reasonable queries from registered users.
+
+Site licensees: Your users should feel free to e-mail questions to us
+directly. It's never yet happened, but if we get a very large volume
+of support queries from users at one site, we may need to ask that
+site to designate one user as contact point to receive inquiries from
+other users and filter out the duplicates.
+
+Unregistered users: We intend to respond to your queries, but we will
+naturally give priority to registered users.
+
+======================================================================
+6. Upgrades to CMP
+======================================================================
+
+Program upgrades are announced on our Web page
+<http://oakroadsystems.com/sharware/> and to our mailing list of
+registered users. As a registered user, you can choose not to receive
+e-mail notices; in that case you'll want to monitor the Web page.
+
+The evaluation version of a program upgrade can be downloaded from
+<http://oakroadsystems.com/sharware/>. Registered users on our mailing
+list receive a time-limited URL for downloading the registered
+upgrade. If you miss the window or have chosen not to receive e-mail
+notices, e-mail us your license number or the date you registered,
+within 30 days of the new release, and we will e-mail it to you.
+
+Oak Road Systems cannot be responsible for lost, bounced, or
+misdirected e-mail. If you want e-mail notice of upgrades, it is your
+responsibility to make sure we have a working e-mail address for you.
+
+The user guide is sometimes updated between program releases. You can
+download the new version from the Web page
+<http://oakroadsystems.com/sharware/>.
+
+For source code upgrades, please see "Source Code" above.
+
+Suggestions for new features or other improvements will be gratefully
+received and given careful consideration. When you offer suggestions,
+you give Oak Road Systems full permission to make any use of them that
+we see fit.
+
+======================================================================
+7. Warranty for CMP
+======================================================================
+
+We will gratefully receive defect reports related to the software or
+documentation. Though we certainly intend to fix all reported bugs, we
+do not guarantee to do so.
+
+The software and documentation for CMP are offered AS IS and
+WITHOUT ANY WARRANTY express or implied, including but not limited to
+warranty of design, merchantability, or fitness for a particular
+purpose. In no event shall we be liable for any incidental, indirect,
+special, or consequential damages resulting from your use of or
+inability to use the software or documentation, even if we or our
+representative have been advised of the possibility of such damages.
+
+In no event will our total liability to you for all damages, losses,
+and causes of action, whether in contract, tort (including
+negligence), or otherwise, exceed the amount paid by you for the
+software, exclusive of handling charges, commissions, and currency
+conversion fees.
+
+======================================================================
+8. Controlling Law
+======================================================================
+
+This license shall be construed in accordance with the laws of the
+jurisdiction where Oak Road Systems is located at the time. Any
+dispute arising out of this license shall be subject to the exclusive
+jurisdiction of the courts there. (As of August 2004, Oak Road Systems
+is located in Tompkins County, New York, USA.)
+
+Any finding by a court that any provision of this license is invalid
+for a particular jurisdiction shall not affect any other provision of
+this license.
+
+======================================================================
+contact info  |  site map
+
+this page:  http://oakroadsystems.com/sharware/license.htm

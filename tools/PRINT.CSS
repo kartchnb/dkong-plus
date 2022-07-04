@@ -1,0 +1,484 @@
+/* *****************************************************************************
+
+    PRINT style sheet for Oak Road Systems
+    revised 2005-12-01
+
+    Copyright 2002-2005 Stan Brown, Oak Road Systems
+    http://oakroadsystems.com/
+
+***************************************************************************** */
+
+
+/* *****************************************************************************
+
+                           styles for inline elements
+
+Opera 6 seems to default to unmarked links. Why?
+
+Mozilla 1.1 treats <a name> like a link for hover and active; therefore add
+an a[name] selector.
+***************************************************************************** */
+
+  a:link { color:black; text-decoration:underline; background:#FFFFFF none; } 
+  a:visited { color:black; text-decoration:underline; background:#FFFFFF none; }
+
+big {   font-size:133% }
+
+code, kbd, samp
+    { font-family:monospace;
+      white-space:nowrap; }
+
+var { font-family:serif; font-style:italic }
+
+small { font-size:83.33% }
+
+/* Thanks to Jukka Korpela http://www.cs.tut.fi/~jkorpela/math/#subsup */
+
+sub { vertical-align:-0.6ex; font-size:80% }
+
+sup { vertical-align: 0.7ex; font-size:80% }
+
+dfn, .key {
+        font-weight:bold;
+        color:#008; background:#FFFFFF none }
+.maintitle .key {
+        font-weight:bold;
+        color:#008; background:#F0F0FF none }
+
+a img { border:none }
+
+.answer { border:1px solid #00C;
+        padding-left:0.25em; padding-right:0.25em;
+        color:black; background:#F0F0FF }
+
+
+.cmd, .fname, .fnamelit
+        { font-family: sans-serif; font-style: oblique; font-size: 90% }
+.fname  { text-transform: uppercase }
+.cmd,   { text-transform: lowercase }
+
+/* *****************************************************************************
+
+                    styles for block elements -- normal text
+
+***************************************************************************** */
+
+body {  font-size:100%; font-family:serif; color:black; background:#FFFFFF none;
+        margin:0 0.5em; padding:0 0 0 0 }
+
+.nospaceafter     { margin-bottom:0 }
+.nospaceafter + p { margin-top:0 }
+
+p + p /* comes before plain 'p' so MSIE4 won't take this for all p */
+         { margin-top:0; text-indent:2em }
+p.nonbrk { margin-top:0; text-indent:2em }
+
+p {     font-size:100%; font-family:serif; color:black; background:#FFFFFF none;
+        line-height:normal;
+        margin:1em 0 0 0; text-indent:0;
+        padding:0 }
+
+p.algebra { margin:0 0 0 2em; text-indent:2em }
+
+p.brk, p.newsec, p.dropcap { margin-top:1em; text-indent:0 }
+
+
+/* not yet ready for prime time:
+p.dropcap:first-letter
+        { font-size:240%;
+        color:#008; background:#F0F0FF none;
+        float:left; padding:0 0.08em 0 0 }
+
+p.dropcap + p { clear:both }
+*/
+
+p.hanging { margin-top:1em; margin-left:2em; text-indent:-2em }
+div.hanging { margin-left:2em }
+div.hanging p.hanging { margin-left:0 }
+
+p.tocont { display:none }
+
+.motto {
+        font-size:133%; line-height:125%;
+        margin:0.75188em 2.25564em; padding:1em;
+        text-indent:0; text-align:left;
+        border:double #808 }
+
+.fineprint { font-size:83.33%; line-height:120%; margin:1.25em 0; }
+
+/* The .nospaceafter+p rule above should make it unnecessary to use secondhalf.
+But MSIE 4 doesn't handle adjacent sibling selectors (+), apparently. */
+
+pre {   font-family:monospace; font-size:100%;
+        line-height:110%;
+        margin:1em 0 0 0; padding:0; border:none }
+pre.codeline { margin:0 0 0 5em }
+
+address {
+        font:italic 100% serif; line-height:110%;
+        margin:0 0 0 2em }
+
+blockquote {
+        font-size:92%;
+        line-height:normal;
+        margin:1em 3em 1em 4em;
+        padding:.5em; border-left:2px solid #00C }
+
+blockquote pre { font-style:normal }
+
+
+/* *****************************************************************************
+
+                                styles for lists
+
+***************************************************************************** */
+
+ul {    margin:0 0 0 4em; padding:0 }
+
+ul.purelist, .purelist ul {
+        margin:0 0 0 0.6em; padding-left:0.6em }
+
+ol {    margin:0 0 0 4em; padding:0 }
+
+ol.purelist {
+        margin:0 0 0 2.5em; padding-left:0 }
+
+ol p.appliestoseveralitems {
+        margin:1em 0 1em -4em;
+        text-indent:0 }
+
+ol ol { list-style:lower-roman }
+
+ol ul, ul ol, ul ul, ol ol { margin-left:2em }
+
+li {    font-size:100%; font-family:serif; color:black; background:#FFFFFF none;
+        line-height:normal;
+        margin:0; padding:0 }
+
+.loose li, .veryloose .loose li { margin-top:0.33333em }
+ol.loose, ul.loose { margin-bottom:0.33333em }
+
+.veryloose li { margin-top:1em }
+ol.veryloose, ul.veryloose { margin-bottom:1em }
+
+li.spaced { margin-top:1em }
+
+dl {    margin:0; padding:0 }
+
+dt {    font-size:100%; font-family:serif; line-height:normal;
+        margin:1em 0 0 0; padding:0 }
+
+dd {    font-size:100%; font-family:serif; line-height:normal;
+        margin:0 0 0 4em; padding:0 }
+
+/* *****************************************************************************
+
+                               styles for forms
+
+***************************************************************************** */
+
+div.formette {clear:both;margin-top:1em; text-indent:0 }
+
+.formette form { float:left;
+                 margin-left:0.5em; margin-right:0.5em; white-space:nowrap }
+.formette form.formette { margin-left:2em; margin-right:2em }
+
+.formette form input, .formette form select { font-size:92% }
+
+
+/* *****************************************************************************
+
+                               styles for tables
+
+***************************************************************************** */
+
+table { margin:1em 0 0 0; padding:0 }
+
+div.acchild table {
+        margin-left:auto; margin-right:auto;
+        text-align:left }
+div.acchild table th { text-align:center }
+table.acchild td, table.acchild th { text-align:center }
+.atchild th, .atchild td { vertical-align:top }
+
+table.mystd, table.myctr, table.mynum
+    { border-collapse:collapse; border:none }
+table.mystd td, table.mystd th, table.myctr td, table.myctr th, table.mynum td, table.mynum th
+    { border:2px solid black; padding:0.3em 0.5em }
+table.mystd td { text-align:left;   vertical-align:top }
+table.myctr td { text-align:center; vertical-align:middle }
+table.mynum td { text-align:right;  vertical-align:bottom }
+table.mystd thead td, table.myctr thead td, table.mynum thead td
+    { border-left:none; border-top:none }
+
+table.mynb td,      table.mynb th      { padding:0.25em 0.4em 0.25em 0}
+table.mynbtight td, table.mynbtight th { padding:0      0.4em 0      0}
+table.mynb      td+td, table.mynb      th+td, table.mynb      th+th,
+table.mynbtight td+td, table.mynbtight th+td, table.mynbtight th+th
+    { padding-left:0.4em }
+table.mynb td, table.mynbtight td { text-align:left; vertical-align:top }
+table.mynb th, table.mynbtight th { text-align:center; vertical-align:top }
+
+td, th {
+        font-size:100%; font-family:serif; color:black; background:#FFFFFF none;
+        line-height:normal }
+
+th {    font-weight:bold }
+
+
+/* *****************************************************************************
+
+                     styles for block elements -- headings
+
+***************************************************************************** */
+
+/* for a header that immediately follows another */
+.secondheader { margin-top:0.5em; }
+
+/* NS6, Mozilla 1, Opera 6 don't seem to honor the following, but it
+does no harm to specify it.*/
+h1, h2, h3, h4, h5, h6 { page-break-after:avoid; }
+
+h1 {    font-family:sans-serif; font-weight:bold; color:#008; background:#F0F0FF none;
+        font-size:175%;
+        clear:both;
+        line-height:1.3;
+        margin:0.571429em 0 0.5em -0em;
+        text-align:center;
+        padding:0.85em 1em;
+        border:3px solid #00C }
+
+/* Class maintitle is like an expanded H1, so they are formatted similarly. But
+an H1 within a maintitle doesn't get extra spacing or a border. */
+
+.maintitle { font-size:100%; font-family:serif; color:#008; background:#F0F0FF none;
+        font-weight:bold;
+        clear:both;
+        text-align:center;
+        margin:1em 0 0.5em -0;
+        padding:1em;
+        border:3px solid #00C }
+.maintitle a:link { color:#008; text-decoration:underline; background:#F0F0FF none; } 
+.maintitle a:visited { color:#008; text-decoration:underline; background:#F0F0FF none; }
+
+.maintitle h1 {
+        margin:0 0 0.5em 0;
+        padding:0; border:none }
+
+.maintitle p  {
+        margin-left:auto; margin-right:auto;
+        text-indent:0; text-align:center;
+        font-size:100%; font-family:serif; color:#008; background:#F0F0FF none;
+        font-weight:bold }
+
+.maintitle p.subh1 { font-family:sans-serif; font-weight:bold;
+        font-size:137.5%;
+        margin:0 0 0.5em 0 }
+
+h2 {    font-family:sans-serif; font-weight:bold; color:#008; background:#F0F0FF none;
+        font-size:150%;
+        line-height:1.3;
+        margin:2.5em 0 1.5em -0em;
+        text-align:center;
+        padding:0.85em 0;
+        border:2px solid #00C }
+h2 a:link { color:#008; text-decoration:underline; background:#F0F0FF none; } 
+h2 a:visited { color:#008; text-decoration:underline; background:#F0F0FF none; }
+
+h2.minor, .minor h2 { color:#008; background:#F0F0FF none; }
+h3                  { color:#008; background:#FFFFFF none; }
+h3, h2.minor, .minor h2 {
+        font-family:sans-serif; font-weight:bold;
+        font-size:125%;
+        line-height:1.3;
+        margin:2em 0 1.5em -0em;
+        text-align:left;
+        padding:0.85em 0;
+        border-top:2px solid #00C;
+        border-bottom:2px solid #00C;
+        border-left:none; border-right:none }
+
+h3 a:link { color:#008; text-decoration:underline; background:#FFFFFF none; } 
+h3 a:visited { color:#008; text-decoration:underline; background:#FFFFFF none; }
+h2.minor a:link { color:#008; text-decoration:underline; background:#F0F0FF none; } 
+h2.minor a:visited { color:#008; text-decoration:underline; background:#F0F0FF none; }
+.minor h2 a:link { color:#008; text-decoration:underline; background:#F0F0FF none; } 
+.minor h2 a:visited { color:#008; text-decoration:underline; background:#F0F0FF none; }
+
+h4, h3.minor, .minor h3 {
+        font-family:sans-serif; font-weight:bold; color:#008; background:#FFFFFF none;
+        font-size:110%;
+        line-height:normal;
+        margin:2em 0 1em 0;
+        text-align:left;
+        padding:0.5em 0;
+        border-top:none; border-bottom:1px solid #00C }
+h3.minor a:link { color:#008; text-decoration:underline; background:#FFFFFF none; } 
+h3.minor a:visited { color:#008; text-decoration:underline; background:#FFFFFF none; }
+.minor h3 a:link { color:#008; text-decoration:underline; background:#FFFFFF none; } 
+.minor h3 a:visited { color:#008; text-decoration:underline; background:#FFFFFF none; }
+h4 a:link { color:#008; text-decoration:underline; background:#FFFFFF none; } 
+h4 a:visited { color:#008; text-decoration:underline; background:#FFFFFF none; }
+
+h5, h4.minor, .minor h4, h6 {
+        font-family:sans-serif; font-weight:bold; color:#008; background:#FFFFFF none;
+        font-size:100%;
+        line-height:normal;
+        margin:1.5em 0 1em 4em;
+        text-align:left;
+        padding:0.5em 0 0; border:none }
+
+
+/* *****************************************************************************
+
+                            general utility classes
+
+***************************************************************************** */
+
+
+.ab  { vertical-align:bottom !important }
+.ac, .acm  { text-align:center !important; text-indent:0 !important }
+.al, .al1  { text-align:left !important }
+.al1 { text-indent:1em !important }
+.am, .acm { vertical-align:middle !important }
+.ar  { text-align:right !important }
+.at  { vertical-align:top !important }
+.fl  { float:left; margin:0.25em 0.5em 0.25em 0; padding:0 }
+.fr  { float:right; margin:0.25em 0 0.25em 0.5em; padding:0 }
+div.clear  { clear:both; margin:0; padding:0; height:0; line-height:0px }
+.newsec { clear:both }
+
+/* for elements that shouldn't be printed */
+.nonprint { display:none }
+
+/* for block-level elements that are the second half of a logical construct,
+and therefore want no top or left margin */
+.secondhalf       { margin-top:0; text-indent:0 }
+
+/* for elements that should not display at all when there's a stylesheet */
+.senzastil { display:none; }
+
+.unbreakable { page-break-inside:avoid; }
+
+
+/* *****************************************************************************
+
+                     styles for special-purpose constructs
+
+***************************************************************************** */
+
+/* used when merging multiple pages to a printer-friendly version */
+.chapterend { page-break-after:always; }
+
+/* equations  (N.B. To make the .eqnumber class work right, the enclosing
+element must specify its line-height in pixels.) */
+
+.eqnumber {
+        float:right; text-align:right; vertical-align:middle;
+        /* hack for MSIE 4:without a width it scrambles text and margins */
+        width:3em }
+
+.boxedeq {
+        clear:both;
+        margin:1em 0;
+        border:1px solid #00C;
+}
+
+.boxedeq p { margin:0.5em; text-indent:0; }
+
+/* centered illustration or unboxed equation */
+.illo             { margin-top:1em; text-indent:0; text-align:center; }
+.illotight        { margin-top:0;   text-indent:0; text-align:center; }
+
+.inset {
+        float:right; vertical-align:top;
+        border:1px dotted #00C;
+        padding:5px;
+        margin-left:1em;
+}
+.inset p { margin-top:0; }
+
+/* site map */
+
+#right, #left { margin:0; padding:0; }
+#right { float:right; width:57%; text-align:left; }
+#left  { float:left;  width:40%; }
+.fullwidth { margin-left:-0.5em; margin-right:-0.5em; }
+
+.innerbox { margin:0.5em;
+            padding:0.5em;
+         /* border:1px solid; */ }
+
+.innerbox ul {
+        margin-left:0.6em; margin-bottom:0; padding-left:0.6em }
+
+.innerbox h4 {
+        margin:0.5em 0 0.2em; padding-left:1.2em; border:none }
+
+/* heading within a site map box */
+.innerbox h2 {
+        text-align:left;
+        margin:0 0 0.333333em -0.266667em;
+        padding:0.333333em 0.333333em 0.333333em 0.266667em;
+        border:none }
+
+.innerbox h3 {
+        color:#008; background:#FFFFFF none;
+        margin:0.7em 0 0.5em;
+        padding:0.3em 0;
+}
+.innerbox h3 a:link { color:#008; text-decoration:underline; background:#FFFFFF none; } 
+.innerbox h3 a:visited { color:#008; text-decoration:underline; background:#FFFFFF none; }
+
+
+
+/* *****************************************************************************
+
+                            styles for page headers
+
+***************************************************************************** */
+
+/* breadcrumbs and menu at top of page */
+
+#crummenu { font-family:sans-serif; font-size:80%; color:black; background:#FFFFFF none; 
+        text-align:right;
+        margin:0.625em 0 0 0em;
+        padding:0.5em 0.5em 0.7em }
+#crummenu a:link { color:black; text-decoration:underline; background:#FFFFFF none; } 
+#crummenu a:visited { color:black; text-decoration:underline; background:#FFFFFF none; }
+#crumnew { font-family:sans-serif; color:black; background:#FFFFFF none;
+            float:left; text-align:left; padding-right:2em }
+#menunew { display:none }
+#crumbs a:link { color:black; text-decoration:underline; background:#FFFFFF none; } 
+#crumbs a:visited { color:black; text-decoration:underline; background:#FFFFFF none; }
+
+#menu { display:none; }
+
+/* abstract and contents */
+
+.SummaryH, .TOCH {
+        float:left;
+        margin-left:-6em;
+        width:6em; }
+.Summary, .TOC {
+        margin-left:6em; margin-top:1em; text-indent:0; }
+.TOC table {
+        margin-top:0; margin-bottom:0; }
+.TOC ul {  /* (This is the same as .purelist ul.) */
+        margin:0 0 0 0.6em; padding-left:0.6em }
+
+
+/* *****************************************************************************
+
+                            styles for page footers
+
+***************************************************************************** */
+
+
+#pageend    { clear:both; margin:1em 0 0 0em;
+               padding-top:0.5em; border-top:2px solid #00C }
+#pageend hr { display:none }
+#endlinks   { display:none }
+#URhere     { margin:0.5em 0; padding:0; text-indent:0 }
+#URhere small { font-size:90% }
+

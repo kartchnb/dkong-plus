@@ -1,0 +1,20 @@
+l21d1:	.byte	$01		; right
+		.word	$01cb	; right x 
+		.word	$0437	; up x 
+		.word 	$027b	; left x 
+		.word 	$044b	; up x
+		.word	$812d	; jump right x 
+		.word	$044f	; up x 
+		.word	$021a	; left x 
+		.word	$822d	; jump left x 
+		.word	$0437	; left x 
+		.word	$0439	; up x 
+		.word	$0160	; right x 
+		.word	$8125	; jump right x 
+		.word	$0130	; right x 
+		.word	$8125	; jump right x 
+		.word	$8125	; jump right x
+;		.word	$0120	; right x
+;		.word	$0050	; Wait x 
+;		.word	$0210	; left x
+;		.word 	$0437	; up x 

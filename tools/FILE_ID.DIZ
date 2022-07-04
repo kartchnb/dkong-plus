@@ -1,0 +1,23 @@
+CMP 5.23: Compare text/binary files
+
+This program is a greatly enhanced
+replacement for COMP or FC. It can
+compare text or binary files, multiple
+files, even subdirectory trees. You can
+configure the comparison process and
+output format with many options. The
+program returns a configurable value in
+ERRORLEVEL for batch programs.
+
+Runs in plain DOS and DOS under Win
+3.x/95/98/ME/NT/2000/XP; the 32-bit
+program uses long filenames. There is no
+special installation procedure.
+
+Shareware. The *complete* ZIP file may
+be redistributed freely. Register at
+<http://oakroadsystems.com/sharware/>.
+
+author: Stan Brown, Oak Road Systems
+mailto:support@oakroadsystems.com
+http://oakroadsystems.com

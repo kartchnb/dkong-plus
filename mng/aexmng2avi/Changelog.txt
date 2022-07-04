@@ -1,0 +1,17 @@
+	1.1 - 20080218
+- Added frame rate display
+- Removed control box from AboutBox form
+- Now everything but the Stop button is disabled during conversion.
+- Disabled form closing during conversion
+- previewPanel is now a PictureBox class
+
+    1.2 - 20080411
+- [BUG] Preview image was upside down
+- Added limited playback capabilities (video only)
+
+    1.3 - 20081202
+- [BUG] Crash when source MNG contains low BPP images
+- New AEX logo and little cosmetic changes
+
+	1.4 - 20101115
+- Added ability to resize output video

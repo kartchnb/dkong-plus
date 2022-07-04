@@ -1,0 +1,143 @@
+dkong.light.asm - current free space = 294 bytes
+dkong+.asm - current free space = 467
+
+UNIX: 
+To combine binary files:
+    cat file1 file2 file3 file4 > file
+    cat c_5et_g.bin c_5ct_g.bin c_5bt_g.bin c_5at_g.bin > dkong.bin
+    
+To split a binary file:
+    split -b SIZE file
+    split -b 4096 dkong.bin
+    
+To assemble with TASM (DOS command)
+    TASM.EXE -c -b -fFF -g3 -t80 dkong.asm
+    
+Update functions:
+0 = AwardPoints
+   0 = 0
+   1 = 100
+   2 = 200
+   3 = 300
+   4 = 400
+   5 = 500
+   6 = 600
+   7 = 700
+   8 = 800
+   9 = 900
+   10 = 0
+   11 = 1000
+   12 = 2000
+   13 = 3000
+   14 = 4000
+   15 = 5000
+   16 = 6000
+   17 = 7000
+   18 = 8000
+   19 = 9000
+
+1 = ClearScores
+
+2 = DisplayAllScores
+   0 = player 1 score
+   1 = player 2 score
+   2 = high score
+   3 = all scores
+
+3 = DisplayString
+   0 = "GAME OVER"
+   1 = ???
+   2 = "PLAYER (I)"
+   3 = "PLAYER (II)"
+   4 = "HIGH SCORE"
+   5 = "CREDIT    "
+   6 = ???
+   7 = "HOW HIGH CAN YOU GET ? "
+   8 = ???
+   9 = "ONLY 1 PlAYER BUTTON"
+   A = "1 OR 2 PLAYERS BUTTON"
+   B = ???
+   C = "PUSH"
+   D = "NAME REGISTRATION"
+   E = "NAME:"
+   F = "---         "
+   10 = "A B C D E F G H I J"
+   11 = "K L M N O P Q R S T"
+   12 = "U V W X Y Z . -RUBEND "
+   13 = "REGI TIME  (30) "
+   14 = High score 1 (6100H)
+   15 = High Score 2 (6122H)
+   16 = High Score 3 (6144H)
+   17 = High Score 4 (6166H)
+   18 = High Score 5 (6188H)
+   19 = "RANK  SCORE  NAME    "
+   1A = "YOUR NAME WAS REGISTERED."
+   1B = "INSERT COIN "
+   1C = "  PLAYER    COIN"
+   1D = "© NINTENDO    "
+   1E = "©1981"
+   1F = "NINTENDO OF AMERICA"
+
+4 = DisplayNumCredits
+
+5 = DisplayTimer
+   0 = Add timer to player's score
+   1 = Don't add timer to player's score
+   
+6 = DisplayLivesAndLevel
+   0 = Don't subtract a life first
+   1 = Do subtract a life first
+gameMode
+   screenMode
+0 = initialize the program
+   0 = initialize, jump to (1, 0)
+
+1 = demo mode
+   0 = "INSERT COIN" screen, jumps to (1,1)
+   1 = Delay and then 
+
+
+
+; The stage data consists of 5 byte 
+; entries.  Each entry causes a line
+; of tiles to be drawn on the screen
+; between two coordinates.
+;    Byte 1 = Tile to display
+;       00 = ladder
+;       01 = broken ladder
+;       02 = Girders in barrels stage
+;       03 = Girders with square holes
+;       04 = Blank tiles
+;       05 = Girders with circular holes
+;       06 = X's (tile number $FE)
+;       AA = Marks the end of stage data
+;    Byte 2 = X1 coord
+;       5 MSBs = The screen column
+;          number
+;       3 LSBs = The y offset (0-7) of the 
+;		  first tile
+;    Byte 3 = Y1 coord
+;       5 MSBs = The screen row
+;          number
+;       3 LSBs = The tile offset (0-7) of the
+;		  last tile
+;    Bytes 4,5 = X2, Y2 coord formatted
+;       same as X1 and Y1 above
+
+X values range from 22 (left edge of screen) 
+to 234 (right edge of screen)
+Y values range from 0? (top edge of screen)
+to 254? (bottom edge of screen)
+
+
+Functions of interest:
+#21d1 - location of demo input
+#3d08 - data for displaying the big "DONKEY KONG" title in demo
+#3d9c - default game variable values
+
+
+
+Bonus level notes:
+Need to override the win condition on Barrels and Elevators levels (both?  one? elevators would be harder)
+Need to set CP_STAGE_DATA_POINTER to point to the new stage data
+Need to advance CP_HEIGHT_INDEX when the bonus level is entered, but not when it is exited.

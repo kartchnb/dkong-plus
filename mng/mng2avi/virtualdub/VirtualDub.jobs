@@ -1,0 +1,188 @@
+// VirtualDub job list (Sylia script format)
+// This is a program generated file -- edit at your own risk.
+//
+// $numjobs 5
+//
+
+// $job "Job 1"
+// $input "C:\daniel\mame\v0.89\zookeep.avs"
+// $output "C:\daniel\mame\v0.89\zookeep.avi"
+// $state 0
+// $start_time 0 0
+// $end_time 0 0
+// $script
+
+VirtualDub.Open("C:\\daniel\\mame\\v0.89\\zookeep.avs","",0);
+VirtualDub.audio.SetSource(1);
+VirtualDub.audio.SetMode(0);
+VirtualDub.audio.SetInterleave(1,500,1,0,0);
+VirtualDub.audio.SetClipMode(1,1);
+VirtualDub.audio.SetConversion(0,0,0,0,0);
+VirtualDub.audio.SetVolume();
+VirtualDub.audio.SetCompression();
+VirtualDub.audio.EnableFilterGraph(0);
+VirtualDub.video.SetInputFormat(0);
+VirtualDub.video.SetOutputFormat(7);
+VirtualDub.video.SetMode(3);
+VirtualDub.video.SetFrameRate(0,1);
+VirtualDub.video.SetIVTC(0,0,-1,0);
+VirtualDub.video.SetRange(0,0);
+VirtualDub.video.SetCompression(0x78766964,0,10000,0);
+VirtualDub.video.SetCompData(356,"MAEAAAAAAAAAAAAA4OYLAM0u8kcAAAAAAAAAAAAAAAAAAAAALAEAADIAAAAACT0AAAAwAAAAJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAAAAAAAQAAAAAAAACamZmZmZnJP5qZmZmZmck/AAAAAAAAAAAAAAAAgAIAAOABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4D8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAABAAAAAQAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAD/////AQAAAAAAAAAAAAAAAgAAAGM6XGRpdngubG9nAGM6XHRlc3QuZGl2eABjOlxtdmluZm8uYmluAGM6XG5ld3JjLnR4dAA=");
+VirtualDub.video.filters.Clear();
+VirtualDub.audio.filters.Clear();
+VirtualDub.subset.Clear();
+VirtualDub.project.ClearTextInfo();
+VirtualDub.SaveAVI("C:\\daniel\\mame\\v0.89\\zookeep.avi");
+VirtualDub.audio.SetSource(1);
+VirtualDub.Close();
+
+// $endjob
+//
+//--------------------------------------------------
+// $job "Job 1"
+// $input "C:\daniel\mame\v0.89\zookeep.avs"
+// $output "C:\daniel\mame\v0.89\zookeep.avi"
+// $state 0
+// $start_time 0 0
+// $end_time 0 0
+// $script
+
+VirtualDub.Open("C:\\daniel\\mame\\v0.89\\zookeep.avs","",0);
+VirtualDub.audio.SetSource(1);
+VirtualDub.audio.SetMode(0);
+VirtualDub.audio.SetInterleave(1,500,1,0,0);
+VirtualDub.audio.SetClipMode(1,1);
+VirtualDub.audio.SetConversion(0,0,0,0,0);
+VirtualDub.audio.SetVolume();
+VirtualDub.audio.SetCompression();
+VirtualDub.audio.EnableFilterGraph(0);
+VirtualDub.video.SetInputFormat(0);
+VirtualDub.video.SetOutputFormat(7);
+VirtualDub.video.SetMode(3);
+VirtualDub.video.SetFrameRate(0,1);
+VirtualDub.video.SetIVTC(0,0,-1,0);
+VirtualDub.video.SetRange(0,0);
+VirtualDub.video.SetCompression();
+VirtualDub.video.filters.Clear();
+VirtualDub.audio.filters.Clear();
+VirtualDub.subset.Clear();
+VirtualDub.subset.AddRange(0,2737);
+VirtualDub.project.ClearTextInfo();
+VirtualDub.SaveAVI("C:\\daniel\\mame\\v0.89\\zookeep.avi");
+VirtualDub.audio.SetSource(1);
+VirtualDub.Close();
+
+// $endjob
+//
+//--------------------------------------------------
+// $job "Job 1"
+// $input "C:\daniel\mame\v0.89\zookeep.avs"
+// $output "C:\daniel\mame\v0.89\zookeep.avi"
+// $state 0
+// $start_time 0 0
+// $end_time 0 0
+// $script
+
+VirtualDub.Open("C:\\daniel\\mame\\v0.89\\zookeep.avs","",0);
+VirtualDub.audio.SetSource("C:\\daniel\\mame\\v0.89\\zookeep.wav");
+VirtualDub.audio.SetMode(0);
+VirtualDub.audio.SetInterleave(1,500,1,0,0);
+VirtualDub.audio.SetClipMode(1,1);
+VirtualDub.audio.SetConversion(0,0,0,0,0);
+VirtualDub.audio.SetVolume();
+VirtualDub.audio.SetCompression();
+VirtualDub.audio.EnableFilterGraph(0);
+VirtualDub.video.SetInputFormat(0);
+VirtualDub.video.SetOutputFormat(7);
+VirtualDub.video.SetMode(3);
+VirtualDub.video.SetFrameRate(0,1);
+VirtualDub.video.SetIVTC(0,0,-1,0);
+VirtualDub.video.SetRange(0,0);
+VirtualDub.video.SetCompression();
+VirtualDub.video.filters.Clear();
+VirtualDub.audio.filters.Clear();
+VirtualDub.subset.Clear();
+VirtualDub.subset.AddRange(0,2737);
+VirtualDub.project.ClearTextInfo();
+VirtualDub.SaveAVI("C:\\daniel\\mame\\v0.89\\zookeep.avi");
+VirtualDub.audio.SetSource(1);
+VirtualDub.Close();
+
+// $endjob
+//
+//--------------------------------------------------
+// $job "Job 1"
+// $input "C:\daniel\mame\v0.89\zookeep.avs"
+// $output "C:\daniel\mame\v0.89\zookeep.avi"
+// $state 0
+// $start_time 0 0
+// $end_time 0 0
+// $script
+
+VirtualDub.Open("C:\\daniel\\mame\\v0.89\\zookeep.avs","",0);
+VirtualDub.audio.SetSource("C:\\daniel\\mame\\v0.89\\zookeep.wav");
+VirtualDub.audio.SetMode(1);
+VirtualDub.audio.SetInterleave(1,500,1,0,0);
+VirtualDub.audio.SetClipMode(1,1);
+VirtualDub.audio.SetConversion(0,0,0,0,0);
+VirtualDub.audio.SetVolume();
+VirtualDub.audio.SetCompression(85,22050,1,0,3000,1,12,"AQACAAAATgABAHEF");
+VirtualDub.audio.EnableFilterGraph(0);
+VirtualDub.video.SetInputFormat(0);
+VirtualDub.video.SetOutputFormat(7);
+VirtualDub.video.SetMode(3);
+VirtualDub.video.SetFrameRate(0,1);
+VirtualDub.video.SetIVTC(0,0,-1,0);
+VirtualDub.video.SetRange(0,0);
+VirtualDub.video.SetCompression();
+VirtualDub.video.filters.Clear();
+VirtualDub.audio.filters.Clear();
+VirtualDub.subset.Clear();
+VirtualDub.subset.AddRange(0,2737);
+VirtualDub.project.ClearTextInfo();
+VirtualDub.SaveAVI("C:\\daniel\\mame\\v0.89\\zookeep.avi");
+VirtualDub.audio.SetSource(1);
+VirtualDub.Close();
+
+// $endjob
+//
+//--------------------------------------------------
+// $job "Job 1"
+// $input "C:\daniel\mame\v0.89\missile.avs"
+// $output "C:\daniel\mame\v0.89\missile.avi"
+// $state 0
+// $start_time 0 0
+// $end_time 0 0
+// $script
+
+VirtualDub.Open("C:\\daniel\\mame\\v0.89\\missile.avs","",0);
+VirtualDub.audio.SetSource(1);
+VirtualDub.audio.SetMode(0);
+VirtualDub.audio.SetInterleave(1,500,1,0,0);
+VirtualDub.audio.SetClipMode(1,1);
+VirtualDub.audio.SetConversion(0,0,0,0,0);
+VirtualDub.audio.SetVolume();
+VirtualDub.audio.SetCompression();
+VirtualDub.audio.EnableFilterGraph(0);
+VirtualDub.video.SetInputFormat(0);
+VirtualDub.video.SetOutputFormat(7);
+VirtualDub.video.SetMode(3);
+VirtualDub.video.SetFrameRate(0,1);
+VirtualDub.video.SetIVTC(0,0,-1,0);
+VirtualDub.video.SetRange(0,0);
+VirtualDub.video.SetCompression(0x64697663,0,10000,0);
+VirtualDub.video.SetCompData(4,"Y29scg==");
+VirtualDub.video.filters.Clear();
+VirtualDub.audio.filters.Clear();
+VirtualDub.subset.Clear();
+VirtualDub.subset.AddRange(0,951);
+VirtualDub.project.ClearTextInfo();
+VirtualDub.SaveAVI("C:\\daniel\\mame\\v0.89\\missile.avi");
+VirtualDub.audio.SetSource(1);
+VirtualDub.Close();
+
+// $endjob
+//
+//--------------------------------------------------
+// $done

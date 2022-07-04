@@ -1,0 +1,460 @@
+Label0413:
+
+dkong variables
+
+#6001 = numCredits
+#6002 = numCoinsPending (Keeps track of the number of cns entered until enough have been entered to get one credit)
+#6003 = coinValid (Prevents 1 coin entry from being processed more than once)
+#6005 = gameMode?
+   0 = Preparing  or demo mode
+   1 = demo mode
+   2 = waiting for 1 or 2 player button
+   3 = game mode
+
+#6007 = demoMode? (1 until a coin is entered)
+#6008 = majorTimer
+#6009 = minorTimer
+#600A = currentScreen 
+   gameMode == 1 (demo mode)
+      0 = Insert coin screen
+      1 = Prepare demo mode
+      2 = Initialize Mario sprite
+      3 = Demo running
+      4 = Demo dying
+      5 = Clear demo screen
+      6 = DK screen flashing
+      7 = DK screen not flashing
+   gameMode == 2 (waiting for player start button)
+   gameMode == 3 (playing the game)
+      0 = Orienting the screen
+      1 = Initialize player 1
+      2 = Display player 1 prompt
+      3 = Initialize player 2
+      4 = Display player 2 prompt
+      5 = Display player 1 data
+      6 = Prepare to display either intro or intermission
+      7 = Implement intro
+      8 = Implement intermission
+      9 = Resets the game
+      10 = Display the current stage
+      11 = Initialize Mario's sprite
+
+#600C = ??? Setting to 1 throws off timing because delays are skipped
+#600D = playerUp (0 = 1UP, 1 = 2UP)
+#600E = player2Active (for cocktail cabinets)
+#600F = twoPlayers (1 if two players are playing)
+#6010 = playerInput (current player input after adjusting and filtering out duplicate jumps
+   Bit 7 = Jump
+   Bit 6 = -----------
+   Bit 5 = -----------
+   Bit 4 = -----------
+   Bit 3 = Down
+   Bit 2 = Up
+   Bit 1 = Left
+   Bit 0 = Right
+#6011 = prevPlayerInput (Contains the previously read state of IN1 or IN2) 
+
+#6018 = randNum
+#6019 = counter2
+#601A = counter1
+
+#6020 = numLivesSetting
+#6021 = bonusSetting
+#6022 = coinsPerPlay (num coins for 2 players?)
+#6023 = playsPerCoin (num coins for 1 player?)
+#6024 = numCoinsSetting (# coins per play)
+#6025 = numPlaysSetting (# plays per coin)
+#6026 = cabType (0 == cocktail cab, 1 == upright cab)
+
+#6031 = scoreBlinkCycleState (0 = score blanked, 1 = score displayed)
+#6032 = scoreBlinkCycleTimer (blink cycle state toggles when this reaches 0)
+#6033 = regiTimer (time remaining to input initials)
+#6034 = regiTimerDelay (amount of delay between ticks of the timer)
+#6035 = selectedLetter (for inputing initials - ranges from 0 ('A') to 29 ('END'))
+#6036 = nextInitialCoord (the screen coordinate the next initial letter will be displayed at)
+
+#6038 = pHighScorePlayerId (points to the player ID for the high score initials are being entered for)
+
+#603A = pHighScoreInitialsPosition (address of memory location to write player's initials to for the high score)
+
+#6040 - #6047 = Player 1 data
+#6040 = numLivesP1
+#6041 = levelNumP1
+#6042-#6043 = pStageOrderTableEntryP1
+#6044 = 
+#6045 = bonusAwardedP1
+#6046 = 
+#6047 = 
+
+#6048 - #604F = Player 2 data
+#6048 = numLivesP2
+#6049 = levelNumP2
+#604A-#604B = pStageOrderTableEntryP2
+#604C = 
+#604D = bonusAwardedP2
+#604E = 
+#604F = 
+
+#6080 = marioWalking
+#6081 = marioJumping
+#6082 = soundEffect
+   3 = DK stomp
+#6083 = ??? (Set to 3 when coin is entered)
+
+#6089 = timeRunningOut (= 3 when timer < 1000)
+#608A = currentSong
+   0: Nothing
+   1: Intro tune
+   2: Intermission tune
+   3: Out of time tune
+   4: Hammer time!
+   5: Rivet level 2 completed
+   6: Hammer hit
+   7: Standard level end
+   8: Background tune 1 (barrels)
+   9: Background tune 4 (pies)
+   10: Background tune 3 (springs)
+   11: Background tune 2 (rivets)
+   12: Rivet level 1 completed
+   13: Rivet removed
+   14: Rivet level completed
+   15: Gorilla roar
+#608B = currentSongDuration
+
+#60B0 = writePtr (points to next write location for buffer area #60C0 to #60FF)?
+#60B1 = readPtr (points to next read location for pending buffer #60C0 to #60FF)
+#60B2-#60B4 = player1Score (3 bytes stored in reverse order: 
+#60B5-#60B7 = player2Score (3 bytes   10:1 - 1,000:100 - 100,000:10,000)
+#60B8-#60BA = highScore (3 bytes stored in reverse order)
+
+#60C0-#60FF = pendingFunctionBuffer
+#6100-#6101 = highScore1StringCoord
+#6102-#611B = highScore1String
+#611C = highScore1PlayerId (Player identifier for high score 1)
+   0 = not earned by a current player
+   1 = earned by player 1
+   3 = earned by player 2
+#611D-#611F = highScore1 (BCD)
+#6120-#6121 = highScore1Coord 
+#6122-#6123 = highScore2StringCoord
+#6124-613D = highScore2String
+#613E = highScore2PlayerId
+#613F-#6141 = highScore2
+#6142-#6143 = highScore2Coord
+#6144-#6145 = highScore3StringCoord
+#6146-615F = highScore3String
+#6160 = highScore3PlayerId
+#6161-#6163 = highScore3
+#6164-#6165 = highScore3Coord
+#6166-#6167 = highScore4StringCoord
+#6168-#6181 = highScore4String
+#6182 = highScore4PlayerId
+#6183-#6185 = highScore4
+#6186-#6187 = highScore4Coord
+#6188-#6189 = highScore5StringCoord
+#618A-#61A3 = highScore5String
+#61A4 = highScore5PlayerId
+#61A5-#61A7 = highScore5
+#61A8-#61A9 = highScore5Coord
+
+#61B1 - #61C5 = tempScoreString (Only the score itself)
+#61C6 = tempScorePlayerId 
+#61C7-#61C9 = tempScore
+
+#6200 = marioAlive (1 when Mario is alive, 0 when he dies or before level starts)
+
+#6203 = marioX (0 = off left edge of screen)
+
+#6205 = marioY (0 = top of screen)
+        (#30 = on top platform wit  Pauline)
+
+#6207 = marioSpriteNum1 (duplicates marioSpriteNum)
+#6208 = marioSpritePalette1 (duplicates marioSpritePalette)
+
+#6215 = climbing (1 if Mario is climbing)
+
+#6227 = currentStage 
+   0 = (resets game?)
+   1 = barrels stage
+   2 = pies stage
+   3 = elevators stage
+   4 = rivets stage
+#6228 - #622F = Current player data
+#6228 = numLives
+#6229 = levelNum
+#622A-#622B = 
+#622C = introDisplayed (Intro is only displayed when this is 0)
+#622D = bonusAwarded
+#622E = levelHeightIndex (0-5 = 25m-150m)
+#622F =
+
+#6280 = lLadderState - the state of the left hand retracting ladder in the pies level:
+           #00 = In up position, waiting to drop
+           #01 = Dropping
+           #02 = In lowered position
+           #03 = Raising
+#6281 = lLadderDelay - the delay before the left hand ladder drops (reset to ~#7D after the ladder is raised)
+#6282 = lLadderX - left hand ladder X coordinate
+#6283 = lLadderY - left hand ladder Y coordinate
+#6284 = lLadderMoveDelay - Makes the ladder descend once in every 4 calls
+
+#6288 = rLadderState - the state of the right hand retracting ladder in the pies level:
+           #00 = In up position, waiting to drop
+           #01 = Dropping
+           #02 = In lowered position
+           #03 = Raising
+#6289 = rLadderDelay - the delay before the right hand ladder drops (reset to ~#7D after the ladder is raised)
+#628A = rLadderX - right hand ladder X coordinate
+#628B = rLadderY - right hand ladder Y coordinate
+#628C = rLadderMoveDelay - Makes the ladder descend once in every 4 calls
+
+#6290 = rivetsRemaining (rivets stage ends when this reaches 0)
+
+#62A1 = conveyer1Dir (1, or -1)
+
+#62A3 = conveyer2Dir (1, or -1)
+
+#62A6 = conveyer3Dir (1 or -1)
+
+#62B0 = intTimer
+
+#62B8 = OilBarrelFireDelay (Countdown from 4 to 0)
+#62B9 = OilBarrelFireState
+   3 = Initial flare up
+   1 = Subdued burning
+   0 = Not burning
+#62BA = OilBarrelFireFlareduration (Countdown from 16 to 0)
+
+#6340 = pointDisplayMode 
+   0 = No points to display
+   1 = Points waiting to be awarded and displayed
+   2 = Points are being displayed
+#6341 = pointSpriteTimeout (the points sprite is shown until this reaches 0)
+#6342 = pointAwardType
+   0 = Award points based on levelNum (point sprite replaces another sprite) 
+          1 = 300 points
+          2 = 500 points
+          3+ = 800 points
+   1 = Award 100 points
+   2 = Award 300 points
+   3 = Award 300 points
+   4 = Award random points (300, 500, or 800)
+   5 = Award 500 points (800 point sprite is displayed)
+#6343 = pPointSpriteX
+
+#6345 = smashSequenceMode
+#6346 = smashSequenceDelay
+#6347 = smashSequenceFrames
+#6348 = oilBarrelOnFire
+
+#6350 = smashSequenceActive
+
+#6354 = indexOfSmashedSprite (the index number of the "enemy" Mario has smashed with the hammer)
+
+#6380 = diffLevel (difficulty level)
+#6381 = majorCounter
+
+#6384 = minorCounter
+#6385 = introMode
+   0 = Display intro stage (straight girders)
+   1 = 
+   2 = 
+   3 = 
+   4 = 
+   5 = 
+   6 = 
+   7 = 
+
+#6388 = EndStageAnimationPhase
+	barrels and elevators stage:
+		0 = begin (complete heart, DK begins to climb)
+		1 = 
+
+#638A = titleScreenPaletteCycle
+#638B = titleScreenPalette
+#638D = numJumps
+
+#639D = DeathMode
+   0 = Start death sequence
+   1 = Continue death sequence until complete
+   2 = 
+#639E = DeathSequenceCycles (Death sequence is complete when this reaches 0)
+
+#63A3 = conveyer1Offset (offset, in pixels, to move objects along conveyer 1)
+#63A4 = conveyer2ROffset (offset, in pixels, to move objects along conveyer 2, right side)
+#63A5 = conveyer2Offset (offset, in pixels, to move objects along conveyer 2, left side)
+#63A6 = conveyer3Offset (offset, in pixels, to move objects along conveyer 3)
+#63A7 = currentHeightIndex (0-5) = index of 4-byte entry starting at 3CF0H
+#63A8 = heightDisplayCoord = coordinate of height display in intermission screen
+
+#63B7 = dkDistanceFromLadder (used in pies level to move DK to the ladder when Mario wins)
+
+#63BC = onScreenTimer
+
+#63C0 = pCurrentMode (Stores the address of the current mode variable)
+
+#63C2 = pNextYVector1
+
+#63C4 = pNextYVector2
+
+#63CC = demoInputIndex - index of the current input to use in the demo mode
+#63CD = demoInputRepeat - The current demo input continues until this reaches 0
+
+#6900-#6A7F = Sprites?
+#6900 = paulineUpperSpriteX
+#6901 = paulineUpperSpriteNum
+#6902 = paulineUpperSpritePalette
+#6903 = paulineUpperSpriteY
+#6904 = paulineLowerSpriteX
+#6905 = paulineLowerSpriteNum
+#6906 = paulineLowerSpritePalette
+#6907 = paulineLowerSpriteY
+#6908 = dkSprite1X
+#6909 = dkSprite1Num
+#690A = dkSprite1Palette
+#690B = dkSprite1Y
+#690C = dkSprite2X
+#690D = dkSprite2Num
+#690E = dkSprite2Palette
+#690F = dkSprite2Y
+#6910 = dkSprite3X
+#6911 = dkSprite3Num
+#6912 = dkSprite3Palette
+#6913 = dkSprite3Y
+#6918 = dkHeadSpriteX
+#6919 = dkHeadSpriteNum
+#691A = dkHeadSpritePalette
+#691B = dkHeadSpriteY
+#691C = dkSprite6X
+#691D = dkSprite6Num
+#691E = dkSprite6Palette
+#691F = dkSprite6Y
+
+#6947 = lLadderSpriteY? (left hand retractable ladder on pies level)
+
+#694B = rLadderSpriteY? (right hand retractable ladder on pies level)
+
+#694C = marioSpriteX
+#694D = marioSpriteNum (bit 1 flips horiz)
+#694E = marioSpritePalette (bit 1 flips vert)
+#694F = marioSpriteY
+
+#6974 = letterSelectBoxSpriteX
+#6975 = letterSelectBoxSpriteNum
+#6976 = letterSelectBoxSpritePalette
+#6977 = letterSelectBoxSpriteY
+
+#6A0C = prizeSprite1X
+#6A0D = prizeSprite1Num
+#6A0E = prizeSprite1Palette
+#6A0F = prizeSprite1Y
+#6A00 = prizeSprite2X
+#6A01 = prizeSprite2Num
+#6A02 = prizeSprite2Palette
+#6A03 = prizeSprite2Y
+#6A04 = prizeSprite3X
+#6A05 = prizeSprite3Num
+#6A06 = prizeSprite3Palette
+#6A07 = prizeSprite3Y
+
+#6A20 = heartSpriteX (heart that appears when Mario reaches Pauline)
+#6A21 = heartSpriteNum
+#6A22 = heartSpritePalette
+#6A23 = heartSpriteY
+
+#6A28 = oilFireSpriteX (fire in the oil barrel on barrel stage)
+#6A29 = oilFireSpriteNum
+#6A2A = oilFireSpritePalette
+#6A2B = oilFireSpriteY
+#6A2C = smashSpriteX (shown when Mario hits an object with the hammer)
+#6A2D = smashSpriteNum
+#6A2E = smashSpritePalette
+#6A2F = smashSpriteY
+#6A30 = pointsSpriteX
+#6A31 = pointsSpriteNum
+#6A32 = pointsSpritePalette
+#6A33 = pointsSpriteY
+
+#6c00 = start of stack
+
+
+Display Memory = #7400 to #77FF
+   32 tiles x 32 tiles
+   8 x 8 tiles
+   #7400 = Upper Right
+   x = (address - #7400) / 32
+   y = (address - #7400) % 32
+ 
+toggle0_1 = #7D85 - Dunno
+
+Read:
+7C00 IN0 (Player 1 input)
+     Bit 7 ?
+     Bit 6 Reset
+     Bit 5 ?
+     Bit 4 Jump
+     Bit 3 Down
+     Bit 2 Up
+     Bit 1 Left
+     Bit 0 Right
+7C80 IN1 (Player 2 input)
+     Bit 7 ?
+     Bit 6 Reset
+     Bit 5 ?
+     Bit 4 Jump
+     Bit 3 Down
+     Bit 2 Up
+     Bit 1 Left
+     Bit 0 Right
+7D00 IN2 (Misc input)
+     Bit 7 Coin
+     Bit 6 ?
+     Bit 5 ?
+     Bit 4 ?
+     Bit 3 Start 2
+     Bit 2 Start 1
+     Bit 1 ?
+     Bit 0 ? (If this is 1, code jumps to 4000H)
+7D80 DSW1
+     Bit 7 Cocktail (0) or Upright (1)
+     Bit 6 \ 000 = 1 coin/1 play  001 = 1 coin/2 play  010 = 1 coin/3 play
+     Bit 5 | 011 = 1 coin/4 play  100 = 2 coin/1 play  101 = 3 coin/1 play
+     Bit 4 / 110 = 4 coin/1 play  111 = 5 coin/1 play
+     Bit 3 \ Bonus at
+     Bit 2 / 00 = 7000  01 = 10000  10 = 15000  11 = 20000
+     Bit 1 \ 00 = 3 lives  01 = 4 lives
+     Bit 0 / 10 = 5 lives  11 = 6 lives
+
+Write:
+#7C00 = music
+   00       = none
+   01       = intro
+   02       = intermission
+   03       = out of time
+   04       = hammer
+   05       = rivet level 2 complete
+   06       = hammer hit
+   07       = standard level complete
+   08       = background 1
+   09       = ???
+   0A       = background 3
+   0B       = background 4
+   0C       = rivet level 1 complete
+   0D       = rivet removed
+   0E       = rivet level complete
+   0F       = gorilla roar
+walkSoundTrig = #7D00
+jumpSoundTrig = #7D01
+flipScreen  = #7D82
+intEnable   = #7D84
+#7D86 - palette1
+#7D87 - palette2
+
+
+Sprite data entries:
+   Byte 1 = X position (00H = -24)
+   Byte 2.0-6 = Sprite #
+   Byte 2.7 = Flip horiz
+   Byte 3.0-6 = Pallette?
+   Byte 3.7 = Flip vert
+   Byte 4 = Y position (00H = ???)1H
